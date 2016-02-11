@@ -14,7 +14,6 @@
     "cheerio": "^0.20.0",
     "immutable": "^3.7.6",
     "nicolive": "0.0.3",
-    "node-nicovideo-api": "^0.6.1",
     "react": "*",
     "react-dom": "^0.14.3",
     "request": "^2.69.0"
