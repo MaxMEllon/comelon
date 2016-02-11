@@ -1,6 +1,6 @@
-let user = {
-  email: ''
-  password: '',
+let User = {
+  email: '',
+  password: ''
 }
 
-export default user;
+module.exports = User;

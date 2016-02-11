@@ -1,7 +1,7 @@
 'use babel';
 
 const Immutable = require('immutable');
-const User = require('../config/User');
+const User = require('../config/User.js');
 const React = require('react');
 const Nico = require('nicolive');
 
@@ -24,8 +24,10 @@ let Main = React.createClass({
 
   handleClick() {
     Nico.login(User.email, User.password, (error, cookie) => {
+      if (error != null) { throw error; }
       let liveId = this.state.lv;
       Nico.view(liveId, (error, viewer) => {
+        if (error != null) { throw error; }
         viewer.on('comment', comment => {
           let comments = this.state.comments;
           comments.push(Immutable.fromJS(comment));
