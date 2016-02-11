@@ -3,7 +3,7 @@
 const Immutable = require('immutable');
 const User = require('../config/User');
 const React = require('react');
-const nicolive = require('nicolive');
+const Nico = require('nicolive');
 
 let Main = React.createClass({
   displayName: 'Main',
@@ -23,9 +23,9 @@ let Main = React.createClass({
   },
 
   handleClick() {
-    nicolive.login(User.email, User.password, (error,cookie) => {
-      var live_id = this.state.lv;
-      nicolive.view(live_id, (error, viewer) => {
+    Nico.login(User.email, User.password, (error, cookie) => {
+      let liveId = this.state.lv;
+      Nico.view(liveId, (error, viewer) => {
         viewer.on('comment', comment => {
           let comments = this.state.comments;
           comments.push(Immutable.fromJS(comment));
@@ -46,7 +46,6 @@ let Main = React.createClass({
             let components = [];
             for (var i = 0; i < this.state.comments.length; i++) {
               var comment = this.state.comments[i];
-              console.log(comment.get('usericon'));
               components.push(<li key={i}>{comment.get('text')}<img src={comment.get('usericon')} /></li>);
             }
             return components;
