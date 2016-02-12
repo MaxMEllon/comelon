@@ -66,7 +66,7 @@ let Main = React.createClass({
       <div className='MainView'>
         <input type="text" value={this.state.lv} onChange={this.changeText} />
         <button className='connectButton' onClick={this.handleClick}>接続</button>
-        <hr>
+        <hr />
         <div className='commentTable'>
           {this.renderComments()}
         </div>
