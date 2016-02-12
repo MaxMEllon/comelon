@@ -63,11 +63,13 @@ let Main = React.createClass({
   render() {
     debug('~~~> render');
     return (
-      <div>
-        <h1>test</h1>
+      <div className='MainView'>
         <input type="text" value={this.state.lv} onChange={this.changeText} />
-        <button onClick={this.handleClick} />
-        {this.renderComments()}
+        <button className='connectButton' onClick={this.handleClick}>接続</button>
+        <hr>
+        <div className='commentTable'>
+          {this.renderComments()}
+        </div>
       </div>
     );
   }

@@ -1,0 +1,26 @@
+## TODOs
+
+- shuold be implementation
+  - [ ] eslint
+  - [ ] gulp
+  - [ ] webpack or browslify
+  - [ ] stylus-electron
+  - [ ] circleCI or travisCI
+  - [ ] unitTest
+  - [ ] e2eTest(nightmare)
+
+- feature
+  - [ ] post comment
+  - [ ] get comment
+    - [ ] is premium
+    - [ ] user icon
+    - [x] is 184
+    - [x] comment no
+    - [ ] user name
+    - [ ] kotehan (hold handle name)
+
+- modify
+  - [ ] design
+
+- option
+  - [ ] systam comment (ex. /disconnect)

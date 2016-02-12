@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "bootstrapper.js",
   "license": "MIT",
-  "repository": "b52/electron-es6-react",
+  "repository": "maxmellon/comelon",
   "scripts": {
     "dev": "electron ."
   },
