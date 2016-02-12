@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const React = require('react');
 
@@ -12,7 +12,7 @@ let Comment = React.createClass({
   },
 
   render() {
-     return (
+    return (
       <div className='commentComponent'>
         <div className='No'>
           {this.props.no}

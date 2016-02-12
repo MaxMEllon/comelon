@@ -1,0 +1,52 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "rules": {
+    "strict": [2, "global"],
+    "indent": [2, 2],
+    "quotes": [2, "single", "avoid-escape"],
+    "camelcase": [2, {"properties": "never"}],
+    "new-cap": 0,
+    "space-in-parens": [2, "never"],
+    "no-undef": 2,
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "no-process-exit": 0,
+    "no-unused-vars": 1,
+    "no-unused-expressions": 0,
+    "no-alert": 1,
+    "no-dupe-args": 2,
+    "no-dupe-keys": 2,
+    "no-warning-comments": [1, {"terms": ["todo", "fixme"], "location": "anywhere"}],
+    "jsx-quotes": [2, "prefer-single"],
+    "react/display-name": 2,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/no-did-mount-set-state": [1, "allow-in-func"],
+    "react/no-did-update-set-state": 2,
+    "react/no-multi-comp": 2,
+    "react/no-unknown-property": 2,
+    "react/prop-types": 2,
+    "react/react-in-jsx-scope": 1,
+    "react/require-extension": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1
+  }
+}

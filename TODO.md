@@ -1,7 +1,7 @@
 ## TODOs
 
 - shuold be implementation
-  - [ ] eslint
+  - [x] eslint
   - [x] gulp
   - [ ] webpack or browslify
   - [x] stylus

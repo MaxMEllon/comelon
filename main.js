@@ -1,3 +1,5 @@
+'use strict';
+
 import app from 'app';
 import BrowserWindow from 'browser-window';
 

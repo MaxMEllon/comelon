@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const _ = require('lodash');
 const Immutable = require('immutable');
@@ -64,7 +64,7 @@ let Main = React.createClass({
     debug('~~~> render');
     return (
       <div className='MainView'>
-        <input type="text" value={this.state.lv} onChange={this.changeText} />
+        <input type='text' value={this.state.lv} onChange={this.changeText} />
         <button className='connectButton' onClick={this.handleClick}>接続</button>
         <hr />
         <div className='commentTable'>

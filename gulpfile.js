@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')({
@@ -13,7 +13,6 @@ gulp.task('serve', function() {
   gulp.watch(['./**/**/*.js'], electron.restart);
   gulp.watch(['./assets/styl/*.styl'], ['css', electron.reload]);
 });
-
 
 gulp.task('stylus', function() {
   return gulp.src('./assets/styl/*.styl')
