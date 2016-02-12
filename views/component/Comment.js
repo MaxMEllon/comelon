@@ -29,3 +29,5 @@ let Comment = React.createClass({
 });
 
 export default Comment;
+
+// vim:ft=javascript.jsx

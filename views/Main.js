@@ -76,3 +76,5 @@ let Main = React.createClass({
 });
 
 export default Main;
+
+// vim:ft=javascript.jsx

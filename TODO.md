@@ -2,9 +2,9 @@
 
 - shuold be implementation
   - [ ] eslint
-  - [ ] gulp
+  - [x] gulp
   - [ ] webpack or browslify
-  - [ ] stylus-electron
+  - [x] stylus
   - [ ] circleCI or travisCI
   - [ ] unitTest
   - [ ] e2eTest(nightmare)
