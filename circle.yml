@@ -1,0 +1,15 @@
+machine:
+  environment:
+    CXX: "g++-4.8"
+
+dependencies:
+  override:
+    - "sudo apt-get install -y g++-4.8"
+    - "$CXX --version"
+    - "nvm i && npm install"
+  cache_directories:
+    - "node_modules"
+
+test:
+  override:
+    - "nvm use && npm run lint"

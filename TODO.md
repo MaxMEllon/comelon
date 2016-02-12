@@ -5,7 +5,7 @@
   - [x] gulp
   - [ ] webpack or browslify
   - [x] stylus
-  - [ ] circleCI or travisCI
+  - [x] circleCI or travisCI
   - [ ] unitTest
   - [ ] e2eTest(nightmare)
 
