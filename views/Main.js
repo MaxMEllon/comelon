@@ -7,6 +7,7 @@ const React = require('react');
 const Nico = require('nicolive');
 const debug = require('../utiles/Debug')('MainView');
 const Comment = require('./component/Comment').default;
+const NicoAction = require('../actions/NicoAction');
 
 let Main = React.createClass({
   displayName: 'Main',
@@ -21,27 +22,29 @@ let Main = React.createClass({
   componentWillMount() {
   },
 
+  componentDidMount() {
+    NicoAction.login(User);
+  },
+
   componentWillUpdate(nextProps, nextState) {
     debug(`<~~~ update`);
   },
-
+  
   changeText(e) {
     this.setState({lv: e.target.value});
   },
-
+  
   handleClick() {
-    Nico.login(User.email, User.password, (error, cookie) => {
+    let liveId = this.state.lv;
+    this.setState({comments: []});
+    Nico.view(liveId, (error, viewer) => {
       if (error) { debug(`X err : ${error}`); }
-      let liveId = this.state.lv;
-      Nico.view(liveId, (error, viewer) => {
-        if (error) { debug(`X err : ${error}`); }
-        viewer.on('comment', comment => {
-          let comments = this.state.comments;
-          debug(`debug : ${comment}`);
-          console.log(comment);
-          comments.push(Immutable.fromJS(comment));
-          this.setState({comments: comments})
-        });
+      viewer.on('comment', comment => {
+        let comments = this.state.comments;
+        debug(`debug : ${comment}`);
+        console.log(comment);
+        comments.push(Immutable.fromJS(comment));
+        this.setState({comments: comments})
       });
     });
   },

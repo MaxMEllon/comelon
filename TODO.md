@@ -19,6 +19,15 @@
     - [ ] user name
     - [ ] kotehan (hold handle name)
 
+- architecture
+  - [ ] flux
+    - [ ] NicoAction
+      - [x] login
+      - [ ] connect
+      - [ ] logout
+    - [ ] NicoStore
+      - [ ] comment
+
 - modify
   - [ ] design
 
