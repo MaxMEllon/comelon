@@ -1,6 +1,7 @@
 'use strict';
 
 const assign = require('object-assign');
+const debug = require('../utiles/Debug')('NicoStore');
 const {EventEmitter} = require('events');
 const AppDispacher = require('../dispacher/AppDispacher');
 const NicoActionType = require('../actions/types/NicoActionTypes');
@@ -8,10 +9,15 @@ const NicoActionType = require('../actions/types/NicoActionTypes');
 const CHANGE_EVENT = 'change';
 
 let _cookie = null;
+let _viewer = null;
 
-let TodoStore = assign({}, EventEmitter.prototype, {
+let NicoStore = assign({}, EventEmitter.prototype, {
   getCookie() {
     return _cookie;
+  },
+
+  getViewer() {
+    return _viewer;
   },
 
   emitChange() {
@@ -33,10 +39,22 @@ AppDispacher.register(action => {
   switch (type) {
   case NicoActionType.LOGIN:
     let cookie = action.cookie;
+    console.log('<--- dispach %o', cookie);
     if (cookie) {
       _cookie = cookie;
-      TodoStore.emitChange();
+      NicoStore.emitChange();
+    }
+    break;
+
+  case NicoActionType.CONNECT:
+    let viewer = action.viewer;
+    console.log('<--- dispach %o', viewer);
+    if (viewer) {
+      _viewer = viewer;
+      NicoStore.emitChange();
     }
     break;
   }
 });
+
+module.exports = NicoStore;

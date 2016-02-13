@@ -2,10 +2,10 @@
 
 const React = require('react');
 const Immutable = require('immutable');
-const Nico = require('nicolive');
 const User = require('../config/User');
 const debug = require('../utiles/Debug')('MainView');
 const NicoAction = require('../actions/NicoAction');
+const NicoStore = require('../stores/NicoStore');
 const Comment = require('../views/component/Comment.js');
 const RaisedButton = require('material-ui/lib/raised-button');
 const TextField = require('material-ui/lib/text-field');
@@ -16,30 +16,41 @@ let Main = React.createClass({
   getInitialState() {
     return {
       comments: [],
-      lv: ''
+      lv: '',
+      viewer: null
     }
   },
 
   componentDidMount() {
     NicoAction.login(User);
+    NicoStore.addChangeListener(this.onChange);
   },
-  
+
+  componentWillUnMount() {
+    NicoStore.removeChangeListener(this.onChange);
+  },
+
   changeText(e) {
     this.setState({lv: e.target.value});
   },
-  
+
   handleClick() {
     let liveId = this.state.lv;
     if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
     this.setState({comments: []});
-    Nico.view(liveId, (error, viewer) => {
-      if (error) { debug(`X err : ${error}`); }
-      viewer.on('comment', comment => {
+    NicoAction.connect(liveId);
+  },
+
+  onChange() {
+    this.setState({viewer: NicoStore.getViewer()});
+    if (this.state.viewer !== null) {
+      console.log('<~~~ onChange');
+      this.state.viewer.on('comment', comment => {
         let comments = this.state.comments;
         comments.push(Immutable.fromJS(comment));
         this.setState({comments: comments})
       });
-    });
+    }
   },
 
   render() {
@@ -53,7 +64,7 @@ let Main = React.createClass({
       </div>
     );
   }
-  
+
 });
 
 export default Main;

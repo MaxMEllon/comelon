@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-  LOGIN: 'login'
+  LOGIN: 'login',
+  CONNECT: 'connect'
 };

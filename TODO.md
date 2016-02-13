@@ -23,9 +23,11 @@
   - [ ] flux
     - [ ] NicoAction
       - [x] login
-      - [ ] connect
+      - [x] connect
       - [ ] logout
     - [ ] NicoStore
+      - [x] cookie
+      - [x] viewer
       - [ ] comment
 
 - modify
