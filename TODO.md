@@ -24,11 +24,15 @@
     - [ ] NicoAction
       - [x] login
       - [x] connect
-      - [ ] logout
+      - [x] logout
     - [ ] NicoStore
       - [x] cookie
       - [x] viewer
-      - [ ] comment
+    - [ ] CommentAction
+      - [x] getComment
+      - [ ] postComment
+    - [ ] CommentStore
+      - [x] comment
 
 - modify
   - [ ] design

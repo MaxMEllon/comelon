@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const React = require('react');
+const Immutable = require('immutable');
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
 const TableRow = require('material-ui/lib/table/table-row');
@@ -11,7 +12,15 @@ let Comment = React.createClass({
   displayName: 'Comment',
 
   propTypes: {
-    comments: React.PropTypes.any
+    comments: React.PropTypes.array.isRequired
+  },
+
+  shouldComponentUpdate(nextProps) {
+    let comments = Immutable.List(this.state.comments);
+    if (comments.isList(Immutable.List(nextProps.comments))) {
+      return false;
+    }
+    return true;
   },
 
   renderComments() {

@@ -1,18 +1,17 @@
 'use strict';
 
 const Nico = require('nicolive');
-const debug = require('../utiles/Debug')('NicoAction');
 const AppDispacher = require('../dispacher/AppDispacher');
-const TodoActionType = require('./types/NicoActionTypes');
+const NicoActionType = require('./types/NicoActionTypes');
 
 let NicoAction = {
   login(user) {
-    console.log('---> login');
     Nico.ping(() => {
+      console.log('---> login');
       Nico.login(user.email, user.password, (error, cookie) => {
         if (error) throw error;
         AppDispacher.dispatch({
-          actionType: TodoActionType.LOGIN,
+          actionType: NicoActionType.LOGIN,
           cookie: cookie,
         });
       });
@@ -24,13 +23,20 @@ let NicoAction = {
     Nico.view(liveId, (error, viewer) => {
       if (error) throw error;
       AppDispacher.dispatch({
-        actionType: TodoActionType.CONNECT,
+        actionType: NicoActionType.CONNECT,
         viewer: viewer
       });
     });
+  },
+
+  logout() {
+    Nico.logout(error => {
+      if (error) throw error;
+    });
   }
+
 };
 
-module.exports = NicoAction
+module.exports = NicoAction;
 
 // vim:ft=javascript

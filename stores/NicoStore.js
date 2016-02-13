@@ -10,6 +10,7 @@ const CHANGE_EVENT = 'change';
 
 let _cookie = null;
 let _viewer = null;
+let _comments = [];
 
 let NicoStore = assign({}, EventEmitter.prototype, {
   getCookie() {

@@ -1,11 +1,11 @@
 'use strict';
 
 const React = require('react');
-const Immutable = require('immutable');
 const User = require('../config/User');
-const debug = require('../utiles/Debug')('MainView');
 const NicoAction = require('../actions/NicoAction');
 const NicoStore = require('../stores/NicoStore');
+const CommentAction = require('../actions/CommentAction');
+const CommentStore = require('../stores/CommentStore');
 const Comment = require('../views/component/Comment.js');
 const RaisedButton = require('material-ui/lib/raised-button');
 const TextField = require('material-ui/lib/text-field');
@@ -23,11 +23,13 @@ let Main = React.createClass({
 
   componentDidMount() {
     NicoAction.login(User);
-    NicoStore.addChangeListener(this.onChange);
+    NicoStore.addChangeListener(this.onConnectViewer);
+    CommentStore.addChangeListener(this.onUpdateComments);
   },
 
   componentWillUnMount() {
-    NicoStore.removeChangeListener(this.onChange);
+    NicoStore.removeChangeListener(this.onConnectViewer);
+    CommentStore.removeChangeListener(this.onUpdateComments);
   },
 
   changeText(e) {
@@ -35,31 +37,36 @@ let Main = React.createClass({
   },
 
   handleClick() {
-    let liveId = this.state.lv;
+    let liveId = this.state.lv.trim();
     if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
     this.setState({comments: []});
     NicoAction.connect(liveId);
   },
 
-  onChange() {
+  onConnectViewer() {
     this.setState({viewer: NicoStore.getViewer()});
     if (this.state.viewer !== null) {
-      console.log('<~~~ onChange');
-      this.state.viewer.on('comment', comment => {
-        let comments = this.state.comments;
-        comments.push(Immutable.fromJS(comment));
-        this.setState({comments: comments})
-      });
+      console.log('<~~~ onConnectViewer');
+      CommentAction.getComment(this.state.viewer);
     }
   },
 
+  onUpdateComments() {
+    this.setState({comments: CommentStore.getAllComments()});
+  },
+
   render() {
-    debug('~~~> render');
+    console.log('~~~> render');
     return (
       <div className='MainView'>
-        <TextField value={this.state.lv} hintText='放送番号(lv00000)' onChange={this.changeText} />
-        <RaisedButton secondary={true} label='接続' onMouseDown={this.handleClick} />
-        <hr />
+        <TextField className='LiveIdForm'
+                   value={this.state.lv}
+                   hintText='放送番号(lv00000)'
+                   onChange={this.changeText} />
+        <RaisedButton className='LiveConnectButton'
+                      secondary={true}
+                      label='接続'
+                      onMouseDown={this.handleClick} />
         <Comment comments={this.state.comments} />
       </div>
     );
