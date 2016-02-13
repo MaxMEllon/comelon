@@ -10,7 +10,7 @@ const electron = require('electron-connect').server.create();
 
 gulp.task('serve', function() {
   electron.start();
-  gulp.watch(['./**/**/*.js'], [electron.restart]);
+  gulp.watch(['./**/**/*.js'], electron.reload);
   gulp.watch(['./assets/styl/*.styl'], ['css', electron.reload]);
 });
 

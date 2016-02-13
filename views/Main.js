@@ -1,13 +1,14 @@
 'use strict';
 
-const _ = require('lodash');
-const Immutable = require('immutable');
-const User = require('../config/User');
 const React = require('react');
+const Immutable = require('immutable');
 const Nico = require('nicolive');
+const User = require('../config/User');
 const debug = require('../utiles/Debug')('MainView');
-const Comment = require('./component/Comment').default;
 const NicoAction = require('../actions/NicoAction');
+const Comment = require('../views/component/Comment.js');
+const RaisedButton = require('material-ui/lib/raised-button');
+const TextField = require('material-ui/lib/text-field');
 
 let Main = React.createClass({
   displayName: 'Main',
@@ -19,15 +20,8 @@ let Main = React.createClass({
     }
   },
 
-  componentWillMount() {
-  },
-
   componentDidMount() {
     NicoAction.login(User);
-  },
-
-  componentWillUpdate(nextProps, nextState) {
-    debug(`<~~~ update`);
   },
   
   changeText(e) {
@@ -36,46 +30,30 @@ let Main = React.createClass({
   
   handleClick() {
     let liveId = this.state.lv;
+    if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
     this.setState({comments: []});
     Nico.view(liveId, (error, viewer) => {
       if (error) { debug(`X err : ${error}`); }
       viewer.on('comment', comment => {
         let comments = this.state.comments;
-        debug(`debug : ${comment}`);
-        console.log(comment);
         comments.push(Immutable.fromJS(comment));
         this.setState({comments: comments})
       });
     });
   },
 
-  renderComments() {
-    let components = [];
-    _(this.state.comments).each(comment => {
-      let userId = comment.getIn(['attr', 'user_id']);
-      let text = comment.get('text');
-      let no = comment.getIn(['attr', 'no']);
-      if (isNaN(userId)) {userId = '184'}
-      components.push(
-        <Comment key={no} no={no} text={text} userName={userId} />
-      );
-    });
-    return components;
-  },
-
   render() {
     debug('~~~> render');
     return (
       <div className='MainView'>
-        <input type='text' value={this.state.lv} onChange={this.changeText} />
-        <button className='connectButton' onClick={this.handleClick}>接続</button>
+        <TextField value={this.state.lv} hintText='放送番号(lv00000)' onChange={this.changeText} />
+        <RaisedButton secondary={true} label='接続' onMouseDown={this.handleClick} />
         <hr />
-        <div className='commentTable'>
-          {this.renderComments()}
-        </div>
+        <Comment comments={this.state.comments} />
       </div>
     );
   }
+  
 });
 
 export default Main;
