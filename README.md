@@ -1,5 +1,9 @@
 # comelon
 
+![demo](./assets/img/demo.png)
+
+- - -
+
 [![Circle CI](https://circleci.com/gh/MaxMEllon/comelon.svg?style=svg)](https://circleci.com/gh/MaxMEllon/comelon)
 [![Code Climate](https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
 [![Test Coverage](https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg)](https://codeclimate.com/github/MaxMEllon/comelon/coverage)
