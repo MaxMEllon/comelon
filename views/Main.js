@@ -28,6 +28,7 @@ let Main = React.createClass({
   },
 
   componentWillUnMount() {
+    NicoAction.logout();
     NicoStore.removeChangeListener(this.onConnectViewer);
     CommentStore.removeChangeListener(this.onUpdateComments);
   },

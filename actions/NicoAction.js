@@ -1,6 +1,7 @@
 'use strict';
 
 const Nico = require('nicolive');
+const debug = require('../utiles/Debug')('NicoAction');
 const AppDispacher = require('../dispacher/AppDispacher');
 const NicoActionType = require('./types/NicoActionTypes');
 

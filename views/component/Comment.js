@@ -16,8 +16,8 @@ let Comment = React.createClass({
   },
 
   shouldComponentUpdate(nextProps) {
-    let comments = Immutable.List(this.state.comments);
-    if (comments.isList(Immutable.List(nextProps.comments))) {
+    let comments = Immutable.List(this.props.comments);
+    if (Immutable.is(comments, Immutable.List(nextProps.comments))) {
       return false;
     }
     return true;

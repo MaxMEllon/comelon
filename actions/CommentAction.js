@@ -14,6 +14,12 @@ let CommentAction = {
       });
     });
   },
+
+  postComment(viewer, comment) {
+    viewer.on('handshaked', () => {
+      Nico.comment(comment, {});
+    });
+  }
 }
 
 module.exports = CommentAction;
