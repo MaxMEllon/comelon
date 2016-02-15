@@ -43,7 +43,7 @@ let Comment = React.createClass({
 
   render() {
     console.log('~~~> render: comments');
-    let tableHeight = config.height - 80;
+    let tableHeight = config.height - 120;
     return (
       <Table className='CommentTable'
              height={`${tableHeight}`}

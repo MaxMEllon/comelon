@@ -16,6 +16,7 @@ let Main = React.createClass({
   getInitialState() {
     return {
       comments: [],
+      comment: '',
       lv: '',
       viewer: null
     }
@@ -33,15 +34,25 @@ let Main = React.createClass({
     CommentStore.removeChangeListener(this.onUpdateComments);
   },
 
-  changeText(e) {
+  changeLiveid(e) {
     this.setState({lv: e.target.value});
   },
 
-  handleClick() {
+  changeComment(e) {
+    this.setState({comment: e.target.value});
+  },
+
+  handleConnect() {
     let liveId = this.state.lv.trim();
     if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
     this.setState({comments: []});
     NicoAction.connect(liveId);
+  },
+
+  handlePostComment() {
+    let comment = this.state.comment.trim();
+    this.setState({comment: ''});
+    CommentAction.postComment(this.state.viewer, comment);
   },
 
   onConnectViewer() {
@@ -63,12 +74,21 @@ let Main = React.createClass({
         <TextField className='LiveIdForm'
                    value={this.state.lv}
                    hintText='放送番号(lv00000)'
-                   onChange={this.changeText} />
+                   onChange={this.changeLiveid} />
         <RaisedButton className='LiveConnectButton'
                       secondary={true}
                       label='接続'
-                      onMouseDown={this.handleClick} />
+                      onMouseDown={this.handleConnect} />
         <Comment comments={this.state.comments} />
+        <TextField className='LiveIdForm'
+                   style={{width: '400px'}}
+                   value={this.state.comment}
+                   hintText='コメント'
+                   onChange={this.changeComment} />
+        <RaisedButton className='LiveConnectButton'
+                      primary={true}
+                      label='送信'
+                      onMouseDown={this.handlePostComment} />
       </div>
     );
   }

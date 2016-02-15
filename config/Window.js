@@ -2,8 +2,8 @@
 
 let Window = {
   config: {
-    width: 400,
-    height: 700
+    width: 600,
+    height: 800
   }
 };
 

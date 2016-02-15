@@ -17,7 +17,7 @@ let CommentAction = {
 
   postComment(viewer, comment) {
     viewer.on('handshaked', () => {
-      Nico.comment(comment, {});
+      Nico.comment(comment, {mail: 184});
     });
   }
 }
