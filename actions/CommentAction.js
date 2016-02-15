@@ -16,8 +16,9 @@ let CommentAction = {
   },
 
   postComment(viewer, comment) {
-    viewer.on('handshaked', () => {
-      Nico.comment(comment, {mail: 184});
+    Nico.comment(comment, {mail: 184}, (error, result) => {
+      if (error) throw error;
+      console.log('<=== postComment:result %o', result);
     });
   }
 }
