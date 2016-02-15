@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const React = require('react');
+const {config} = require('../../config/Window');
 const Immutable = require('immutable');
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
@@ -15,14 +16,6 @@ let Comment = React.createClass({
     comments: React.PropTypes.array.isRequired
   },
 
-  shouldComponentUpdate(nextProps) {
-    let comments = Immutable.List(this.props.comments);
-    if (Immutable.is(comments, Immutable.List(nextProps.comments))) {
-      return false;
-    }
-    return true;
-  },
-
   renderComments() {
     let components = [];
     _(this.props.comments).each(comment => {
@@ -31,7 +24,9 @@ let Comment = React.createClass({
       let no = comment.getIn(['attr', 'no']);
       if (isNaN(userId)) {userId = '184'}
       components.push(
-        <TableRow key={no} selectable={false}>
+        <TableRow className='CommentItemBody'
+                  key={no}
+                  selectable={false} >
           <TableRowColumn className='CommentNo'>
             {no}
           </TableRowColumn>
@@ -48,12 +43,17 @@ let Comment = React.createClass({
   },
 
   render() {
+    console.log('~~~> render: comments');
+    let tableHeight = config.height - 80;
     return (
-      <Table selectable={false}
+      <Table className='CommentTable'
+             height={`${tableHeight}`}
+             selectable={false}
              multiSelectable={false}
              fixedHeader={true}
              fixedFooter={true} >
-        <TableBody displayRowCheckbox={false}
+        <TableBody className='CommentTableBody'
+                   displayRowCheckbox={false}
                    displaySelectAll={false}
                    adjustForCheckbox={false} >
           {this.renderComments()}

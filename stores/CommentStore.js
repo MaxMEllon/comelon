@@ -9,6 +9,18 @@ const CHANGE_EVENT = 'change';
 
 let _comments = [];
 
+let isAccountType = comment => {
+  let type = comment.getIn(['attr', 'premium']);
+  switch (type) {
+  case 2:
+    return 'command';
+  case 3:
+    return 'owner';
+  default:
+    return 'anonymous';
+  }
+};
+
 let CommentStore = assign({}, EventEmitter.prototype, {
   getAllComments() {
     return _comments;
@@ -37,6 +49,7 @@ AppDispacher.register(action => {
   switch (type) {
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
+    comment.set('type', isAccountType(comment));
     console.log('<--- dispach %o', comment);
     if (comment) {
       _comments.push(comment);

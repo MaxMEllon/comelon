@@ -1,13 +1,13 @@
 'use strict';
 
 const Nico = require('nicolive');
-const debug = require('../utiles/Debug')('NicoAction');
 const AppDispacher = require('../dispacher/AppDispacher');
 const NicoActionType = require('./types/NicoActionTypes');
 
 let NicoAction = {
   login(user) {
-    Nico.ping(() => {
+    Nico.ping((error) => {
+      if (! error) { return; }
       console.log('---> login');
       Nico.login(user.email, user.password, (error, cookie) => {
         if (error) throw error;
