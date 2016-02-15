@@ -1,5 +1,6 @@
 'use babel';
 
+const _ = require('lodash');
 const assign = require('object-assign');
 const {EventEmitter} = require('events');
 const AppDispacher = require('../dispacher/AppDispacher');
@@ -19,6 +20,14 @@ let isAccountType = comment => {
   default:
     return 'anonymous';
   }
+};
+
+let setNickName = (no, nickname) => {
+  _(_comments).each(comment =>{
+    if (no === comment.getIn(['attr', 'no'])) {
+      comment.set('nickname', nickname);
+    }
+  });
 };
 
 let CommentStore = assign({}, EventEmitter.prototype, {
@@ -56,6 +65,13 @@ AppDispacher.register(action => {
       CommentStore.emitChange();
     }
     break;
+
+  case CommentActionType.FETCH_NICKNAME:
+    let no = action.no;
+    let nickname = action.nickname;
+    setNickName(no, nickname);
+    console.log('<--- dispach %o', nickname);
+    CommentStore.emitChange();
   }
 });
 
