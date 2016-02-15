@@ -1,9 +1,8 @@
-'use strict';
+'use babel';
 
 const _ = require('lodash');
 const React = require('react');
 const {config} = require('../../config/Window');
-const Immutable = require('immutable');
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
 const TableRow = require('material-ui/lib/table/table-row');

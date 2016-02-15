@@ -1,7 +1,6 @@
-'use strict';
+'use babel';
 
 const assign = require('object-assign');
-const debug = require('../utiles/Debug')('NicoStore');
 const {EventEmitter} = require('events');
 const AppDispacher = require('../dispacher/AppDispacher');
 const NicoActionType = require('../actions/types/NicoActionTypes');
@@ -10,7 +9,6 @@ const CHANGE_EVENT = 'change';
 
 let _cookie = null;
 let _viewer = null;
-let _comments = [];
 
 let NicoStore = assign({}, EventEmitter.prototype, {
   getCookie() {

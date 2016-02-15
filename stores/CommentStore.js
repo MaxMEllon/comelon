@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 const assign = require('object-assign');
 const {EventEmitter} = require('events');

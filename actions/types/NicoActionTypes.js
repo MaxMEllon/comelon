@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 module.exports = {
   LOGIN: 'login',

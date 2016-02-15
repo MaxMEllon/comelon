@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 const debug = require('debug');
 debug.enable('comelon:*');

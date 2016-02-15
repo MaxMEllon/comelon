@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 import app from 'app';
 import BrowserWindow from 'browser-window';

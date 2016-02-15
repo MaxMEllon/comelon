@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 const React = require('react');
 const User = require('../config/User');

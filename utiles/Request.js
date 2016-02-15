@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 const _ = require('lodash');
 const debug = require('./Debug')('Request');
