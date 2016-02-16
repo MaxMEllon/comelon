@@ -16,22 +16,23 @@
     - [ ] user icon
     - [x] is 184
     - [x] comment no
-    - [ ] user name
+    - [x] user name
     - [ ] kotehan (hold handle name)
 
 - architecture
-  - [ ] flux
-    - [ ] NicoAction
+  - [x] flux
+    - [x] NicoAction
       - [x] login
       - [x] connect
       - [x] logout
-    - [ ] NicoStore
+    - [x] NicoStore
       - [x] cookie
       - [x] viewer
-    - [ ] CommentAction
+    - [x] CommentAction
       - [x] getComment
-      - [ ] postComment
-    - [ ] CommentStore
+      - [x] postComment
+      - [x] fetchNickname
+    - [x] CommentStore
       - [x] comment
 
 - modify
