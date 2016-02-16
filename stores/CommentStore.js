@@ -1,14 +1,16 @@
 'use babel';
 
 const _ = require('lodash');
+const Immutable = require('immutable');
 const assign = require('object-assign');
 const {EventEmitter} = require('events');
 const AppDispacher = require('../dispacher/AppDispacher');
-const CommentActionType = require('../actions/types/NicoActionTypes');
+const CommentActionType = require('../actions/types/CommentActionTypes');
 
 const CHANGE_EVENT = 'change';
 
 let _comments = [];
+let _nicknames = {};
 
 let isAccountType = comment => {
   let type = comment.getIn(['attr', 'premium']);
@@ -22,12 +24,8 @@ let isAccountType = comment => {
   }
 };
 
-let setNickName = (no, nickname) => {
-  _(_comments).each(comment =>{
-    if (no === comment.getIn(['attr', 'no'])) {
-      comment.set('nickname', nickname);
-    }
-  });
+let setNickName = (userId, nickname) => {
+  _nicknames[`${userId}`] = nickname;
 };
 
 let CommentStore = assign({}, EventEmitter.prototype, {
@@ -37,6 +35,11 @@ let CommentStore = assign({}, EventEmitter.prototype, {
 
   resetAllComments() {
     _comments = [];
+  },
+
+  getNickname(userId) {
+    console.log('<--- getNickname, %o, %o', userId, _nicknames[`${userId}`]);
+    return _nicknames[`${userId}`];
   },
 
   emitChange() {
@@ -59,7 +62,6 @@ AppDispacher.register(action => {
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
     comment.set('type', isAccountType(comment));
-    console.log('<--- dispach %o', comment);
     if (comment) {
       _comments.push(comment);
       CommentStore.emitChange();
@@ -67,11 +69,12 @@ AppDispacher.register(action => {
     break;
 
   case CommentActionType.FETCH_NICKNAME:
-    let no = action.no;
+    let userId = action.userId;
     let nickname = action.nickname;
-    setNickName(no, nickname);
+    setNickName(userId, nickname);
     console.log('<--- dispach %o', nickname);
     CommentStore.emitChange();
+    break;
   }
 });
 

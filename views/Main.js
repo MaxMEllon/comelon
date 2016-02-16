@@ -52,7 +52,7 @@ let Main = React.createClass({
   handlePostComment() {
     let comment = this.state.comment.trim();
     this.setState({comment: ''});
-    CommentAction.postComment(this.state.viewer, comment);
+    CommentAction.postComment(comment);
   },
 
   onConnectViewer() {
@@ -68,7 +68,6 @@ let Main = React.createClass({
   },
 
   render() {
-    console.log('~~~> render');
     return (
       <div className='MainView'>
         <TextField className='LiveIdForm'

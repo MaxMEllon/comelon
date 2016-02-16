@@ -9,6 +9,7 @@ let CommentAction = {
   getComment(viewer) {
     viewer.on('comment', comment => {
       let come = Immutable.fromJS(comment);
+      this.fetchNickname(come);
       AppDispacher.dispatch({
         actionType: CommentActionType.GET_COMMENT,
         comment: come
@@ -16,8 +17,8 @@ let CommentAction = {
     });
   },
 
-  postComment(viewer, comment) {
-    Nico.comment(comment, {mail: 184}, (error, result) => {
+  postComment(comment) {
+    Nico.comment(comment, (error, result) => {
       if (error) throw error;
       console.log('<=== postComment:result %o', result);
     });
@@ -27,20 +28,20 @@ let CommentAction = {
     let userId = comment.getIn(['attr', 'user_id']);
     let no = comment.getIn(['attr', 'no']);
     let anonymous = '184';
-    if (! isNaN(userId)) {
+    if (isNaN(userId)) {
+      AppDispacher.dispatch({
+        actionType: CommentActionType.FETCH_NICKNAME,
+        nickname: anonymous,
+        userId: userId
+      });
+    } else {
       Nico.fetchNickname(userId, (error, nickname) => {
         if (error) throw error;
         AppDispacher.dispatch({
           actionType: CommentActionType.FETCH_NICKNAME,
           nickname: nickname,
-          no: no
+          userId: userId
         });
-      });
-    } else {
-      AppDispacher.dispatch({
-        actionType: CommentActionType.FETCH_NICKNAME,
-        nickname: anonymous,
-        no: no
       });
     }
   }

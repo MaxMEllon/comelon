@@ -3,6 +3,7 @@
 const _ = require('lodash');
 const React = require('react');
 const {config} = require('../../config/Window');
+const CommentStore = require('../../stores/CommentStore');
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
 const TableRow = require('material-ui/lib/table/table-row');
@@ -19,10 +20,9 @@ let Comment = React.createClass({
     let components = [];
     _(this.props.comments).each(comment => {
       let userId = comment.getIn(['attr', 'user_id']);
-      let userName = comment.get('nickname');
+      let userName = CommentStore.getNickname(userId);
       let text = comment.get('text');
       let no = comment.getIn(['attr', 'no']);
-      if (isNaN(userId)) {userName = '184'}
       components.push(
         <TableRow className='CommentItemBody'
                   key={no}
