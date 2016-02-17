@@ -18,7 +18,7 @@ let CommentAction = {
   },
 
   postComment(comment) {
-    Nico.comment(comment, (error, result) => {
+    Nico.comment(comment, {mail: ''}, (error, result) => {
       if (error) throw error;
       console.log('<=== postComment:result %o', result);
     });
