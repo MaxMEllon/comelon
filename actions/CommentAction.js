@@ -5,6 +5,14 @@ const AppDispacher = require('../dispacher/AppDispacher');
 const CommentActionType = require('./types/CommentActionTypes');
 const Immutable = require('immutable');
 
+let dispatchNickname = (userId, nickname) => {
+  AppDispacher.dispatch({
+    actionType: CommentActionType.FETCH_NICKNAME,
+    nickname: nickname,
+    userId: userId
+  });
+};
+
 let CommentAction = {
   getComment(viewer) {
     viewer.on('comment', comment => {
@@ -26,26 +34,17 @@ let CommentAction = {
 
   fetchNickname(comment) {
     let userId = comment.getIn(['attr', 'user_id']);
-    let no = comment.getIn(['attr', 'no']);
     let anonymous = '184';
     if (isNaN(userId)) {
-      AppDispacher.dispatch({
-        actionType: CommentActionType.FETCH_NICKNAME,
-        nickname: anonymous,
-        userId: userId
-      });
+      dispatchNickname(userId, anonymous);
     } else {
       Nico.fetchNickname(userId, (error, nickname) => {
         if (error) throw error;
-        AppDispacher.dispatch({
-          actionType: CommentActionType.FETCH_NICKNAME,
-          nickname: nickname,
-          userId: userId
-        });
+        dispatchNickname(userId, nickname);
       });
     }
   }
 
-}
+};
 
 module.exports = CommentAction;
