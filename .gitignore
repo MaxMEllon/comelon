@@ -1,3 +1,4 @@
 /config/User.js
 /node_modules
 /bundle
+*.log

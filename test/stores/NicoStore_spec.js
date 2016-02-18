@@ -1,7 +1,7 @@
 'use babel';
 
 const assert = require('power-assert');
-const {spy} = require('sinon');
+const {sandbox} = require('sinon');
 
 describe('NicoStore', () => {
 
@@ -22,13 +22,18 @@ describe('NicoStore', () => {
   };
 
   before(() => {
-    AppDispatcher = spy(require('../../dispatcher/AppDispatcher'), 'register');
+    sandbox.create();
+    AppDispatcher = sandbox.spy(require('../../dispatcher/AppDispatcher'), 'register');
   });
 
   beforeEach(() => {
     delete require.cache[require.resolve('../../stores/NicoStore')];
     NicoStore = require('../../stores/NicoStore');
     callback = AppDispatcher.lastCall.args[0];
+  });
+
+  after(() => {
+    sandbox.restore();
   });
 
   it('fetch login status', () => {
