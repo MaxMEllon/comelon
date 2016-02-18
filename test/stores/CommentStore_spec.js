@@ -1,7 +1,9 @@
 'use babel';
 
-const assert = require('power-assert');
+const chai = require('chai');
+const {assert} = require('chai');
 const {sandbox} = require('sinon');
+chai.use(require('sinon-chai'));
 
 describe('CommentStore', () => {
 
