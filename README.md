@@ -11,19 +11,7 @@
 
 ## start development
 
-1. create user.js
-
-  - ./config/User.js
-  ```js
-  let User = {
-    email: '',
-    password: ''
-  }
-
-  module.exports = User;
-  ```
-
-2. install and run
+- install and run
 
   ```sh
   $ npm i
@@ -35,6 +23,8 @@
 [TODO](./TODO.md)
 
 this project use template "electron-es6-react".
+
+## Special Thanks
 
 - [electron-es6-react](https://github.com/b52/electron-es6-react)
 
