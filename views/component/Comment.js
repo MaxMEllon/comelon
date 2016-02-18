@@ -2,7 +2,6 @@
 
 const _ = require('lodash');
 const React = require('react');
-const {config} = require('../../config/Window');
 const CommentStore = require('../../stores/CommentStore');
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
@@ -44,10 +43,10 @@ let Comment = React.createClass({
 
   render() {
     console.log('~~~> render: comments');
-    let tableHeight = config.height - 120;
+    let tableHeight = 'auto' ;
     return (
       <Table className='CommentTable'
-             height={`${tableHeight}`}
+             height={tableHeight}
              selectable={false}
              multiSelectable={false}
              fixedHeader={true}

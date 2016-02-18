@@ -1,12 +1,12 @@
 'use babel';
 
 const React = require('react');
-const User = require('../config/User');
 const NicoAction = require('../actions/NicoAction');
 const NicoStore = require('../stores/NicoStore');
 const CommentAction = require('../actions/CommentAction');
 const CommentStore = require('../stores/CommentStore');
-const Comment = require('../views/component/Comment.js');
+const Comment = require('./component/Comment');
+const Login = require('./component/Login');
 const RaisedButton = require('material-ui/lib/raised-button');
 const TextField = require('material-ui/lib/text-field');
 
@@ -18,18 +18,21 @@ let Main = React.createClass({
       comments: [],
       comment: '',
       lv: '',
+      isLogin: null,
       viewer: null
     }
   },
 
+  componentWillMount() {
+    NicoAction.fetchLoginStatus();
+  },
+
   componentDidMount() {
-    NicoAction.login(User);
     NicoStore.addChangeListener(this.onConnectViewer);
     CommentStore.addChangeListener(this.onUpdateComments);
   },
 
   componentWillUnMount() {
-    NicoAction.logout();
     NicoStore.removeChangeListener(this.onConnectViewer);
     CommentStore.removeChangeListener(this.onUpdateComments);
   },
@@ -55,8 +58,13 @@ let Main = React.createClass({
     CommentAction.postComment(comment);
   },
 
+  handleLogout() {
+    NicoAction.logout();
+  },
+
   onConnectViewer() {
     this.setState({viewer: NicoStore.getViewer()});
+    this.setState({isLogin: NicoStore.isLogin()});
     if (this.state.viewer !== null) {
       console.log('<~~~ onConnectViewer');
       CommentAction.getComment(this.state.viewer);
@@ -68,8 +76,10 @@ let Main = React.createClass({
   },
 
   render() {
+    console.log(this.state.isLogin);
     return (
       <div className='MainView'>
+        <Login open={this.state.isLogin === false} />
         <TextField className='LiveIdForm'
                    value={this.state.lv}
                    hintText='放送番号(lv00000)'
@@ -78,6 +88,9 @@ let Main = React.createClass({
                       secondary={true}
                       label='接続'
                       onMouseDown={this.handleConnect} />
+        <RaisedButton className='LiveConnectButton'
+                      label='ログアウト'
+                      onMouseDown={this.handleLogout} />
         <Comment comments={this.state.comments} />
         <TextField className='CommentForm'
                    style={{width: '400px'}}

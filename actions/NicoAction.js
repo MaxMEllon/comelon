@@ -5,8 +5,21 @@ const AppDispacher = require('../dispacher/AppDispacher');
 const NicoActionType = require('./types/NicoActionTypes');
 
 let NicoAction = {
+  fetchLoginStatus() {
+    console.log('---> fetchLoginStatus');
+    Nico.ping(error => {
+      let isLogin = null;
+      if (error) isLogin = false;
+      else isLogin = true;
+      AppDispacher.dispatch({
+        actionType: NicoActionType.FETCH_LOGIN_STATUS,
+        isLogin: isLogin
+      });
+    });
+  },
+
   login(user) {
-    Nico.ping((error) => {
+    Nico.ping(error => {
       if (! error) { return; }
       console.log('---> login');
       Nico.login(user.email, user.password, (error, cookie) => {
@@ -14,6 +27,10 @@ let NicoAction = {
         AppDispacher.dispatch({
           actionType: NicoActionType.LOGIN,
           cookie: cookie,
+        });
+        AppDispacher.dispatch({
+          actionType: NicoActionType.FETCH_LOGIN_STATUS,
+          isLogin: true
         });
       });
     });

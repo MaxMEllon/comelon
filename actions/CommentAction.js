@@ -32,6 +32,12 @@ let CommentAction = {
     });
   },
 
+  resetAllComment() {
+    AppDispacher.dispatch({
+      actionType: CommentActionType.RESET_ALL_COMMENT
+    });
+  },
+
   fetchNickname(comment) {
     let userId = comment.getIn(['attr', 'user_id']);
     let anonymous = '184';

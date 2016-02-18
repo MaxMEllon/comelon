@@ -75,7 +75,12 @@ AppDispacher.register(action => {
     console.log('<--- dispach %o', nickname);
     CommentStore.emitChange();
     break;
+
+  case CommentActionType.RESET_ALL_COMMENT:
+    CommentStore.resetAllComment();
+    break;
   }
+
 });
 
 module.exports = CommentStore;

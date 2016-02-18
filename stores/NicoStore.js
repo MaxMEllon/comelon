@@ -9,8 +9,13 @@ const CHANGE_EVENT = 'change';
 
 let _cookie = null;
 let _viewer = null;
+let _isLogin = null;
 
 let NicoStore = assign({}, EventEmitter.prototype, {
+  isLogin() {
+    return _isLogin;
+  },
+
   getCookie() {
     return _cookie;
   },
@@ -53,7 +58,15 @@ AppDispacher.register(action => {
       NicoStore.emitChange();
     }
     break;
+
+  case NicoActionType.FETCH_LOGIN_STATUS:
+    let isLogin = action.isLogin;
+    console.log('<--- dispach %o', isLogin);
+    _isLogin = isLogin;
+    NicoStore.emitChange();
+    break;
   }
+
 });
 
 module.exports = NicoStore;
