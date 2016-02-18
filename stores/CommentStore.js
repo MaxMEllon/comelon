@@ -24,6 +24,10 @@ let isAccountType = comment => {
   }
 };
 
+let resetAllComment = () => {
+  _comments = [];
+};
+
 let setNickName = (userId, nickname) => {
   _nicknames[`${userId}`] = nickname;
 };
@@ -31,10 +35,6 @@ let setNickName = (userId, nickname) => {
 let CommentStore = assign({}, EventEmitter.prototype, {
   getAllComments() {
     return _comments;
-  },
-
-  resetAllComments() {
-    _comments = [];
   },
 
   getNickname(userId) {
@@ -75,7 +75,7 @@ AppDispatcher.register(action => {
     break;
 
   case CommentActionType.RESET_ALL_COMMENT:
-    CommentStore.resetAllComment();
+    resetAllComment();
     break;
   }
 
