@@ -7,11 +7,11 @@ dependencies:
     - "sudo apt-get install -y g++-4.8"
     - "$CXX --version"
     - "nvm i && npm install"
+    - "npm install -g codeclimate-test-reporter"
   cache_directories:
     - "node_modules"
 
 test:
   override:
-    - "npm install -g codeclimate-test-reporter"
     - "nvm use && npm run cover && npm run lint"
     - "codeclimate-test-reporter < coverage/lcov.info"
