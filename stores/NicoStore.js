@@ -2,14 +2,14 @@
 
 const assign = require('object-assign');
 const {EventEmitter} = require('events');
-const AppDispacher = require('../dispacher/AppDispacher');
+const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NicoActionType = require('../actions/types/NicoActionTypes');
 
 const CHANGE_EVENT = 'change';
 
 let _cookie = null;
 let _viewer = null;
-let _isLogin = null;
+let _isLogin = true;
 
 let NicoStore = assign({}, EventEmitter.prototype, {
   isLogin() {
@@ -37,13 +37,12 @@ let NicoStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-AppDispacher.register(action => {
+AppDispatcher.register(action => {
   let type = action.actionType;
 
   switch (type) {
   case NicoActionType.LOGIN:
     let cookie = action.cookie;
-    console.log('<--- dispach %o', cookie);
     if (cookie) {
       _cookie = cookie;
       NicoStore.emitChange();
@@ -52,7 +51,6 @@ AppDispacher.register(action => {
 
   case NicoActionType.CONNECT:
     let viewer = action.viewer;
-    console.log('<--- dispach %o', viewer);
     if (viewer) {
       _viewer = viewer;
       NicoStore.emitChange();
@@ -61,7 +59,6 @@ AppDispacher.register(action => {
 
   case NicoActionType.FETCH_LOGIN_STATUS:
     let isLogin = action.isLogin;
-    console.log('<--- dispach %o', isLogin);
     _isLogin = isLogin;
     NicoStore.emitChange();
     break;

@@ -66,7 +66,6 @@ let Main = React.createClass({
     this.setState({viewer: NicoStore.getViewer()});
     this.setState({isLogin: NicoStore.isLogin()});
     if (this.state.viewer !== null) {
-      console.log('<~~~ onConnectViewer');
       CommentAction.getComment(this.state.viewer);
     }
   },
@@ -76,7 +75,6 @@ let Main = React.createClass({
   },
 
   render() {
-    console.log(this.state.isLogin);
     return (
       <div className='MainView'>
         <Login open={this.state.isLogin === false} />

@@ -1,17 +1,16 @@
 'use babel';
 
 const Nico = require('nicolive');
-const AppDispacher = require('../dispacher/AppDispacher');
+const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NicoActionType = require('./types/NicoActionTypes');
 
 let NicoAction = {
   fetchLoginStatus() {
-    console.log('---> fetchLoginStatus');
     Nico.ping(error => {
       let isLogin = null;
       if (error) isLogin = false;
       else isLogin = true;
-      AppDispacher.dispatch({
+      AppDispatcher.dispatch({
         actionType: NicoActionType.FETCH_LOGIN_STATUS,
         isLogin: isLogin
       });
@@ -21,14 +20,13 @@ let NicoAction = {
   login(user) {
     Nico.ping(error => {
       if (! error) { return; }
-      console.log('---> login');
       Nico.login(user.email, user.password, (error, cookie) => {
         if (error) throw error;
-        AppDispacher.dispatch({
+        AppDispatcher.dispatch({
           actionType: NicoActionType.LOGIN,
           cookie: cookie,
         });
-        AppDispacher.dispatch({
+        AppDispatcher.dispatch({
           actionType: NicoActionType.FETCH_LOGIN_STATUS,
           isLogin: true
         });
@@ -37,10 +35,9 @@ let NicoAction = {
   },
 
   connect(liveId) {
-    console.log('---> connect %o', liveId);
     Nico.view(liveId, (error, viewer) => {
       if (error) throw error;
-      AppDispacher.dispatch({
+      AppDispatcher.dispatch({
         actionType: NicoActionType.CONNECT,
         viewer: viewer
       });

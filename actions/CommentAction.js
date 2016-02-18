@@ -1,12 +1,12 @@
 'use babel';
 
 const Nico = require('nicolive');
-const AppDispacher = require('../dispacher/AppDispacher');
+const AppDispatcher = require('../dispatcher/AppDispatcher');
 const CommentActionType = require('./types/CommentActionTypes');
 const Immutable = require('immutable');
 
 let dispatchNickname = (userId, nickname) => {
-  AppDispacher.dispatch({
+  AppDispatcher.dispatch({
     actionType: CommentActionType.FETCH_NICKNAME,
     nickname: nickname,
     userId: userId
@@ -18,7 +18,7 @@ let CommentAction = {
     viewer.on('comment', comment => {
       let come = Immutable.fromJS(comment);
       this.fetchNickname(come);
-      AppDispacher.dispatch({
+      AppDispatcher.dispatch({
         actionType: CommentActionType.GET_COMMENT,
         comment: come
       });
@@ -28,12 +28,11 @@ let CommentAction = {
   postComment(comment) {
     Nico.comment(comment, {mail: ''}, (error, result) => {
       if (error) throw error;
-      console.log('<=== postComment:result %o', result);
     });
   },
 
   resetAllComment() {
-    AppDispacher.dispatch({
+    AppDispatcher.dispatch({
       actionType: CommentActionType.RESET_ALL_COMMENT
     });
   },

@@ -6,7 +6,7 @@
   - [ ] webpack or browslify
   - [x] stylus
   - [x] circleCI or travisCI
-  - [ ] unitTest
+  - [x] unitTest
   - [ ] e2eTest(nightmare)
 
 - feature

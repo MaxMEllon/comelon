@@ -42,7 +42,6 @@ let Comment = React.createClass({
   },
 
   render() {
-    console.log('~~~> render: comments');
     let tableHeight = 'auto' ;
     return (
       <Table className='CommentTable'

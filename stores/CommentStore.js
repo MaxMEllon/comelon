@@ -4,7 +4,7 @@ const _ = require('lodash');
 const Immutable = require('immutable');
 const assign = require('object-assign');
 const {EventEmitter} = require('events');
-const AppDispacher = require('../dispacher/AppDispacher');
+const AppDispatcher = require('../dispatcher/AppDispatcher');
 const CommentActionType = require('../actions/types/CommentActionTypes');
 
 const CHANGE_EVENT = 'change';
@@ -38,7 +38,6 @@ let CommentStore = assign({}, EventEmitter.prototype, {
   },
 
   getNickname(userId) {
-    console.log('<--- getNickname, %o, %o', userId, _nicknames[`${userId}`]);
     return _nicknames[`${userId}`];
   },
 
@@ -55,7 +54,7 @@ let CommentStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-AppDispacher.register(action => {
+AppDispatcher.register(action => {
   let type = action.actionType;
 
   switch (type) {
@@ -72,7 +71,6 @@ AppDispacher.register(action => {
     let userId = action.userId;
     let nickname = action.nickname;
     setNickName(userId, nickname);
-    console.log('<--- dispach %o', nickname);
     CommentStore.emitChange();
     break;
 
