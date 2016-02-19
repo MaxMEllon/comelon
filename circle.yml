@@ -4,8 +4,8 @@ machine:
 
 dependencies:
   override:
-    - "sudo apt-get install -y g++-4.8"
-    - "$CXX --version"
+    # - "sudo apt-get install -y g++-4.8"
+    # - "$CXX --version"
     - "nvm i && npm install"
     - "npm install -g codeclimate-test-reporter"
   cache_directories:
