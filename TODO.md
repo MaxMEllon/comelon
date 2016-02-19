@@ -10,8 +10,8 @@
   - [ ] e2eTest(nightmare)
 
 - feature
-  - [ ] post comment
-  - [ ] get comment
+  - [x] post comment
+  - [x] get comment
     - [ ] is premium
     - [ ] user icon
     - [x] is 184
