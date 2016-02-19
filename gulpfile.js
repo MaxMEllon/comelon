@@ -10,12 +10,12 @@ const electron = require('electron-connect').server.create();
 
 gulp.task('serve', function() {
   electron.start();
-  gulp.watch(['./**/**/*.js'], electron.reload);
+  gulp.watch(['./app/**/**/*.js'], electron.reload);
   gulp.watch(['./assets/styl/*.styl'], ['css', electron.reload]);
 });
 
 gulp.task('js:lint', function() {
-  return gulp.src(['./**/**/*.js', '!node_modules/**'])
+  return gulp.src(['./app/**/**/*.js', '!node_modules/**'])
     .pipe($.eslint())
     .pipe($.eslint.format('stylish'))
     .pipe($.eslint.failAfterError());

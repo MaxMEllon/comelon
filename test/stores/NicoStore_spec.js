@@ -5,7 +5,7 @@ const {sandbox} = require('sinon');
 
 describe('NicoStore', () => {
 
-  const NicoActionType = require('../../actions/types/NicoActionTypes');
+  const NicoActionType = require('../../app/actions/types/NicoActionTypes');
   let AppDispatcher, NicoStore, callback = null;
 
   let actionFetchLoginStatus = {
@@ -23,12 +23,12 @@ describe('NicoStore', () => {
 
   before(() => {
     sandbox.create();
-    AppDispatcher = sandbox.spy(require('../../dispatcher/AppDispatcher'), 'register');
+    AppDispatcher = sandbox.spy(require('../../app/dispatcher/AppDispatcher'), 'register');
   });
 
   beforeEach(() => {
-    delete require.cache[require.resolve('../../stores/NicoStore')];
-    NicoStore = require('../../stores/NicoStore');
+    delete require.cache[require.resolve('../../app/stores/NicoStore')];
+    NicoStore = require('../../app/stores/NicoStore');
     callback = AppDispatcher.lastCall.args[0];
   });
 

@@ -10,12 +10,12 @@ describe('NicoAction', () => {
 
   before(() => {
     sandbox.create();
-    NicoAction = require('../../actions/NicoAction');
+    NicoAction = require('../../app/actions/NicoAction');
   });
 
   beforeEach(() => {
-    delete require.cache[require.resolve('../../stores/NicoStore')];
-    NicoStore = require('../../stores/NicoStore');
+    delete require.cache[require.resolve('../../app/stores/NicoStore')];
+    NicoStore = require('../../app/stores/NicoStore');
   });
 
   it('fetch login status', () => {

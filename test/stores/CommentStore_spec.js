@@ -7,7 +7,7 @@ chai.use(require('sinon-chai'));
 
 describe('CommentStore', () => {
 
-  const CommentActionType = require('../../actions/types/CommentActionTypes');
+  const CommentActionType = require('../../app/actions/types/CommentActionTypes');
   const Immutable = require('immutable');
   let AppDispatcher, CommentStore, callback = null;
 
@@ -25,12 +25,12 @@ describe('CommentStore', () => {
 
   before(() => {
     sandbox.create();
-    AppDispatcher = sandbox.spy(require('../../dispatcher/AppDispatcher'), 'register');
+    AppDispatcher = sandbox.spy(require('../../app/dispatcher/AppDispatcher'), 'register');
   });
 
   beforeEach(() => {
-    delete require.cache[require.resolve('../../stores/CommentStore')];
-    CommentStore = require('../../stores/CommentStore');
+    delete require.cache[require.resolve('../../app/stores/CommentStore')];
+    CommentStore = require('../../app/stores/CommentStore');
     callback = AppDispatcher.lastCall.args[0];
   });
 

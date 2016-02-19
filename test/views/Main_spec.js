@@ -19,7 +19,7 @@ describe('MainView', () => {
   });
 
   it('should be display MainView', () => {
-    const Main = require('../../views/Main');
+    const Main = require('../../app/views/Main');
     let component = ReactTestUtils.renderIntoDocument(<Main />);
   });
 
