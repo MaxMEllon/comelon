@@ -1,7 +1,7 @@
 'use babel';
 
 const chai = require('chai');
-const {assert} = require('chai');
+const assert = require('power-assert');
 const {sandbox} = require('sinon');
 chai.use(require('sinon-chai'));
 

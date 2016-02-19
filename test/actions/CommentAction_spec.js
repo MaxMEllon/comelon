@@ -1,7 +1,7 @@
 'use babel';
 
 const chai = require('chai');
-const {assert} = require('chai');
+const assert = require('power-assert');
 const {sandbox} = require('sinon');
 chai.use(require('sinon-chai'));
 
@@ -41,7 +41,7 @@ describe('CommentAction', () => {
     assert(comments.length, 1);
     CommentAction.resetAllComment();
     comments = CommentStore.getAllComments();
-    assert(comments.length, 0);
+    assert(comments, []);
   });
 
   after(() => {

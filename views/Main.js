@@ -86,9 +86,6 @@ let Main = React.createClass({
                       secondary={true}
                       label='接続'
                       onMouseDown={this.handleConnect} />
-        <RaisedButton className='LiveConnectButton'
-                      label='ログアウト'
-                      onMouseDown={this.handleLogout} />
         <Comment comments={this.state.comments} />
         <TextField className='CommentForm'
                    style={{width: '400px'}}
@@ -105,6 +102,6 @@ let Main = React.createClass({
 
 });
 
-export default Main;
+module.exports = Main;
 
 // vim:ft=javascript.jsx
