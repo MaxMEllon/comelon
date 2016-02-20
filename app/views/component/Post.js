@@ -20,8 +20,10 @@ let Post = React.createClass({
 
   handlePostComment() {
     let comment = this.state.comment.trim();
-    this.setState({comment: ''});
-    CommentAction.postComment(comment);
+    if (comment !== '') {
+      CommentAction.postComment(comment);
+      this.setState({comment: ''});
+    }
   },
 
   render() {
