@@ -6,6 +6,8 @@ const NicoStore = require('../stores/NicoStore');
 const CommentAction = require('../actions/CommentAction');
 const CommentStore = require('../stores/CommentStore');
 const Comment = require('./component/Comment');
+const Connect = require('./component/Connect');
+const Post = require('./component/Post');
 const Login = require('./component/Login');
 const RaisedButton = require('material-ui/lib/raised-button');
 const TextField = require('material-ui/lib/text-field');
@@ -16,8 +18,6 @@ let Main = React.createClass({
   getInitialState() {
     return {
       comments: [],
-      comment: '',
-      lv: '',
       isLogin: null,
       viewer: null
     }
@@ -35,27 +35,6 @@ let Main = React.createClass({
   componentWillUnMount() {
     NicoStore.removeChangeListener(this.onConnectViewer);
     CommentStore.removeChangeListener(this.onUpdateComments);
-  },
-
-  changeLiveid(e) {
-    this.setState({lv: e.target.value});
-  },
-
-  changeComment(e) {
-    this.setState({comment: e.target.value});
-  },
-
-  handleConnect() {
-    let liveId = this.state.lv.trim();
-    if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
-    this.setState({comments: []});
-    NicoAction.connect(liveId);
-  },
-
-  handlePostComment() {
-    let comment = this.state.comment.trim();
-    this.setState({comment: ''});
-    CommentAction.postComment(comment);
   },
 
   handleLogout() {
@@ -78,24 +57,9 @@ let Main = React.createClass({
     return (
       <div className='MainView'>
         <Login open={this.state.isLogin === false} />
-        <TextField className='LiveIdForm'
-                   value={this.state.lv}
-                   hintText='放送番号(lv00000)'
-                   onChange={this.changeLiveid} />
-        <RaisedButton className='LiveConnectButton'
-                      secondary={true}
-                      label='接続'
-                      onMouseDown={this.handleConnect} />
+        <Connect />
         <Comment comments={this.state.comments} />
-        <TextField className='CommentForm'
-                   style={{width: '400px'}}
-                   value={this.state.comment}
-                   hintText='コメント'
-                   onChange={this.changeComment} />
-        <RaisedButton className='LiveConnectButton'
-                      primary={true}
-                      label='送信'
-                      onMouseDown={this.handlePostComment} />
+        <Post />
       </div>
     );
   }
