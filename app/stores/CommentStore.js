@@ -1,7 +1,5 @@
 'use babel';
 
-const _ = require('lodash');
-const Immutable = require('immutable');
 const assign = require('object-assign');
 const {EventEmitter} = require('events');
 const AppDispatcher = require('../dispatcher/AppDispatcher');

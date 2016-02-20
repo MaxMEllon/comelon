@@ -26,7 +26,7 @@ let CommentAction = {
   },
 
   postComment(comment) {
-    Nico.comment(comment, {mail: ''}, (error, result) => {
+    Nico.comment(comment, {mail: ''}, (error) => {
       if (error) throw error;
     });
   },
