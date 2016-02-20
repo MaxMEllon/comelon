@@ -18,6 +18,11 @@
     - [x] comment no
     - [x] user name
     - [ ] kotehan (hold handle name)
+    - [ ] sheet type
+  - [ ] option
+    - [ ] systam comment (ex. /disconnect)
+    - [ ] 184 post
+    - [ ] font size
 
 - architecture
   - [x] flux
@@ -35,8 +40,5 @@
     - [x] CommentStore
       - [x] comment
 
-- modify
-  - [ ] design
+- [ ] design
 
-- option
-  - [ ] systam comment (ex. /disconnect)

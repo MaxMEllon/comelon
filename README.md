@@ -9,7 +9,7 @@
 [![Test Coverage](https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg)](https://codeclimate.com/github/MaxMEllon/comelon/coverage)
 [![Issue Count](https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
 
-## start development
+## Start development
 
 - install and run
 
@@ -21,8 +21,6 @@
 ## Todo
 
 [TODO](./TODO.md)
-
-this project use template "electron-es6-react".
 
 ## Special Thanks
 
