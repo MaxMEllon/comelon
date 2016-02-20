@@ -9,8 +9,6 @@ const Comment = require('./component/Comment');
 const Connect = require('./component/Connect');
 const Post = require('./component/Post');
 const Login = require('./component/Login');
-const RaisedButton = require('material-ui/lib/raised-button');
-const TextField = require('material-ui/lib/text-field');
 
 let Main = React.createClass({
   displayName: 'Main',
