@@ -7,11 +7,12 @@ describe('MainView', () => {
   let ReactDOM;
   let ReactTestUtils;
 
-  before(() => {
+  before(done => {
     require('../setup')();
     React = require('react');
     ReactDOM = require('react-dom');
     ReactTestUtils = require('react-addons-test-utils');
+    done();
   });
 
   it('should display MainView', () => {
