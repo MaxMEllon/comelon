@@ -1,7 +1,7 @@
 'use babel';
 
 const assign = require('object-assign');
-const {EventEmitter} = require('events');
+const EventEmitter = require('eventemitter3');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NicoActionType = require('../actions/types/NicoActionTypes');
 

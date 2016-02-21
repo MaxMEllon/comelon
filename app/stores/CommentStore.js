@@ -1,7 +1,7 @@
 'use babel';
 
 const assign = require('object-assign');
-const {EventEmitter} = require('events');
+const EventEmitter = require('eventemitter3');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const CommentActionType = require('../actions/types/CommentActionTypes');
 
@@ -74,6 +74,7 @@ AppDispatcher.register(action => {
 
   case CommentActionType.RESET_ALL_COMMENT:
     resetAllComment();
+    CommentStore.emitChange();
     break;
   }
 

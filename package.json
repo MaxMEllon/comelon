@@ -35,6 +35,7 @@
     "eslint": "^2.0.0",
     "eslint-plugin-react": "^3.16.1",
     "espower-babel": "^4.0.1",
+    "eventemitter3": "^1.1.1",
     "gulp": "^3.9.1",
     "gulp-compass": "^2.1.0",
     "gulp-concat-css": "^2.2.0",

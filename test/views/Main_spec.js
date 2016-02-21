@@ -15,12 +15,13 @@ describe('MainView', () => {
     done();
   });
 
-  it('should display MainView', () => {
+  it('should display MainView', done => {
     const Main = require('../../app/views/Main');
     let renderedComponent = ReactTestUtils.renderIntoDocument(<Main />);
     let component  = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'MainView');
     let node = ReactDOM.findDOMNode(component);
     assert(node.getAttribute('class'), 'MainView');
+    done();
   });
 
 });
