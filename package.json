@@ -6,7 +6,7 @@
   "repository": "maxmellon/comelon",
   "scripts": {
     "lint": "stylint ./assets/styl/*.styl && eslint $(git ls-files | grep -e '.js$')",
-    "test": "mocha --compilers js:espower-babel/guess test/**/*.js",
+    "test": "mocha --timeout 15000 --compilers js:espower-babel/guess test/**/*.js",
     "cover": "nyc --reporter=lcov --reporter=text npm run test",
     "dev": "gulp"
   },
@@ -15,6 +15,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.3.13",
     "debug": "^2.2.0",
+    "eventemitter3": "^1.1.1",
     "flux": "^2.1.1",
     "immutable": "^3.7.6",
     "keymirror": "^0.1.1",
@@ -22,20 +23,18 @@
     "material-ui": "^0.14.4",
     "nicolive": "0.0.4-alpha",
     "object-assign": "^4.0.1",
-    "react": "*",
+    "react": "^0.14.7",
     "react-dom": "^0.14.3",
-    "react-tap-event-plugin": "^0.2.2",
-    "request": "^2.69.0"
+    "react-tap-event-plugin": "^0.2.2"
   },
   "devDependencies": {
-    "babel-eslint": "^4.1.8",
+    "babel-eslint": "^5.0.0",
     "chai": "^3.5.0",
     "electron-connect": "^0.3.7",
     "electron-prebuilt": "^0.36.0",
     "eslint": "^2.0.0",
-    "eslint-plugin-react": "^3.16.1",
+    "eslint-plugin-react": "^4.0.0",
     "espower-babel": "^4.0.1",
-    "eventemitter3": "^1.1.1",
     "gulp": "^3.9.1",
     "gulp-compass": "^2.1.0",
     "gulp-concat-css": "^2.2.0",
