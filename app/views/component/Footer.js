@@ -23,7 +23,7 @@ let Footer = React.createClass({
 
   handlePostComment() {
     let comment = this.state.comment.trim();
-    let option = this.refs.anonymousNav.toggled ? {mail: ''} : {mail: '184'};
+    let option = this.refs.anonymousNav.toggled ? {mail: '184'} : {mail: ''};
     if (comment !== '') {
       CommentAction.postComment(comment, option);
       this.setState({comment: ''});

@@ -31,15 +31,17 @@ let Comment = React.createClass({
     ElectronStore.addChangeListener(this.onResizeWindow);
   },
 
+  componentDidUpdate() {
+    this.refs.commentTable.scrollTop = 5000;
+  },
+
   componentWillUnMount() {
     ElectronStore.removeChangeListener(this.onResizeWindow);
   },
 
   onResizeWindow() {
     let size = ElectronStore.getCurrentSize();
-    console.log(size);
-    this.setState({height: `${size.get('height') - 170}px`})
-    console.log(this.state.height);
+    this.setState({height: `${size.get('height') - 138}px`})
   },
 
   renderComments() {
@@ -71,6 +73,7 @@ let Comment = React.createClass({
   render() {
     return (
       <Table className='CommentTable'
+             ref='commentTable'
              height={this.state.height}
              selectable={false}
              multiSelectable={false}
