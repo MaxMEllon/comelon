@@ -5,9 +5,9 @@ const NicoAction = require('../actions/NicoAction');
 const NicoStore = require('../stores/NicoStore');
 const CommentAction = require('../actions/CommentAction');
 const CommentStore = require('../stores/CommentStore');
+const Header = require('./component/Header');
 const Comment = require('./component/Comment');
-const Connect = require('./component/Connect');
-const Post = require('./component/Post');
+const Footer = require('./component/Footer');
 const Login = require('./component/Login');
 
 let Main = React.createClass({
@@ -40,8 +40,8 @@ let Main = React.createClass({
   },
 
   onConnectViewer() {
-    this.setState({viewer: NicoStore.getViewer()});
     this.setState({isLogin: NicoStore.isLogin()});
+    this.setState({viewer: NicoStore.getViewer()});
     if (this.state.viewer !== null) {
       CommentAction.getComment(this.state.viewer);
     }
@@ -54,10 +54,10 @@ let Main = React.createClass({
   render() {
     return (
       <div className='MainView'>
-        <Login open={this.state.isLogin === false} />
-        <Connect />
+        <Header />
         <Comment comments={this.state.comments} />
-        <Post />
+        <Footer />
+        <Login open={this.state.isLogin === false} />
       </div>
     );
   }

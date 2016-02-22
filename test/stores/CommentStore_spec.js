@@ -11,18 +11,16 @@ describe('CommentStore', () => {
   const Immutable = require('immutable');
   let AppDispatcher, CommentStore, callback = null;
 
-  let actionGetComment = (premium) => {
-    return ({
-      actionType: CommentActionType.GET_COMMENT,
-      comment: Immutable.fromJS({
-        attr: {
-          no: 2525,
-          user_id: 2525,
-          premium: premium
-        },
-        text: 'sample comment'
-      })
-    });
+  let actionGetComment =  {
+    actionType: CommentActionType.GET_COMMENT,
+    comment: Immutable.fromJS({
+      attr: {
+        no: 2525,
+        user_id: 2525,
+        premium: 3
+      },
+      text: 'sample comment'
+    })
   };
 
   let actionFetchNickName = {
@@ -47,11 +45,10 @@ describe('CommentStore', () => {
   });
 
   it('get comment', () => {
-    callback(actionGetComment(3));
-    callback(actionGetComment(2));
-    callback(actionGetComment(7));
+    callback(actionGetComment);
     let comments = CommentStore.getAllComments();
-    assert(comments.length, 3);
+    assert(comments.length, 1);
+    assert(comments[0].get('text'), 'sample comment');
   });
 
   it('get nickname', () => {

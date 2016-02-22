@@ -31,12 +31,12 @@ let Login = React.createClass({
   },
 
   handleClose() {
+    this.setState({open: false});
     let user = {
       email: this.state.email,
       password: this.state.password
     };
     NicoAction.login(user);
-    this.setState({open: false});
   },
 
   changeEmail(e) {
@@ -65,7 +65,7 @@ let Login = React.createClass({
           <FontIcon className='muidocs-icon-action-face'
                     style={iconStyles} />
           <TextField className='EmailForm'
-                     style={{width: '400px'}}
+                     style={{width: '90%'}}
                      value={this.state.email}
                      hintText='メールアドレス'
                      onChange={this.changeEmail} />
@@ -73,7 +73,7 @@ let Login = React.createClass({
           <FontIcon className='muidocs-icon-action-lock'
                     style={iconStyles} />
           <TextField className='PasswordForm'
-                     style={{width: '400px'}}
+                     style={{width: '90%'}}
                      value={this.state.password}
                      type='password'
                      hintText='パスワード'
