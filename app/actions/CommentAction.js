@@ -25,8 +25,8 @@ let CommentAction = {
     });
   },
 
-  postComment(comment) {
-    Nico.comment(comment, {mail: ''}, (error) => {
+  postComment(comment, mail = {mail: ''}) {
+    Nico.comment(comment, mail, (error) => {
       if (error) throw error;
     });
   },

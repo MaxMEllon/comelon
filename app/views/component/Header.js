@@ -21,7 +21,7 @@ let Header = React.createClass({
   render() {
     return (
       <div>
-        <Toolbar>
+        <Toolbar style={{padding: '0px 5px 0px 24px'}}>
           <ToolbarGroup firstChild={true} float='left'>
             <Connect />
           </ToolbarGroup>

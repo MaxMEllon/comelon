@@ -2,7 +2,8 @@
 
 import app from 'app';
 import BrowserWindow from 'browser-window';
-const {config} = require('./config/Window');
+const ElectronAction = require('./app/actions/ElectronAction');
+const size = require('./config/Size');
 
 let mainWindow = null;
 
@@ -13,8 +14,12 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({width: config.width, height: config.height});
+  mainWindow = new BrowserWindow({width: size.get('width'), height: size.get('height')});
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.on('resize', () => {
+    let width, height = mainWindow.getSize();
+    ElectronAction.resize(width, height);
+  });
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
