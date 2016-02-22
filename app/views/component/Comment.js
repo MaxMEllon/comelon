@@ -2,8 +2,8 @@
 
 const _ = require('lodash');
 const React = require('react');
-const Immutable = require('immutable');
 const CommentStore = require('../../stores/CommentStore');
+const ElectronAction = require('../../actions/ElectronAction');
 const ElectronStore = require('../../stores/ElectronStore');
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
@@ -19,8 +19,12 @@ let Comment = React.createClass({
 
   getInitialState() {
     return {
-      size: require('../../../config/Size')
+      height: '720px'
     }
+  },
+
+  componentWillMount() {
+    ElectronAction.fetchWindowSize();
   },
 
   componentDidMount() {
@@ -33,9 +37,9 @@ let Comment = React.createClass({
 
   onResizeWindow() {
     let size = ElectronStore.getCurrentSize();
-    if (! Immutable.is(this.state.size, size)) {
-      this.setState({size: size});
-    }
+    console.log(size);
+    this.setState({height: `${size.get('height') - 170}px`})
+    console.log(this.state.height);
   },
 
   renderComments() {
@@ -65,12 +69,9 @@ let Comment = React.createClass({
   },
 
   render() {
-    // TODO: レスポンシブ化
-    // let tableHeight = `${this.state.size.get('height') - 170}px`;
-    let tableHeight = '720px';
     return (
       <Table className='CommentTable'
-             height={tableHeight}
+             height={this.state.height}
              selectable={false}
              multiSelectable={false}
              fixedHeader={true}

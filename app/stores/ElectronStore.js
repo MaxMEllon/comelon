@@ -1,7 +1,6 @@
 'use babel';
 
 const assign = require('object-assign');
-const Immutable = require('immutable');
 const EventEmitter = require('eventemitter3');
 const ElectronActionType = require('../actions/types/ElectronActionTypes');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -10,7 +9,7 @@ const CHANGE_EVENT = 'change';
 
 let _size = require('../../config/Size');
 
-let ElectronAction = assign({}, EventEmitter.prototype, {
+let ElectronStore = assign({}, EventEmitter.prototype, {
   getCurrentSize() {
     return _size;
   },
@@ -34,11 +33,10 @@ AppDispatcher.register(action => {
   switch (type) {
   case ElectronActionType.RESIZE:
     let size = action.size;
-    if (! Immutable.is(size, _size)) {
-      _size = size;
-      ElectronAction.emitChange();
-    }
+    _size = size;
+    ElectronStore.emitChange();
+    break;
   }
 });
 
-module.exports = ElectronAction;
+module.exports = ElectronStore;
