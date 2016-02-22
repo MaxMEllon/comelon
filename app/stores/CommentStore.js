@@ -10,18 +10,6 @@ const CHANGE_EVENT = 'change';
 let _comments = [];
 let _nicknames = {};
 
-let isAccountType = comment => {
-  let type = comment.getIn(['attr', 'premium']);
-  switch (type) {
-  case 2:
-    return 'command';
-  case 3:
-    return 'owner';
-  default:
-    return 'anonymous';
-  }
-};
-
 let resetAllComment = () => {
   _comments = [];
 };
@@ -58,7 +46,6 @@ AppDispatcher.register(action => {
   switch (type) {
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
-    comment.set('type', isAccountType(comment));
     if (comment) {
       _comments.push(comment);
       CommentStore.emitChange();

@@ -7,7 +7,9 @@
   "scripts": {
     "lint": "stylint ./assets/styl/*.styl && eslint $(git ls-files | grep -e '.js$')",
     "test": "mocha --timeout 15000 --compilers js:espower-babel/guess test/**/*.js",
+    "posttest" : "npm run lint",
     "cover": "nyc --reporter=lcov --reporter=text npm run test",
+    "predev": "gulp css",
     "dev": "gulp"
   },
   "dependencies": {
@@ -25,6 +27,7 @@
     "object-assign": "^4.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.3",
+    "react-material-icons": "^1.0.1",
     "react-tap-event-plugin": "^0.2.2"
   },
   "devDependencies": {

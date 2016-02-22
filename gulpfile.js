@@ -11,7 +11,6 @@ const electron = require('electron-connect').server.create();
 gulp.task('serve', function() {
   electron.start();
   gulp.watch(['./app/**/**/*.js'], electron.reload);
-  gulp.watch(['./assets/styl/*.styl'], ['css', electron.reload]);
 });
 
 gulp.task('js:lint', function() {
@@ -49,4 +48,4 @@ gulp.task('css:concat', function() {
 
 gulp.task('css', ['css:compile', 'css:concat']);
 
-gulp.task('default', ['css', 'serve']);
+gulp.task('default', ['serve']);

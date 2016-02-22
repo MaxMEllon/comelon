@@ -3,7 +3,8 @@
 const React = require('react');
 const NicoAction = require('../../actions/NicoAction');
 const CommentAction = require('../../actions/CommentAction');
-const RaisedButton = require('material-ui/lib/raised-button');
+const IconButton = require('material-ui/lib/icon-button');
+const PlayIcon = require('react-material-icons/icons/av/play-arrow');
 const TextField = require('material-ui/lib/text-field');
 
 let Connect = React.createClass({
@@ -22,6 +23,7 @@ let Connect = React.createClass({
   handleConnect() {
     let liveId = this.state.lv.trim();
     if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
+    if (liveId === '' || liveId === 'lv') { return; }
     CommentAction.resetAllComment();
     NicoAction.connect(liveId);
   },
@@ -31,12 +33,14 @@ let Connect = React.createClass({
       <div className='ConnectForm'>
         <TextField className='LiveIdForm'
                    value={this.state.lv}
+                   style={{marginLeft: '10px'}}
                    hintText='放送番号(lv00000)'
                    onChange={this.changeLiveid} />
-        <RaisedButton className='LiveConnectButton'
-                      secondary={true}
-                      label='接続'
-                      onMouseDown={this.handleConnect} />
+        <IconButton className='LiveIdForm'
+                    style={{marginTop: '5px'}}
+                    onMouseDown={this.handleConnect}>
+          <PlayIcon />
+        </IconButton>
       </div>
     );
   }
