@@ -46,6 +46,6 @@ gulp.task('css:concat', function() {
     .pipe(gulp.dest('./bundle/css/dest'));
 });
 
-gulp.task('css', ['css:compile', 'css:concat']);
+gulp.task('css', ['css:compile', 'css:concat', 'css:min']);
 
 gulp.task('default', ['serve']);

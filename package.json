@@ -5,11 +5,14 @@
   "license": "MIT",
   "repository": "maxmellon/comelon",
   "scripts": {
-    "lint": "stylint ./assets/styl/*.styl && eslint $(git ls-files | grep -e '.js$')",
+    "lint": "npm run stylint & npm run eslint ",
+    "eslint": "eslint $(git ls-files | grep -e '.js$')",
+    "stylint": "stylint ./assets/styl/*.styl",
     "test": "mocha --timeout 15000 --compilers js:espower-babel/guess test/**/*.js",
     "posttest" : "npm run lint",
     "cover": "nyc --reporter=lcov --reporter=text npm run test",
-    "predev": "gulp css",
+    "predev": "npm run style",
+    "style": "gulp css & npm run stylint",
     "dev": "gulp"
   },
   "dependencies": {
