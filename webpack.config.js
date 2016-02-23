@@ -21,7 +21,7 @@ var webpackConfig = {
   output: opt,
   debug: true,
   devtool: 'eval',
-  externals: ['electron'],
+  externals: ['electron', 'remote'],
   plugins: [
     new webpack.NoErrorsPlugin(),
     new NodeTargetPlugin()
