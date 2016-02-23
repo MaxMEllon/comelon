@@ -1,6 +1,7 @@
 'use babel';
 
 const gulp = require('gulp');
+const runSequence = require('run-sequence');
 const $ = require('gulp-load-plugins')({
   scope: ['dependencies', 'devDependencies'],
   pattern: 'gulp-*',
@@ -29,23 +30,29 @@ gulp.task('css:compile', function() {
 });
 
 gulp.task('css:min', function() {
-  return gulp.src('./bundle/css/dest/style.css')
+  return gulp.src('./bundle/css/dist/style.css')
     .pipe($.cssmin())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest('./bundle/css/min'));
 });
 
 gulp.task('css:lint', function() {
-  return gulp.src('./actions/styl/*.styl')
+  return gulp.src('./assets/styl/*.styl')
     .pipe($.stylint());
 });
 
 gulp.task('css:concat', function() {
   return gulp.src('./bundle/css/*.css')
     .pipe($.concatCss('style.css'))
-    .pipe(gulp.dest('./bundle/css/dest'));
+    .pipe(gulp.dest('./bundle/css/dist'));
 });
 
-gulp.task('css', ['css:compile', 'css:concat', 'css:min']);
+gulp.task('css', function(callback) {
+  return runSequence(
+    'css:compile',
+    'css:concat',
+    'css:min'
+  );
+});
 
 gulp.task('default', ['serve']);
