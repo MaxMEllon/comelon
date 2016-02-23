@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <title>こめろん</title>
     <link rel="stylesheet" href="./bundle/css/min/style.min.css" type="text/css" />
-    <script>
-      // install babel hooks in the renderer process
-      require('babel-register');
-      require('./scripts/main');
-    </script>
+    <script src='./bundle/js/main.min.js'></script>
   </head>
 
   <body>
     <div id='come'>
     </div>
   </body>
+  <script>
+    const electron = require('electron');
+  </script>
 </html>

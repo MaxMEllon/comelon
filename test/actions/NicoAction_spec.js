@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const chai = require('chai');
 const {assert} = require('chai');

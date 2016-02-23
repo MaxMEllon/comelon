@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const React = require('react');
 const NicoAction = require('../actions/NicoAction');

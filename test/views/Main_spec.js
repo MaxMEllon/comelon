@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const assert = require('power-assert');
 
