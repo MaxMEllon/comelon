@@ -7,7 +7,7 @@
   - [x] stylus
   - [x] circleCI or travisCI
   - [x] unitTest
-  - [ ] e2eTest(nightmare)
+  - [x] e2eTest(nightmare)
 
 - feature
   - [x] post comment
