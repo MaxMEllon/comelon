@@ -11,17 +11,40 @@ const electron = require('electron-connect').server.create();
 
 gulp.task('serve', function() {
   electron.start();
-  gulp.watch(['./app/**/**/*.js'], electron.reload);
+  gulp.watch(['./app/**/*.js'], electron.restart);
 });
 
 gulp.task('js:lint', function() {
-  return gulp.src(['./app/**/**/*.js', '!node_modules/**'])
+  return gulp.src(['./app/**/**/*.js'])
     .pipe($.eslint())
     .pipe($.eslint.format('stylish'))
     .pipe($.eslint.failAfterError());
 });
 
-gulp.task('js', []);
+gulp.task('js:compile', function() {
+  return gulp.src('')
+    .pipe($.webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('./bundle/js'));
+});
+
+gulp.task('js:uglify', function() {
+  return gulp.src('./bundle/js/main.js')
+    .pipe($.uglify())
+    .pipe($.rename('main.min.js'))
+    .pipe(gulp.dest('./bundle/js'));
+});
+
+gulp.task('js', function(callback) {
+  return runSequence(
+    ['js:compile', 'js:lint'],
+    'js:uglify',
+    callback
+  );
+});
+
+gulp.task('watch:js', function() {
+  gulp.watch('./app/**/*.js', ['js']);
+});
 
 gulp.task('css:compile', function() {
   return gulp.src('./assets/styl/*.styl')
@@ -51,8 +74,15 @@ gulp.task('css', function(callback) {
   return runSequence(
     'css:compile',
     'css:concat',
-    'css:min'
+    'css:min',
+    callback
   );
 });
+
+gulp.task('watch:css', function() {
+  gulp.watch('./assets/styl/*.styl', ['css']);
+});
+
+gulp.task('watch', ['watch:js', 'watch:css']);
 
 gulp.task('default', ['serve']);

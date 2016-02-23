@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const Immutable = require('immutable');
 

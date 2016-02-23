@@ -1,4 +1,4 @@
-'use babel'
+'use strict'
 
 module.exports = {
   RESIZE: 'resize'

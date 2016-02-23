@@ -3,7 +3,7 @@
 - shuold be implementation
   - [x] eslint
   - [x] gulp
-  - [ ] webpack or browslify
+  - [x] webpack
   - [x] stylus
   - [x] circleCI or travisCI
   - [x] unitTest

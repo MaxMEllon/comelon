@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const Immutable = require('immutable');
 const ElectronActionType = require('./types/ElectronActionTypes');
@@ -6,7 +6,7 @@ const AppDispatcher = require('../dispatcher/AppDispatcher');
 let mainWindow = undefined;
 // TODO: dont use process.env
 if (process.env.NODE_ENV !== 'test') {
-  const remote = require('remote');
+  const remote = require('electron').remote;
   const BrowserWindow = remote.require('browser-window');
   mainWindow = BrowserWindow.getAllWindows()[0];
 }

@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const Nico = require('nicolive');
 const AppDispatcher = require('../dispatcher/AppDispatcher');

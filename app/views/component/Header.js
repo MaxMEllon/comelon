@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const React = require('react');
 const Toolbar = require('material-ui/lib/toolbar/toolbar');

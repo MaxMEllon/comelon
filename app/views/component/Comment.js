@@ -1,4 +1,4 @@
-'use babel';
+'use strict';
 
 const _ = require('lodash');
 const React = require('react');
