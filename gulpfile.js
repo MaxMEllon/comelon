@@ -72,7 +72,7 @@ gulp.task('css:concat', function() {
 
 gulp.task('css', function(callback) {
   return runSequence(
-    'css:compile',
+    ['css:compile', 'css:lint'],
     'css:concat',
     'css:min',
     callback
