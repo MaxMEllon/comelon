@@ -1,16 +1,22 @@
-'use babel';
+'use strict';
 
 require('babel-core/register');
 require('babel-polyfill');
 require('mocha-generators').install();
 const Nightmare = require('nightmare');
+const Nico = require('nicolive');
 const path = require('path');
-const {assert} = require('chai');
+const assert = require('power-assert');
 const size = require('../config/Size');
 const TEST_HTML_PATH = 'file://' + path.join(__dirname, '../index.html');
 
 describe('e2e', () => {
   var nightmare;
+
+  before(function() {
+    Nico.destroy();
+    Nico.logout(error => { if (error) throw error; });
+  });
 
   beforeEach(function() {
     nightmare = Nightmare({
@@ -28,7 +34,22 @@ describe('e2e', () => {
       .viewport(size.get('width'), size.get('height'))
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
-      .title()
+      .title();
     assert(title, 'こめろん');
   });
+
+  it('login', function*(){
+    yield nightmare
+      .viewport(size.get('width'), size.get('height'))
+      .goto(TEST_HTML_PATH)
+      .wait('.EmailForm')
+      .click('.EmailForm')
+      .wait(100)
+      .type('.EmailForm > input[type=text]', process.env.USER)
+      .click('.PasswordForm')
+      .type('.PasswordForm > input[type=password]', process.env.PASSWORD)
+      .click('button')
+    Nico.ping(error => { assert(error, null); });
+  });
+
 });
