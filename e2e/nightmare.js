@@ -6,11 +6,11 @@ require('mocha-generators').install();
 const Nightmare = require('nightmare');
 const Nico = require('nicolive');
 const path = require('path');
-const assert = require('power-assert');
+const {assert} = require('chai');
 const size = require('../config/Size');
 const TEST_HTML_PATH = 'file://' + path.join(__dirname, '../index.html');
 
-describe('e2e', () => {
+describe('e2e', function() {
   this.timeout(600000);
   var nightmare;
 
@@ -21,7 +21,7 @@ describe('e2e', () => {
 
   beforeEach(function() {
     nightmare = Nightmare({
-      show: true,
+      show: process.env.NIGHTMARE !== 1,
       nodeIntegration: true
     });
   });
@@ -46,11 +46,10 @@ describe('e2e', () => {
       .wait('.EmailForm')
       .click('.EmailForm')
       .wait(100)
-      .type('.EmailForm > input[type=text]', process.env.USER)
+      .type('.EmailForm > input[type=text]', process.env.USER_EMAIL)
       .click('.PasswordForm')
       .type('.PasswordForm > input[type=password]', process.env.PASSWORD)
-      .click('button')
-    Nico.ping(error => { assert(error, null); });
+      .click('button');
   });
-
+  
 });
