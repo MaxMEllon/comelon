@@ -11,6 +11,7 @@ const size = require('../config/Size');
 const TEST_HTML_PATH = 'file://' + path.join(__dirname, '../index.html');
 
 describe('e2e', () => {
+  this.timeout(600000);
   var nightmare;
 
   before(function() {

@@ -7,6 +7,9 @@ install:
 script:
   - npm run style && npm run compile
   - npm run e2e
+cache:
+  directories:
+    - node_modules
 addons:
   apt:
     packages:
