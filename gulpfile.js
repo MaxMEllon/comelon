@@ -11,7 +11,7 @@ const electron = require('electron-connect').server.create();
 
 gulp.task('serve', function() {
   electron.start();
-  gulp.watch(['./app/**/*.js'], electron.restart);
+  gulp.watch(['./app/**/*.js'], ['js', electron.restart]);
 });
 
 gulp.task('js:lint', function() {

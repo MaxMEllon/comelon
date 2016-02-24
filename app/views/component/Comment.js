@@ -32,7 +32,7 @@ let Comment = React.createClass({
   },
 
   componentDidUpdate() {
-    this.refs.commentTable.scrollTop = 5000;
+    // TODO: scroll
   },
 
   componentWillUnMount() {
@@ -47,11 +47,11 @@ let Comment = React.createClass({
   renderComments() {
     let components = [];
     _(this.props.comments).each(comment => {
+      let text = comment.get('text');
       let userId = comment.getIn(['attr', 'user_id']);
       let userName = CommentStore.getNickname(userId);
       let no = comment.getIn(['attr', 'no']);
-      let text = comment.get('text');
-      components.push(
+      components.unshift(
         <TableRow className='CommentItemBody'
                   key={no}
                   selectable={false} >

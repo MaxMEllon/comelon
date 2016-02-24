@@ -46,7 +46,8 @@ AppDispatcher.register(action => {
   switch (type) {
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
-    if (comment) {
+    const pattarn = /\/(.*)/;
+    if (comment && ! comment.get('text').match(pattarn)) {
       _comments.push(comment);
       CommentStore.emitChange();
     }
