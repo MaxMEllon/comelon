@@ -36,7 +36,7 @@ let Connect = React.createClass({
                    style={{marginLeft: '10px'}}
                    hintText='放送番号(lv00000)'
                    onChange={this.changeLiveid} />
-        <IconButton className='LiveIdForm'
+        <IconButton className='LiveIdButton'
                     style={{marginTop: '5px'}}
                     onMouseDown={this.handleConnect}>
           <PlayIcon />

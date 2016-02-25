@@ -32,7 +32,7 @@ let Footer = React.createClass({
 
   render() {
     return (
-      <div>
+      <div className='Footer'>
         <Toolbar style={{bottom: '1%', position: 'absolute', width: '98%', padding: '3px 0px 0px 10px'}}>
           <ToolbarGroup firstChild={true} float='left' style={{width: '60%'}}>
             <TextField className='CommentForm'
