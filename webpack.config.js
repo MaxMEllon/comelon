@@ -14,14 +14,14 @@ var opt = {
 
 var webpackConfig = {
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.json'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   entry: ['./scripts/main.js'],
   output: opt,
   debug: true,
   devtool: 'eval',
-  externals: ['electron', 'remote'],
+  externals: ['electron', 'remote', 'nicolive'],
   plugins: [
     new webpack.NoErrorsPlugin(),
     new NodeTargetPlugin()
@@ -35,7 +35,7 @@ var webpackConfig = {
         presets: ['es2015', 'react']
       }
     }, {
-      test: /\.json$/,
+      test: /.json$/,
       loader: 'json-loader'
     } ]
   }
