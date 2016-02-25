@@ -21,7 +21,7 @@ describe('e2e', function() {
 
   beforeEach(function() {
     nightmare = Nightmare({
-      show: process.env.NIGHTMARE !== 1,
+      show: process.env.NIGHTMARE !== '1',
       nodeIntegration: true
     });
   });
@@ -35,21 +35,30 @@ describe('e2e', function() {
       .viewport(size.get('width'), size.get('height'))
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
-      .title();
+      .title()
     assert(title, 'こめろん');
   });
 
-  it('login', function*(){
+  it('login', function*() {
     yield nightmare
       .viewport(size.get('width'), size.get('height'))
       .goto(TEST_HTML_PATH)
       .wait('.EmailForm')
       .click('.EmailForm')
-      .wait(100)
       .type('.EmailForm > input[type=text]', process.env.USER_EMAIL)
       .click('.PasswordForm')
       .type('.PasswordForm > input[type=password]', process.env.PASSWORD)
-      .click('button');
+      .mousedown('button > span')
+      .wait(3000)
   });
-  
+
+  it('connect  nsen', function*() {
+    yield nightmare
+      .viewport(size.get('width'), size.get('height'))
+      .goto(TEST_HTML_PATH)
+      .wait('.MainView')
+      .type('input[type=text]', 'nsen/hotaru')
+      .wait(300)
+  })
+
 });
