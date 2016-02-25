@@ -8,7 +8,7 @@ e2e : [![Travis CI](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](
 
 - - -
 
-![demo](./assets/img/demo.png)
+![demo](./logs/screenshots/demo.png)
 
 ## Start development
 

@@ -1,7 +1,7 @@
 'use strict';
 
-import app from 'app';
-import BrowserWindow from 'browser-window';
+const app = require('app');
+const BrowserWindow = require('browser-window');
 const size = require('./config/Size');
 
 let mainWindow = null;
