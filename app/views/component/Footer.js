@@ -14,6 +14,7 @@ let Footer = React.createClass({
   getInitialState() {
     return {
       comment: '',
+      mail: ''
     }
   },
 
@@ -21,11 +22,18 @@ let Footer = React.createClass({
     this.setState({comment: e.target.value});
   },
 
+  handleToggle() {
+    if (this.state.mail === '') {
+      this.setState({mail: 184});
+    } else {
+      this.setState({mail: ''});
+    }
+  },
+
   handlePostComment() {
     let comment = this.state.comment.trim();
-    let option = this.refs.anonymousNav.toggled ? {mail: '184'} : {mail: ''};
     if (comment !== '') {
-      CommentAction.postComment(comment, option);
+      CommentAction.postComment(comment, {mail: this.state.mail});
       this.setState({comment: ''});
     }
   },
@@ -43,6 +51,7 @@ let Footer = React.createClass({
           </ToolbarGroup>
           <ToolbarGroup float='right' style={{width: '18%', marginTop: '16px'}}>
             <Toggle ref='anonymousNav'
+                    onToggle={this.handleToggle}
                     label='184'
                     labelPosition='right'
                     style={{maxWidth: 250, float: 'right'}} />
