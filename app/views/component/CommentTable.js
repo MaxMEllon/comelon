@@ -30,6 +30,8 @@ let CommentTable = React.createClass({
   },
 
   componentDidUpdate() {
+    // let commentTable = ReactDOM.findDOMNode(this.refs.commentTable);
+    // commentTable.scrollTo = commentTable.scrollHeight;
   },
 
   componentWillUnMount() {
@@ -44,7 +46,7 @@ let CommentTable = React.createClass({
   renderComments() {
     let components = [];
     _(this.props.comments).each(comment => {
-      <Comment comment={comment} />
+      components.push(<Comment comment={comment} />);
     });
     return components;
   },

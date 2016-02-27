@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const Nico = require('nicolive');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const CommentActionType = require('./types/CommentActionTypes');
@@ -16,12 +17,14 @@ let dispatchNickname = (userId, nickname) => {
 let CommentAction = {
   getComment(viewer) {
     viewer.on('comment', comment => {
-      let come = Immutable.fromJS(comment);
-      this.fetchNickname(come);
-      AppDispatcher.dispatch({
-        actionType: CommentActionType.GET_COMMENT,
-        comment: come
-      });
+      _.defer(() => {
+        let come = Immutable.fromJS(comment);
+        this.fetchNickname(come);
+        AppDispatcher.dispatch({
+          actionType: CommentActionType.GET_COMMENT,
+          comment: come
+        });
+      }, 300);
     });
   },
 

@@ -48,8 +48,9 @@ describe('e2e', function() {
       .type('.EmailForm > input[type=text]', process.env.USER_EMAIL)
       .click('.PasswordForm')
       .type('.PasswordForm > input[type=password]', process.env.PASSWORD)
-      .mousedown('button > span')
-      .wait(3000)
+      // pendding
+      // .mousedown('button > span')
+      // .wait(300)
   });
 
   it('connect  nsen', function*() {
