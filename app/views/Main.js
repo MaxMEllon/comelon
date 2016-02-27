@@ -6,7 +6,7 @@ const NicoStore = require('../stores/NicoStore');
 const CommentAction = require('../actions/CommentAction');
 const CommentStore = require('../stores/CommentStore');
 const Header = require('./component/Header');
-const Comment = require('./component/Comment');
+const CommentTable = require('./component/CommentTable');
 const Footer = require('./component/Footer');
 const Login = require('./component/Login');
 
@@ -55,7 +55,7 @@ let Main = React.createClass({
     return (
       <div className='MainView'>
         <Header />
-        <Comment comments={this.state.comments} />
+        <CommentTable comments={this.state.comments} />
         <Footer />
         <Login open={this.state.isLogin === false} />
       </div>
