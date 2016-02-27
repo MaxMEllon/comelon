@@ -23,7 +23,8 @@ let Comment = React.createClass({
   render() {
     let userId = this.props.comment.getIn(['attr', 'user_id']);
     let userName = CommentStore.getNickname(userId);
-    let userIcon = `${usericonURL}${parseInt(userId / 10000)}/${userId}.jpg`;
+    let userIcon = userName === '184' ? './assets/img/blank.jpg'
+                 : `${usericonURL}${parseInt(userId / 10000)}/${userId}.jpg`;
     return (
       <TableRow className='CommentItemBody'
                 key={this.props.comment.getIn(['attr', 'no'])}
