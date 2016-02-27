@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const React = require('react');
+const ReactDOM = require('react-dom');
 const Comment = require('./Comment');
 const ElectronAction = require('../../actions/ElectronAction');
 const ElectronStore = require('../../stores/ElectronStore');
@@ -30,8 +31,10 @@ let CommentTable = React.createClass({
   },
 
   componentDidUpdate() {
-    // let commentTable = ReactDOM.findDOMNode(this.refs.commentTable);
-    // commentTable.scrollTo = commentTable.scrollHeight;
+    // FIXME:
+    // not done scroll of 'CommentTable' component when added 'Comment' component.
+    let commentTable = ReactDOM.findDOMNode(this.refs.commentTable);
+    commentTable.scrollTo = commentTable.scrollHeight;
   },
 
   componentWillUnMount() {

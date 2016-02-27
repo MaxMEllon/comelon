@@ -19,5 +19,8 @@ ratings:
   - "**.js"
   - "**.jsx"
 exclude_paths:
-- config/
-- test/
+- config/*.js
+- test/**/*.js
+- e2e/**/*.js
+- node_modules/**/*.js
+- .codeclimate.yml

@@ -48,18 +48,32 @@ describe('e2e', function() {
       .type('.EmailForm > input[type=text]', process.env.USER_EMAIL)
       .click('.PasswordForm')
       .type('.PasswordForm > input[type=password]', process.env.PASSWORD)
-      // pendding
+      // FIXME
+      // Error: done() invoked with non-Error: Cannot read property 'dispatchEvent' of null
+      //        at run (node_modules/core-js/modules/es6.promise.js:104:47)
+      //        at node_modules/core-js/modules/es6.promise.js:115:28
+      //        at flush (node_modules/core-js/modules/$.microtask.js:19:5)
       // .mousedown('button > span')
       // .wait(300)
   });
 
   it('connect  nsen', function*() {
+    Nico.login(process.env.USER_EMAIL, process.env.PASSWORD, (error, cookie) => {
+      if (error) throw error;
+    });
     yield nightmare
       .viewport(size.get('width'), size.get('height'))
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
       .type('input[type=text]', 'nsen/hotaru')
       .wait(300)
+      // FIXME
+      // Error: done() invoked with non-Error: Cannot read property 'dispatchEvent' of null
+      //        at run (node_modules/core-js/modules/es6.promise.js:104:47)
+      //        at node_modules/core-js/modules/es6.promise.js:115:28
+      //        at flush (node_modules/core-js/modules/$.microtask.js:19:5)
+      // .mousedown('button > span')
+      // .wait(300)
   })
 
 });
