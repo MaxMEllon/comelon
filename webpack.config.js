@@ -28,15 +28,15 @@ var webpackConfig = {
   ],
   module: {
     loaders: [ {
-      test: /.jsx?$/,
+      test: /\.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/,
-      query: {
-        presets: ['es2015', 'react']
-      }
     }, {
-      test: /.json$/,
+      test: /\.json$/,
       loader: 'json-loader'
+    }, {
+      test: /\.js$/,
+      loader: 'webpack-strip?strip[]=console.log'
     } ]
   }
 };
