@@ -13,5 +13,5 @@ dependencies:
 
 test:
   override:
-    - "nvm use && npm run cover"
+    - "nvm use && npm run lint && npm run cover"
     - "codeclimate-test-reporter < coverage/lcov.info"
