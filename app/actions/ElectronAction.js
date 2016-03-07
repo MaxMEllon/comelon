@@ -7,8 +7,7 @@ let mainWindow = undefined;
 // TODO: dont use process.env
 if (process.env.NODE_ENV !== 'test') {
   const remote = require('electron').remote;
-  const BrowserWindow = remote.require('browser-window');
-  mainWindow = BrowserWindow.getAllWindows()[0];
+  mainWindow = remote.getCurrentWindow();
 }
 
 let ElectronAction = {

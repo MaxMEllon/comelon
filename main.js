@@ -1,7 +1,8 @@
 'use strict';
 
-const app = require('app');
-const BrowserWindow = require('browser-window');
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 const size = require('./config/Size');
 
 let mainWindow = null;
