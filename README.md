@@ -5,6 +5,7 @@ e2e : [![Travis CI](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](
 [![Code Climate](https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
 [![Test Coverage](https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg)](https://codeclimate.com/github/MaxMEllon/comelon/coverage)
 [![Issue Count](https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
+[![Dependency Status](https://gemnasium.com/MaxMEllon/comelon.svg)](https://gemnasium.com/MaxMEllon/comelon)
 
 - - -
 
