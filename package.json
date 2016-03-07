@@ -25,7 +25,7 @@
     "flux": "^2.1.1",
     "immutable": "^3.7.6",
     "lodash": "^4.3.0",
-    "material-ui": "^0.15.0-alpha.1",
+    "material-ui": "^0.14.4",
     "nicolive": "^0.0.4",
     "object-assign": "^4.0.1",
     "react": "^0.14.7",
