@@ -3,21 +3,28 @@
 const React = require('react');
 const CommentStore = require('../../stores/CommentStore');
 const ImageLoader = require('react-imageloader');
-const Card = require('material-ui/lib/card/card');
-const CardHeader = require('material-ui/lib/card/card-header');
-const CardText = require('material-ui/lib/card/card-text');
-const TableRow = require('material-ui/lib/table/table-row');
-const TableRowColumn = require('material-ui/lib/table/table-row-column');
+const Divider = require('material-ui/lib/divider');
+const ListItem = require('material-ui/lib/lists/list-item');
 const Snipper = require('material-ui/lib/circular-progress');
 const usericonURL = require('nicolive/lib/api.json').url.usericonURL;
-const cardHeader = {wordWrap: 'break-word', height: '20px'};
-const avater = {width: '48px', paddingLeft: '10px'};
 
 let Comment = React.createClass({
   displayName: 'Comment',
 
   propTypes: {
-    comment: React.PropTypes.any
+    comment: React.PropTypes.any,
+    index: React.PropTypes.number
+  },
+
+  renderAvater(userIcon) {
+    return (
+      <ImageLoader style={{width: '36px', height: '36px'}}
+                   preloader={() => { return <Snipper/> }}
+                   imgProps={{width: '36px', height: '36px'}}
+                   src={userIcon}>
+        <img width='36px' height='36px' src='./assets/img/blank.jpg' />
+      </ImageLoader>
+    );
   },
 
   render() {
@@ -25,28 +32,18 @@ let Comment = React.createClass({
     let userName = CommentStore.getNickname(userId);
     let userIcon = userName === '184' ? './assets/img/blank.jpg'
                  : `${usericonURL}${parseInt(userId / 10000)}/${userId}.jpg`;
+    userName = isNaN(userId) ? userId : userName;
     return (
-      <TableRow className='CommentItemBody'
-                key={this.props.comment.getIn(['attr', 'no'])}
-                selectable={false} >
-        <TableRowColumn style={avater}>
-          <ImageLoader style={{width: '78px', height: '78px'}}
-                       preloader={() => { return <Snipper/> }}
-                       imgProps={{width: '78px', height: '78px'}}
-                       src={userIcon}>
-            <img width='78px' height='78px' src='./assets/img/blank.jpg' />
-          </ImageLoader>
-        </TableRowColumn>
-        <TableRowColumn>
-          <Card>
-            <CardHeader title={userName}
-                        style={cardHeader} />
-            <CardText>
-              {this.props.comment.get('text')}
-            </CardText>
-          </Card>
-        </TableRowColumn>
-      </TableRow>
+      <div>
+        <ListItem
+          key={this.props.comment.getIn(['attr', 'no'])}
+          value={this.props.index}
+          leftAvatar={this.renderAvater(userIcon)}
+          primaryText={userName}
+          secondaryText={<p>{this.props.comment.get('text')}</p>}
+        />
+        <Divider />
+      </div>
     );
   }
 

@@ -57,7 +57,7 @@ let Header = React.createClass({
                 className='NicoLiveConnectButton'
                 tooltip='接続'
                 tooltipPosition='bottom-left'
-                onMouseDown={this.handleonnect}
+                onMouseDown={this.handleConnect}
               ><PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/></IconButton>
               <IconButton
                 className='AppSettingsButton'

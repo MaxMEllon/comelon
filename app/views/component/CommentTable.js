@@ -2,12 +2,11 @@
 
 const _ = require('lodash');
 const React = require('react');
-const ReactDOM = require('react-dom');
 const Comment = require('./Comment');
 const ElectronAction = require('../../actions/ElectronAction');
 const ElectronStore = require('../../stores/ElectronStore');
-const Table = require('material-ui/lib/table/table');
-const TableBody = require('material-ui/lib/table/table-body');
+const List = require('material-ui/lib/lists/list');
+const Paper = require('material-ui/lib/paper');
 
 let CommentTable = React.createClass({
   displayName: 'CommentTable',
@@ -31,10 +30,6 @@ let CommentTable = React.createClass({
   },
 
   componentDidUpdate() {
-    // FIXME:
-    // not done scroll of 'CommentTable' component when added 'Comment' component.
-    let commentTable = ReactDOM.findDOMNode(this.refs.commentTable);
-    commentTable.scrollTo = commentTable.scrollHeight;
   },
 
   componentWillUnMount() {
@@ -48,29 +43,24 @@ let CommentTable = React.createClass({
 
   renderComments() {
     let components = [];
+    let index = 0;
     _(this.props.comments).each(comment => {
-      components.push(<Comment comment={comment} />);
+      components.push(<Comment index={index} comment={comment} />);;
+      index++;
     });
     return components;
   },
 
   render() {
     return (
-      <Table className='CommentTable'
-             style={{backgroundColor: '#FFFFFF'}}
-             ref='commentTable'
-             height={this.state.height}
-             selectable={false}
-             multiSelectable={false}
-             fixedHeader={true}
-             fixedFooter={true} >
-        <TableBody className='CommentTableBody'
-                   displayRowCheckbox={false}
-                   displaySelectAll={false}
-                   adjustForCheckbox={false} >
+      <List
+        className='CommentTable'
+        style={{marginTop: '64px', marginBottom: '64px'}}
+      >
+        <Paper className='CommentTableBody'>
           {this.renderComments()}
-        </TableBody>
-      </Table>
+        </Paper>
+      </List>
     );
   }
 });
