@@ -3,8 +3,6 @@
 const _ = require('lodash');
 const React = require('react');
 const Comment = require('./Comment');
-const ElectronAction = require('../../actions/ElectronAction');
-const ElectronStore = require('../../stores/ElectronStore');
 const List = require('material-ui/lib/lists/list');
 const Paper = require('material-ui/lib/paper');
 
@@ -15,30 +13,16 @@ let CommentTable = React.createClass({
     comments: React.PropTypes.array.isRequired
   },
 
-  getInitialState() {
-    return {
-      height: '720px'
-    }
-  },
-
   componentWillMount() {
-    ElectronAction.fetchWindowSize();
   },
 
   componentDidMount() {
-    ElectronStore.addChangeListener(this.onResizeWindow);
   },
 
   componentDidUpdate() {
   },
 
   componentWillUnMount() {
-    ElectronStore.removeChangeListener(this.onResizeWindow);
-  },
-
-  onResizeWindow() {
-    let size = ElectronStore.getCurrentSize();
-    this.setState({height: `${size.get('height') - 120}px`})
   },
 
   renderComments() {
