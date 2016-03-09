@@ -1,4 +1,8 @@
-# comelon
+<p align="center">
+  <img src="./assets/img/banner.png">
+</p>
+
+- - -
 
 unit : [![Circle CI](https://img.shields.io/circleci/project/MaxMEllon/comelon.svg)](https://circleci.com/gh/MaxMEllon/comelon)
 e2e : [![Travis CI](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](https://travis-ci.org/MaxMEllon/comelon)
@@ -9,7 +13,11 @@ e2e : [![Travis CI](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](
 
 - - -
 
-![demo](./logs/screenshots/demo.png)
+## Screenshots
+
+<p align="center">
+  <img src="./logs/screenshots/demo.png">
+</p>
 
 ## Start development
 
