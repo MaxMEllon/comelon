@@ -41,20 +41,24 @@ let Footer = React.createClass({
   render() {
     return (
       <div className='Footer'>
-        <Toolbar style={{bottom: '1%', position: 'absolute', width: '98%', padding: '3px 0px 0px 10px'}}>
+        <Toolbar style={{position: 'fixed', bottom: '0', left: '0', right: '0'}} >
           <ToolbarGroup firstChild={true} float='left' style={{width: '60%'}}>
-            <TextField className='CommentForm'
-                       value={this.state.comment}
-                       style={{marginLeft: '20px', width: '100%'}}
-                       hintText='コメント'
-                       onChange={this.changeComment} />
+            <TextField
+              className='CommentForm'
+              value={this.state.comment}
+              style={{marginLeft: '20px', width: '100%'}}
+              hintText='コメント'
+              onChange={this.changeComment}
+            />
           </ToolbarGroup>
           <ToolbarGroup float='right' style={{width: '18%', marginTop: '16px'}}>
-            <Toggle ref='anonymousNav'
-                    onToggle={this.handleToggle}
-                    label='184'
-                    labelPosition='right'
-                    style={{maxWidth: 250, float: 'right'}} />
+            <Toggle
+              ref='anonymousNav'
+              onToggle={this.handleToggle}
+              label='184'
+              labelPosition='right'
+              style={{maxWidth: 250, float: 'right'}}
+            />
           </ToolbarGroup>
           <ToolbarGroup float='right' style={{width: '20%'}}>
             <RaisedButton className='LiveConnectButton'
