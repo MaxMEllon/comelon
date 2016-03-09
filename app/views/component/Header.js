@@ -1,34 +1,72 @@
 'use strict';
 
 const React = require('react');
-const Toolbar = require('material-ui/lib/toolbar/toolbar');
-const ToolbarGroup = require('material-ui/lib/toolbar/toolbar-group');
+const NicoAction = require('../../actions/NicoAction');
+const CommentAction = require('../../actions/CommentAction');
+const Appbar = require('material-ui/lib/app-bar');
+const Colors = require('material-ui/lib/styles/colors');
 const IconButton = require('material-ui/lib/icon-button');
-const SettingsIcon = require('react-material-icons/icons/action/settings');
-const Connect = require('./Connect');
+const PlayIcon = require('material-ui/lib/svg-icons/av/airplay');
+const SettingsIcon = require('material-ui/lib/svg-icons/action/settings');
+const TextField = require('material-ui/lib/text-field');
 
 let Header = React.createClass({
   displayName: 'Header',
 
-  renderOptionButton() {
-    return (
-      <IconButton style={{marginTop: '5px'}}>
-        <SettingsIcon />
-      </IconButton>
-    );
+  getInitialState() {
+    return {
+      lv: ''
+    }
+  },
+
+  changeLiveid(e) {
+    this.setState({lv: e.target.value});
+  },
+
+  handleConnect() {
+    let liveId = this.state.lv.trim();
+    if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
+    if (liveId === '' || liveId === 'lv') { return; }
+    CommentAction.resetAllComment();
+    NicoAction.connect(liveId);
   },
 
   render() {
     return (
       <div className='Header'>
-        <Toolbar style={{padding: '0px 5px 0px 24px'}}>
-          <ToolbarGroup firstChild={true} float='left'>
-            <Connect />
-          </ToolbarGroup>
-          <ToolbarGroup float='right'>
-            {this.renderOptionButton()}
-          </ToolbarGroup>
-        </Toolbar>
+        <Appbar
+          style={{position: 'fixed', top: '0', left: '0', right: '0'}}
+          iconElementLeft={<div />}
+          title={
+            <div>
+              <span>comelon</span>
+              <TextField
+                className='LiveIdForm'
+                value={this.state.lv}
+                onChange={this.changeLiveid}
+                style={{margin: '0 2em'}}
+                hintStyle={{color: 'rgba(255,255,255,.5)'}}
+                hintText='放送番号(lv00000)'
+                inputStyle={{color: 'white'}}
+              />
+            </div>
+          }
+          iconElementRight={
+            <div>
+              <IconButton
+                className='NicoLiveConnectButton'
+                tooltip='接続'
+                tooltipPosition='bottom-left'
+                onMouseDown={this.handleonnect}
+              ><PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/></IconButton>
+              <IconButton
+                className='AppSettingsButton'
+                tooltip='設定'
+                tooltipPosition='bottom-left'
+              ><SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/></IconButton>
+            </div>
+          }
+        />
       </div>
     );
   }
