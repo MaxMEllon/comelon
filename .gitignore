@@ -4,4 +4,6 @@
 /.nyc_output
 /logs/screenshots/*.png
 /coverage
+/build
+/release
 *.log
