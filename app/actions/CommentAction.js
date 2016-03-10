@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const Nico = require('nicolive');
+const NotificationAction = require('../actions/NotificationAction');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const CommentActionType = require('./types/CommentActionTypes');
 const Immutable = require('immutable');
@@ -30,7 +31,7 @@ let CommentAction = {
 
   postComment(comment, mail = {mail: ''}) {
     Nico.comment(comment, mail, (error) => {
-      if (error) throw error;
+      if (error) NotificationAction.notify('コメントの投稿に失敗しました');
     });
   },
 

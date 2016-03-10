@@ -9,6 +9,7 @@ const Header = require('./component/Header');
 const CommentTable = require('./component/CommentTable');
 const Footer = require('./component/Footer');
 const Login = require('./component/Login');
+const Notify = require('./component/Notify');
 
 let Main = React.createClass({
   displayName: 'Main',
@@ -58,6 +59,7 @@ let Main = React.createClass({
         <CommentTable comments={this.state.comments} />
         <Footer />
         <Login open={this.state.isLogin === false} />
+        <Notify />
       </div>
     );
   }
