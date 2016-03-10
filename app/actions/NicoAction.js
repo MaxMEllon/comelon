@@ -3,6 +3,7 @@
 const Nico = require('nicolive');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NicoActionType = require('./types/NicoActionTypes');
+const NotificationAction = require('./NotificationAction');
 
 let NicoAction = {
   fetchLoginStatus() {
@@ -21,7 +22,11 @@ let NicoAction = {
     Nico.ping(error => {
       if (! error) { return; }
       Nico.login(user.email, user.password, (error, cookie) => {
-        if (error) throw error;
+        if (error) {
+          NotificationAction.notify(`ログインに失敗しました : ${error}`);
+          throw error;
+        }
+        NotificationAction.notify('ログインしました');
         AppDispatcher.dispatch({
           actionType: NicoActionType.LOGIN,
           cookie: cookie,
@@ -36,7 +41,11 @@ let NicoAction = {
 
   connect(liveId) {
     Nico.view(liveId, (error, viewer) => {
-      if (error) throw error;
+      if (error) {
+        NotificationAction.notify(`接続に失敗しました : ${error}`);
+        throw error;
+      }
+      NotificationAction.notify('接続に成功しました');
       AppDispatcher.dispatch({
         actionType: NicoActionType.CONNECT,
         viewer: viewer
