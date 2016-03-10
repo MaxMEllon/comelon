@@ -16,7 +16,7 @@
     "predev": "npm run style & npm run compile",
     "style": "gulp css & npm run stylint",
     "stylint": "stylint ./assets/styl/*.styl",
-    "test": "NODE_ENV=test mocha --timeout 15000 --compilers js:espower-babel/guess test/**/*.js"
+    "test": "NODE_ENV=test mocha --timeout 150000 --compilers js:espower-babel/guess test/**/*.js"
   },
   "dependencies": {
     "babel-register": "^6.3.13",
