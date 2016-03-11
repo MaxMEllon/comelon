@@ -32,7 +32,7 @@ describe('e2e', function() {
 
   it('render main view', function*() {
     var title = yield nightmare
-      .viewport(size.get('width'), size.get('height'))
+      .viewport(size.width, size.height)
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
       .title()
@@ -41,7 +41,7 @@ describe('e2e', function() {
 
   it('login', function*() {
     yield nightmare
-      .viewport(size.get('width'), size.get('height'))
+      .viewport(size.width, size.height)
       .goto(TEST_HTML_PATH)
       .wait('.EmailForm')
       .click('.EmailForm')
@@ -62,7 +62,7 @@ describe('e2e', function() {
       if (error) throw error;
     });
     yield nightmare
-      .viewport(size.get('width'), size.get('height'))
+      .viewport(size.width, size.height)
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
       .type('input[type=text]', 'nsen/hotaru')
