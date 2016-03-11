@@ -29,7 +29,9 @@ let CommentTable = React.createClass({
     let components = [];
     let index = 0;
     _(this.props.comments).each(comment => {
-      components.push(<Comment index={index} comment={comment} />);
+      let no = comment.getIn(['attr', 'no']);
+      let id = comment.getIn(['attr', 'user_id']);
+      components.push(<Comment key={`${no}${id}`} index={index} comment={comment} />);
       index++;
     });
     return components;

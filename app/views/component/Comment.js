@@ -36,7 +36,7 @@ let Comment = React.createClass({
     return (
       <div className='CommentComponent'>
         <ListItem
-          key={this.props.comment.getIn(['attr', 'no'])}
+          key={`${this.props.comment.getIn(['attr', 'no'])}${userId}`}
           value={this.props.index}
           leftAvatar={this.renderAvater(userIcon)}
           secondaryText={<p>{userName}</p>}
