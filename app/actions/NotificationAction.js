@@ -16,7 +16,7 @@ let NotificationAction = {
    * messageをNotificationStoreに格納します
    */
   notify(message) {
-    if (typeof message !== 'strings') throw 'message is not strings';
+    if (typeof message !== 'string') throw 'message is not strings';
     AppDispatcher.dispatch({
       actionType: NotificationActionType.NOTIFY,
       message: message
