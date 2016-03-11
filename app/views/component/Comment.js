@@ -34,7 +34,7 @@ let Comment = React.createClass({
                  : `${usericonURL}${parseInt(userId / 10000)}/${userId}.jpg`;
     userName = isNaN(userId) ? userId : userName;
     return (
-      <div>
+      <div className='CommentComponent'>
         <ListItem
           key={this.props.comment.getIn(['attr', 'no'])}
           value={this.props.index}
