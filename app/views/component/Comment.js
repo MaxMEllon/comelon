@@ -39,8 +39,8 @@ let Comment = React.createClass({
           key={this.props.comment.getIn(['attr', 'no'])}
           value={this.props.index}
           leftAvatar={this.renderAvater(userIcon)}
-          primaryText={userName}
-          secondaryText={<p>{this.props.comment.get('text')}</p>}
+          secondaryText={<p>{userName}</p>}
+          primaryText={this.props.comment.get('text')}
         />
         <Divider />
       </div>

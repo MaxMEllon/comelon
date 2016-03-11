@@ -51,22 +51,23 @@ describe('CommentAction', () => {
   })
 
   it('try comment', done => {
-    let wait = setInterval(() => { NicoAction.fetchLoginStatus(); }, 300);
-    let waitConnect = setInterval(() => {
-      if (NicoStore.getViewer() !== null && NicoStore.getViewer() !== null) {
-        CommentAction.getComment(NicoStore.getViewer());
-        clearInterval(waitConnect);
-        done();
-      }
-    }, 500);
+    let waitLogin = setInterval(() => { NicoAction.fetchLoginStatus(); }, 300);
     let loginCallback = () => {
       if (NicoStore.isLogin()) {
         expect(NicoStore.isLogin()).to.be.equal(true);
         NicoAction.connect('nsen/hotaru');
-        clearInterval(wait);
+        clearInterval(waitLogin);
       }
     };
     NicoStore.addChangeListener(loginCallback);
+    let waitConnect = setInterval(() => {
+      let viewer = NicoStore.getViewer();
+      if (viewer !== null && viewer !== undefined) {
+        CommentAction.getComment(viewer);
+        clearInterval(waitConnect);
+        done();
+      }
+    }, 500);
   });
 
   after(() => {

@@ -29,7 +29,7 @@ let CommentTable = React.createClass({
     let components = [];
     let index = 0;
     _(this.props.comments).each(comment => {
-      components.push(<Comment index={index} comment={comment} />);;
+      components.push(<Comment index={index} comment={comment} />);
       index++;
     });
     return components;
