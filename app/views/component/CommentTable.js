@@ -38,7 +38,7 @@ let CommentTable = React.createClass({
   render() {
     return (
       <List
-        className='CommentTable'
+        className='CommentTableComponent'
         style={{marginTop: '64px', marginBottom: '64px'}}
       >
         <Paper className='CommentTableBody'>
