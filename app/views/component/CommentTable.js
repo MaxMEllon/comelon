@@ -13,18 +13,6 @@ let CommentTable = React.createClass({
     comments: React.PropTypes.array.isRequired
   },
 
-  componentWillMount() {
-  },
-
-  componentDidMount() {
-  },
-
-  componentDidUpdate() {
-  },
-
-  componentWillUnMount() {
-  },
-
   renderComments() {
     let components = [];
     let index = 0;
