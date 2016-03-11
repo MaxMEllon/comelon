@@ -43,7 +43,7 @@ describe('NicoAction', () => {
     }, 500);
   });
 
-  it('try logout', done => {
+  xit('try logout', done => {
     let callback = () => {
       assert(NicoStore.isLogin(), false);
       NicoStore.removeChangeListener(callback);
