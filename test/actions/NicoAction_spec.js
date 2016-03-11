@@ -14,8 +14,9 @@ describe('NicoAction', () => {
   before(() => {
     sandbox.create();
     Nico = require('nicolive');
-    Nico.destroy();
     NicoAction = require('../../app/actions/NicoAction');
+    NicoAction.logout();
+    Nico.destroy();
     loginAction = () => {
       let user = {
         email: process.env.USER_EMAIL,
@@ -30,18 +31,26 @@ describe('NicoAction', () => {
     NicoStore = require('../../app/stores/NicoStore');
   });
 
-  it('try login', (done) => {
-    loginAction();
-    NicoAction.fetchLoginStatus();
-    assert(NicoStore.isLogin(), true);
-    done()
+  it('try login', done => {
+    let wait = setInterval(() => {
+      loginAction();
+      let isLogin = NicoStore.isLogin();
+      if (isLogin) {
+        assert(isLogin, true);
+        clearInterval(wait);
+        done();
+      }
+    }, 500);
   });
 
-  it('try logout', (done) => {
+  it('try logout', done => {
+    let callback = () => {
+      assert(NicoStore.isLogin(), false);
+      NicoStore.removeChangeListener(callback);
+      done();
+    };
+    NicoStore.addChangeListener(callback);
     NicoAction.logout();
-    NicoAction.fetchLoginStatus();
-    assert(NicoStore.isLogin(), false);
-    done();
   });
 
   after(() => {

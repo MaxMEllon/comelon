@@ -1,6 +1,6 @@
 'use strict';
 
-const assert = require('power-assert');
+const {assert} = require('chai');
 
 describe('MainView', () => {
   let React;

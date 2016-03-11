@@ -30,6 +30,28 @@ describe('CommentAction', () => {
     CommentStore = require('../../app/stores/CommentStore');
   });
 
+  it('try connect', done => {
+    let waitLogin = setInterval(() => { NicoAction.fetchLoginStatus(); }, 700);
+    let isConnected = false;
+    let loginCallback = () => {
+      if (NicoStore.isLogin() && ! isConnected) {
+        expect(NicoStore.isLogin()).to.be.equal(true);
+        NicoAction.connect('nsen/hotaru');
+        isConnected = true;
+        clearInterval(waitLogin);
+      }
+    };
+    NicoStore.addChangeListener(loginCallback);
+    let waitConnect = setInterval(() => {
+      let viewer = NicoStore.getViewer();
+      if (viewer !== null && viewer !== undefined) {
+        CommentAction.getComment(viewer);
+        clearInterval(waitConnect);
+        done();
+      }
+    }, 500);
+  });
+
   it('reset all comment', done => {
     CommentAction.resetAllComment();
     let comments = CommentStore.getAllComments();
@@ -49,26 +71,6 @@ describe('CommentAction', () => {
       nickname = CommentStore.getNickname(sampleComment.getIn(['attr', 'user_id']));
     }, 100)
   })
-
-  it('try comment', done => {
-    let waitLogin = setInterval(() => { NicoAction.fetchLoginStatus(); }, 300);
-    let loginCallback = () => {
-      if (NicoStore.isLogin()) {
-        expect(NicoStore.isLogin()).to.be.equal(true);
-        NicoAction.connect('nsen/hotaru');
-        clearInterval(waitLogin);
-      }
-    };
-    NicoStore.addChangeListener(loginCallback);
-    let waitConnect = setInterval(() => {
-      let viewer = NicoStore.getViewer();
-      if (viewer !== null && viewer !== undefined) {
-        CommentAction.getComment(viewer);
-        clearInterval(waitConnect);
-        done();
-      }
-    }, 500);
-  });
 
   after(() => {
     sandbox.restore();

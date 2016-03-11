@@ -88,6 +88,10 @@ let NicoAction = {
   logout() {
     Nico.logout(error => {
       if (error) throw error;
+      AppDispatcher.dispatch({
+        actionType: NicoActionType.FETCH_LOGIN_STATUS,
+        isLogin: false
+      });
     });
   }
 
