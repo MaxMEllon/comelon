@@ -1,10 +1,8 @@
 'use strict';
 
-const Immutable = require('immutable');
-
-let Size = Immutable.fromJS({
+let Size = {
   width: 550,
   height: 900
-});
+};
 
 module.exports = Size;
