@@ -15,7 +15,20 @@ let dispatchNickname = (userId, nickname) => {
   });
 };
 
+/**
+ * @classdesc CommentAction
+ * コメントの送受信，各コメントのハンドルネームの管理を行います
+ */
 let CommentAction = {
+
+  /**
+   * getComment() 名前変更予定
+   * @param {Socket} - viewer ニコ生へのSocket
+   * NicoAction.connect()を呼び出したあと，NicoStore.getViewerから
+   * ソケットを取得する必要があります．
+   * このメソッドはイベントの登録になっているので，
+   * 一度呼び出すだけで良いです．
+   */
   getComment(viewer) {
     viewer.on('comment', comment => {
       _.defer(() => {
@@ -29,18 +42,36 @@ let CommentAction = {
     });
   },
 
+  /**
+   * postComment()
+   * @param {strings} - コメント文
+   * @param {Object} - 184投稿オプション {184: `strings`}
+   * コメントの投稿を試みます
+   * 失敗時 NotificationAction.notifyで通知を行います
+   */
   postComment(comment, mail = {mail: ''}) {
     Nico.comment(comment, mail, (error) => {
       if (error) NotificationAction.notify('コメントの投稿に失敗しました');
     });
   },
 
+  /**
+   * resetAllComment()
+   * CommentStoreに登録されているコメント一覧をリセットします
+   */
   resetAllComment() {
     AppDispatcher.dispatch({
       actionType: CommentActionType.RESET_ALL_COMMENT
     });
   },
 
+  /**
+   * fetchNickname()
+   * @param {Immutable.Map} comment - Immutable.Map型にしたAPIレスポンス
+   * コメントのハンドルネームを取得し，CommentStoreに登録します
+   * 取得できないユーザー（匿名ユーザー）の場合，
+   * '184' を登録します
+   */
   fetchNickname(comment) {
     let userId = comment.getIn(['attr', 'user_id']);
     let anonymous = '184';

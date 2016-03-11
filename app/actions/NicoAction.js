@@ -5,7 +5,16 @@ const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NicoActionType = require('./types/NicoActionTypes');
 const NotificationAction = require('./NotificationAction');
 
+/**
+ * @classdesc NicoAction
+ * ログイン，ログアウト，ニコ生への接続などのアクションを管理します
+ */
 let NicoAction = {
+
+  /**
+   * fetchLoginStatus()
+   * 現在のログイン状態をNicoStore::_isLoginにセットします
+   */
   fetchLoginStatus() {
     Nico.ping(error => {
       let isLogin = null;
@@ -18,6 +27,15 @@ let NicoAction = {
     });
   },
 
+  /**
+   * login(user)
+   * @param {Object} user - user情報 {user: `strings`, password: `strings`}
+   * @throws {strings} error - ログイン失敗時エラーメッセージ
+   * ニコニコへのログインを試みます．
+   * 失敗した場合，NotificationAction.notify()で失敗の通知を行います
+   * 成功した場合，cookieをNicoStore::_cookieに登録し
+   * NicoStore::_isLoginをtrueにします
+   */
   login(user) {
     Nico.ping(error => {
       if (! error) { return; }
@@ -39,6 +57,15 @@ let NicoAction = {
     });
   },
 
+  /**
+   * connect(liveId)
+   * @param {strings} liveId - ニコ生放送番号(ex. lv000000)
+   * @throws {strings} error - ニコ生接続の失敗時メッセージ
+   * ニコニコ生放送への接続を試みます．
+   * 失敗した場合，NotificationAction.notify()で失敗の通知を行います
+   * 成功した場合，SocketであるviewerをNicoStoreに登録します．
+   * これは，Commentの取得時に必要となります．
+   */
   connect(liveId) {
     Nico.view(liveId, (error, viewer) => {
       if (error) {
@@ -53,6 +80,11 @@ let NicoAction = {
     });
   },
 
+  /**
+   * logout()
+   * @throws {strings} error - ニコ生接続の失敗時メッセージ
+   * ニコニコからログアウトします
+   */
   logout() {
     Nico.logout(error => {
       if (error) throw error;
