@@ -1,7 +1,7 @@
 {
   "name": "comelon",
   "version": "v0.2.0",
-  "main": "scripts/main.js",
+  "main": "main.js",
   "license": "MIT",
   "author": "MaxMEllon <maxmellon1994@gmail.com>",
   "repository": "maxmellon/comelon",

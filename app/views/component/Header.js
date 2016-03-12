@@ -2,7 +2,9 @@
 
 const React = require('react');
 const NicoAction = require('../../actions/NicoAction');
+const NotificationAction = require('../../actions/NotificationAction');
 const CommentAction = require('../../actions/CommentAction');
+const SettingAction = require('../../actions/SettingAction');
 const Appbar = require('material-ui/lib/app-bar');
 const Colors = require('material-ui/lib/styles/colors');
 const IconButton = require('material-ui/lib/icon-button');
@@ -26,9 +28,16 @@ let Header = React.createClass({
   handleConnect() {
     let liveId = this.state.lv.trim();
     if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
-    if (liveId === '' || liveId === 'lv') { return; }
+    if (liveId === '' || liveId === 'lv') {
+      NotificationAction.notify('生放送IDの書式ではありません');
+      return;
+    }
     CommentAction.resetAllComment();
     NicoAction.connect(liveId);
+  },
+
+  handleConfig() {
+    SettingAction.open();
   },
 
   render() {
@@ -63,6 +72,7 @@ let Header = React.createClass({
                 className='AppSettingsButton'
                 tooltip='設定'
                 tooltipPosition='bottom-left'
+                onMouseDown={this.handleConfig}
               ><SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/></IconButton>
             </div>
           }
