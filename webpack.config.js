@@ -25,11 +25,13 @@ let webpackConfig = {
     new NodeTargetPlugin()
   ],
   module: {
-    loaders: [ {
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-    },
+    loaders:
+    [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.json$/,
         loader: 'json-loader'
