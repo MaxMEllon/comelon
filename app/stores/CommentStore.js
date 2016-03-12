@@ -74,13 +74,10 @@ AppDispatcher.register(action => {
   /**
    * CommentActionType.GET_COMMENT
    * ActionがCommentを受信した時にdisptachされます
-   * `/` から始まるコメントは無視します
-   * TODO: `/` から始まるコメントの非表示の設定
    */
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
-    const pattarn = /\/(.*)/;
-    if (comment && ! comment.get('text').match(pattarn)) {
+    if (comment) {
       _comments.push(comment);
       CommentStore.emitChange();
     }

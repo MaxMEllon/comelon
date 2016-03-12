@@ -40,7 +40,7 @@ let Settings = React.createClass({
   },
 
   handleToggle() {
-    let toggled = ! this.state.option.get('systemComment');
+    let toggled = this.state.option.get('systemComment') ? false : true;
     SettingAction.setSystemCommentViewOption(toggled);
   },
 
@@ -69,9 +69,8 @@ let Settings = React.createClass({
             </p>
             <br />
             <Toggle
-              ref='SystemCommentViewOption'
-              onToggle={this.onToggle}
               defaultToggled={this.state.option.get('systemComment')}
+              onToggle={this.handleToggle}
               label='運営コメントの表示／非表示'
             />
           </div>

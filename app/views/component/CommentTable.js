@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const React = require('react');
+const SettingStore = require('../../stores/SettingStore');
 const Comment = require('./Comment');
 const List = require('material-ui/lib/lists/list');
 const Paper = require('material-ui/lib/paper');
@@ -17,6 +18,11 @@ let CommentTable = React.createClass({
     let components = [];
     let index = 0;
     _(this.props.comments).each(comment => {
+      if (SettingStore.getOption().systemComment === false) {
+        const pattarn = /\/(.*)/;
+        comment.get('text').match(pattarn);
+        return;
+      }
       let no = comment.getIn(['attr', 'no']);
       let id = comment.getIn(['attr', 'user_id']);
       components.push(<Comment key={`${no}${id}`} index={index} comment={comment} />);

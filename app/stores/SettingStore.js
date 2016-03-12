@@ -9,7 +9,7 @@ const CHANGE_EVENT = 'change';
 
 let _open = false;
 let _option = {
-  systemCommentViewOption: false
+  systemComment: false
 };
 
 /**
@@ -67,8 +67,8 @@ AppDispatcher.register(action => {
    */
   case SettingActionType.SET_SYSTEM_COMMENT_VIEW_OPTION:
     let systemCommentViewOption = action.systemCommentViewOption;
-    if (systemCommentViewOption !== _option.systemCommentViewOption) {
-      _option.systemCommentViewOption = systemCommentViewOption;
+    if (systemCommentViewOption !== _option.systemComment) {
+      _option.systemComment = systemCommentViewOption;
       SettingStore.emitChange();
     }
     break;
