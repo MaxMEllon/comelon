@@ -16,6 +16,9 @@ test_script:
   - node --version
   - npm run test
 
+cache:
+  - node_modules
+
 build: off
 deploy: off
 
