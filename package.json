@@ -10,7 +10,7 @@
     "dev": "gulp serve",
     "e2e": "NODE_ENV=e2e mocha -t 150000 --compilers js:espower-babel/guess --harmony e2e/nightmare.js",
     "eslint": "eslint $(git ls-files | grep -e '.js$')",
-    "fix": "eslint $(git ls-files | grep -e '.js$') --fix",
+    "fix": "eslint --fix $(git ls-files | grep -e '.js$')",
     "lint": "npm run stylint & npm run eslint ",
     "postdev": "gulp watch",
     "predev": "npm run style & npm run compile",

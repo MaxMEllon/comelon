@@ -7,7 +7,7 @@ const NotificationActionType = require('../actions/types/NotificationActionTypes
 
 const CHANGE_EVENT = 'change';
 
-let _message = ''
+let _message = '';
 
 /**
  * @classdesc NotificationStore

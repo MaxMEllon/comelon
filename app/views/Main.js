@@ -19,7 +19,7 @@ let Main = React.createClass({
       comments: [],
       isLogin: null,
       viewer: null
-    }
+    };
   },
 
   componentWillMount() {

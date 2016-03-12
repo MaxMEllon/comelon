@@ -21,9 +21,9 @@ describe('NicoAction', () => {
       let user = {
         email: process.env.USER_EMAIL,
         password: process.env.PASSWORD
-      }
+      };
       NicoAction.login(user);
-    }
+    };
   });
 
   beforeEach(() => {

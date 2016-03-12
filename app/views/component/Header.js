@@ -16,7 +16,7 @@ let Header = React.createClass({
   getInitialState() {
     return {
       lv: ''
-    }
+    };
   },
 
   changeLiveid(e) {

@@ -35,7 +35,7 @@ describe('CommentTable', () => {
     const CommentTable = require('../../app/views/component/CommentTable');
     CommentAction.fetchNickname(sampleComments[0]);
     let nickname = null;
-    let wait = setInterval(() =>{
+    let wait = setInterval(() => {
       if (nickname !== null && nickname !== undefined) {
         let renderedComponent = ReactTestUtils.renderIntoDocument(<CommentTable comments={sampleComments} />);
         let component = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'CommentComponent');
@@ -45,7 +45,7 @@ describe('CommentTable', () => {
         done();
       }
       nickname = CommentStore.getNickname(sampleComments[0].getIn(['attr', 'user_id']));
-    }, 100)
+    }, 100);
   });
 
 });
