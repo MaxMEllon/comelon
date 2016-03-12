@@ -1,10 +1,11 @@
 {
   "name": "comelon",
-  "version": "v0.1.0",
+  "version": "v0.2.0",
   "main": "scripts/main.js",
   "license": "MIT",
   "author": "MaxMEllon <maxmellon1994@gmail.com>",
   "repository": "maxmellon/comelon",
+  "description": "nicolive comment viewer on electron",
   "homepage": "https://github.com/MaxMEllon/comelon",
   "repository": {
     "type": "git",
