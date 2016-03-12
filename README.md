@@ -19,11 +19,15 @@ e2e : [![Travis CI](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](
   <img src="./logs/screenshots/demo.png">
 </p>
 
-## Start development
+## Installation
 
-- install and run
+$ npm install -g electron-prebuild
+$ npm install -g comelon
+
+## For development
 
   ```sh
+  $ git clone https://github.com/MaxMEllon/comelon.git && cd comelon
   $ npm i
   $ npm run dev
   ```
