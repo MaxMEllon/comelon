@@ -42,12 +42,3 @@
 
 [TODO](./TODO.md)
 
-## Special Thanks
-
-- [electron-es6-react](https://github.com/b52/electron-es6-react)
-
-```txt
-The MIT License (MIT)
-
-Copyright (c) 2015 Oliver Mader <b52@reaktor42.de>
-```
