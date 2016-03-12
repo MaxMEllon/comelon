@@ -1,0 +1,21 @@
+environment:
+  nodejs_version: ""
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install -g npm
+  - npm --version
+  - npm install -g node-gyp
+  - npm install --build-from-source --msvs_version=2013
+  - npm run compile
+
+init:
+  - git config --global core.autocrlf false
+
+test_script:
+  - node --version
+  - npm run test
+
+build: off
+deploy: off
+
