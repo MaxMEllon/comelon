@@ -4,6 +4,7 @@ const React = require('react');
 const NicoAction = require('../../actions/NicoAction');
 const NotificationAction = require('../../actions/NotificationAction');
 const CommentAction = require('../../actions/CommentAction');
+const SettingAction = require('../../actions/SettingAction');
 const Appbar = require('material-ui/lib/app-bar');
 const Colors = require('material-ui/lib/styles/colors');
 const IconButton = require('material-ui/lib/icon-button');
@@ -36,7 +37,7 @@ let Header = React.createClass({
   },
 
   handleConfig() {
-
+    SettingAction.open();
   },
 
   render() {

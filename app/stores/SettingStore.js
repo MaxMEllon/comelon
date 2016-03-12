@@ -7,8 +7,8 @@ const SettingActionType = require('../actions/types/SettingActionTypes');
 
 const CHANGE_EVENT = 'change';
 
-let option = {
-  open: false,
+let _open = false;
+let _option = {
   systemCommentViewOption: false
 };
 
@@ -18,10 +18,20 @@ let option = {
  */
 let SettingStore = assign({}, EventEmitter.prototype, {
   /**
-   * getAllComments()
-   * 受信したコメントを全て返却します
-   * @returns {Array} _comments
+   * isOpen()
+   * @returns {boolean} _open
    */
+  isOpen() {
+    return _open;
+  },
+
+  /**
+   * getOption()
+   * @returns {Object} _option
+   */
+  getOption() {
+    return _option;
+  },
 
   /**
    * emitChange()
@@ -57,9 +67,9 @@ AppDispatcher.register(action => {
    */
   case SettingActionType.SET_SYSTEM_COMMENT_VIEW_OPTION:
     let systemCommentViewOption = action.systemCommentViewOption;
-    if (systemCommentViewOption !== option.systemCommentViewOption) {
-      option.systemCommentViewOption = systemCommentViewOption;
-      this.emitChange();
+    if (systemCommentViewOption !== _option.systemCommentViewOption) {
+      _option.systemCommentViewOption = systemCommentViewOption;
+      SettingStore.emitChange();
     }
     break;
 
@@ -68,9 +78,9 @@ AppDispatcher.register(action => {
    */
   case SettingActionType.OPEN:
     let open = action.open;
-    if (open !== option.open) {
-      option.open = open;
-      this.emitChange();
+    if (_open !== open) {
+      _open = open;
+      SettingStore.emitChange();
     }
     break;
   }

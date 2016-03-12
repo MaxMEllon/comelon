@@ -10,6 +10,7 @@ const CommentTable = require('./component/CommentTable');
 const Footer = require('./component/Footer');
 const Login = require('./component/Login');
 const Notify = require('./component/Notify');
+const Setting = require('./Settings');
 
 let Main = React.createClass({
   displayName: 'Main',
@@ -60,6 +61,7 @@ let Main = React.createClass({
         <Footer />
         <Login open={this.state.isLogin === false} />
         <Notify />
+        <Setting />
       </div>
     );
   }

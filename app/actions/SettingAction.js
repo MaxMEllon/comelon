@@ -3,6 +3,13 @@
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const SettingActionTypes = require('./types/SettingActionTypes');
 
+let dispatchSettingWindowOpenFlag = (flag) => {
+  AppDispatcher.dispatch({
+    actionType: SettingActionTypes.OPEN,
+    open: flag
+  });
+};
+
 /**
  * @classdesc SettingAction
  */
@@ -24,10 +31,14 @@ let SettingAction = {
    * open() SettingsModalの表示
    */
   open() {
-    AppDispatcher.dispatch({
-      actionType: SettingActionTypes.OPEN,
-      open: true
-    });
+    dispatchSettingWindowOpenFlag(true);
+  },
+
+  /**
+   * open() SettingsModalのクローズ
+   */
+  close() {
+    dispatchSettingWindowOpenFlag(false);
   }
 };
 

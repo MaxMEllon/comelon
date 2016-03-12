@@ -1,14 +1,40 @@
 'use strict';
 
+const Immutable = require('immutable');
 const React = require('react');
+const SettingAction = require('../actions/SettingAction');
+const SettingStore = require('../stores/SettingStore');
 const Dialog = require('material-ui/lib/dialog');
 const FlatButton = require('material-ui/lib/flat-button');
 
 let Settings = React.createClass({
   displayName: 'Settings',
 
+  getInitialState() {
+    return {
+      open: false,
+      option: {
+        systemComment: false
+      }
+    };
+  },
+
+  componentWillMount() {
+    SettingStore.addChangeListener(this.onChangeState);
+  },
+
+  componentWillUnMount() {
+    SettingStore.removeChangeListener(this.onChangeState);
+  },
+
+  onChangeState() {
+    this.setState({open: SettingStore.isOpen()});
+    this.setState({option: Immutable.fromJS(SettingStore.getOption())});
+  },
+
   handleClose() {
     this.setState({open: false});
+    SettingAction.close();
   },
 
   render() {
@@ -35,6 +61,7 @@ let Settings = React.createClass({
           actions={actions}
           modal={false}
           onRequestClose={this.handleClose} >
+          <div></div>
         </Dialog>
       </div>
     );
