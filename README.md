@@ -21,8 +21,10 @@ e2e : [![Travis CI](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](
 
 ## Installation
 
-$ npm install -g electron-prebuild
-$ npm install -g comelon
+  ```sh
+  $ npm install -g electron-prebuild
+  $ npm install -g comelon
+  ```
 
 ## For development
 
