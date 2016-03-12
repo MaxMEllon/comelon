@@ -21,7 +21,6 @@
     "new-cap": 0,
     "no-alert": 1,
     "no-var": 2,
-    "no-confusing-arrow": [2, {"allowParens": false}],
     "no-console": 2,
     "no-dupe-args": 2,
     "no-dupe-keys": 2,
