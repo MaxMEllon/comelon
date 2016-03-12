@@ -4,7 +4,7 @@ require('babel-core/register');
 require('babel-polyfill');
 
 const chai = require('chai');
-const {assert} = chai;
+const {expect} = chai;
 const {sandbox} = require('sinon');
 chai.use(require('sinon-chai'));
 
@@ -24,33 +24,29 @@ describe('SettingAction', () => {
   it('try to set system comment view option', done => {
     let callback = () => {
       let systemCommentOption = SettingStore.getOption().systemComment;
-      assert(systemCommentOption, true);
-      SettingStore.removeListener(callback);
+      expect(systemCommentOption).to.be.equal(true);
+      SettingStore.removeChangeListener(callback);
       done();
     };
     SettingStore.addChangeListener(callback);
     SettingAction.setSystemCommentViewOption(true);
   });
 
-  it('try open', done => {
-    let callback = () => {
+  it('try open and close', done => {
+    let openCallback = () => {
       let isOpen = SettingStore.isOpen();
-      assert(isOpen, true);
-      SettingStore.removeListener(callback);
-      done();
+      expect(isOpen).to.be.equal(true);
     };
-    SettingStore.addChangeListener(callback);
+    SettingStore.addChangeListener(openCallback);
     SettingAction.open();
-  });
-
-  it('try close', done => {
-    let callback = () => {
+    SettingStore.removeChangeListener(openCallback);
+    let closeCallback = () => {
       let isOpen = SettingStore.isOpen();
-      assert(isOpen, false);
-      SettingStore.removeListener(callback);
+      expect(isOpen).to.be.equal(false);
+      SettingStore.removeChangeListener(openCallback);
       done();
     };
-    SettingStore.addChangeListener(callback);
+    SettingStore.addChangeListener(closeCallback);
     SettingAction.close();
   });
 
