@@ -1,9 +1,25 @@
 {
   "name": "comelon",
-  "version": "0.1.0",
-  "main": "main.js",
+  "version": "0.1.1",
+  "main": "scripts/main.js",
   "license": "MIT",
+  "author": "MaxMEllon <maxmellon1994@gmail.com>",
   "repository": "maxmellon/comelon",
+  "homepage": "https://github.com/MaxMEllon/comelon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaxMEllon/comelon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaxMEllon/comelon/issues"
+  },
+  "bin": {
+    "comelon": "./bin/cli.js"
+  },
+  "keywords": [
+    "niconico",
+    "electron"
+  ],
   "scripts": {
     "compile": "gulp js",
     "cover": "nyc --reporter=lcov --reporter=text npm run test",
