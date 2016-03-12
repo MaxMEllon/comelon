@@ -61,11 +61,13 @@ let Footer = React.createClass({
             />
           </ToolbarGroup>
           <ToolbarGroup float='right' style={{width: '20%'}}>
-            <RaisedButton className='LiveConnectButton'
-                          primary={true}
-                          style={{width: '40%', minWidth: '80px', float: 'right'}}
-                          label='送信'
-                          onMouseDown={this.handlePostComment} />
+            <RaisedButton
+              className='LiveConnectButton'
+              primary={true}
+              style={{width: '40%', minWidth: '80px', float: 'right'}}
+              label='送信'
+              onMouseDown={this.handlePostComment}
+            />
           </ToolbarGroup>
         </Toolbar>
       </div>

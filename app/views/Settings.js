@@ -4,8 +4,10 @@ const Immutable = require('immutable');
 const React = require('react');
 const SettingAction = require('../actions/SettingAction');
 const SettingStore = require('../stores/SettingStore');
+const Divider = require('material-ui/lib/divider');
 const Dialog = require('material-ui/lib/dialog');
 const FlatButton = require('material-ui/lib/flat-button');
+const Toggle = require('material-ui/lib/toggle');
 
 let Settings = React.createClass({
   displayName: 'Settings',
@@ -13,9 +15,9 @@ let Settings = React.createClass({
   getInitialState() {
     return {
       open: false,
-      option: {
+      option: Immutable.fromJS({
         systemComment: false
-      }
+      })
     };
   },
 
@@ -37,23 +39,22 @@ let Settings = React.createClass({
     SettingAction.close();
   },
 
+  handleToggle() {
+    let toggled = ! this.state.option.get('systemComment');
+    SettingAction.setSystemCommentViewOption(toggled);
+  },
+
   render() {
     const actions = [
       <FlatButton
-        label='キャンセル'
+        label='閉じる'
         secondary={true}
         onMouseDown={this.handleClose}
-      />,
-      <FlatButton
-        label='設定'
-        primary={true}
-        keyboardFocused={true}
-        onMouseDown={this.handleClose}
-      />,
+      />
     ];
 
     return (
-      <div>
+      <div className='SettingsView'>
         <Dialog
           className='LoginModal'
           title='設定'
@@ -61,7 +62,19 @@ let Settings = React.createClass({
           actions={actions}
           modal={false}
           onRequestClose={this.handleClose} >
-          <div></div>
+          <div className='SettingsContainer'>
+            <Divider />
+            <p style={{fontSize: '14px', color: '#030303'}}>
+              設定は変更した時点で反映されます
+            </p>
+            <br />
+            <Toggle
+              ref='SystemCommentViewOption'
+              onToggle={this.onToggle}
+              defaultToggled={this.state.option.get('systemComment')}
+              label='運営コメントの表示／非表示'
+            />
+          </div>
         </Dialog>
       </div>
     );
