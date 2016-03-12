@@ -18,7 +18,7 @@ let webpackConfig = {
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   entry: ['./scripts/main.js'],
-  output: opt, 
+  output: opt,
   externals: ['electron', 'remote', 'nicolive'],
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -34,10 +34,10 @@ let webpackConfig = {
         test: /\.json$/,
         loader: 'json-loader'
       },
-    // {
-    //   test: /\.js$/,
-    //   loader: 'webpack-strip?strip[]=console.log'
-    // }
+      {
+        test: /\.js$/,
+        loader: 'webpack-strip?strip[]=console.log'
+      }
     ]
   }
 };
