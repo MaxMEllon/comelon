@@ -1,0 +1,5 @@
+/app
+/build
+/release
+/.nyc_output
+/coverage
