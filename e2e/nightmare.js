@@ -12,7 +12,7 @@ const TEST_HTML_PATH = 'file://' + path.join(__dirname, '../index.html');
 
 describe('e2e', function() {
   this.timeout(600000);
-  var nightmare;
+  let nightmare;
 
   before(function() {
     Nico.destroy();
@@ -31,11 +31,11 @@ describe('e2e', function() {
   });
 
   it('render main view', function*() {
-    var title = yield nightmare
+    let title = yield nightmare
       .viewport(size.width, size.height)
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
-      .title()
+      .title();
     assert(title, 'こめろん');
   });
 
@@ -47,7 +47,7 @@ describe('e2e', function() {
       .click('.EmailForm')
       .type('.EmailForm > input[type=text]', process.env.USER_EMAIL)
       .click('.PasswordForm')
-      .type('.PasswordForm > input[type=password]', process.env.PASSWORD)
+      .type('.PasswordForm > input[type=password]', process.env.PASSWORD);
       // FIXME
       // Error: done() invoked with non-Error: Cannot read property 'dispatchEvent' of null
       //        at run (node_modules/core-js/modules/es6.promise.js:104:47)
@@ -66,7 +66,7 @@ describe('e2e', function() {
       .goto(TEST_HTML_PATH)
       .wait('.MainView')
       .type('input[type=text]', 'nsen/hotaru')
-      .wait(300)
+      .wait(300);
       // FIXME
       // Error: done() invoked with non-Error: Cannot read property 'dispatchEvent' of null
       //        at run (node_modules/core-js/modules/es6.promise.js:104:47)
@@ -74,6 +74,6 @@ describe('e2e', function() {
       //        at flush (node_modules/core-js/modules/$.microtask.js:19:5)
       // .mousedown('button > span')
       // .wait(300)
-  })
+  });
 
 });

@@ -21,7 +21,7 @@ describe('CommentAction', () => {
     let user = {
       email: process.env.USER_EMAIL,
       password: process.env.PASSWORD
-    }
+    };
     NicoAction.login(user);
   });
 
@@ -63,14 +63,14 @@ describe('CommentAction', () => {
     let sampleComment = Immutable.fromJS({ attr: { user_id: 4197870 } });
     CommentAction.fetchNickname(sampleComment);
     let nickname = null;
-    let wait = setInterval(() =>{
+    let wait = setInterval(() => {
       if (nickname !== null && nickname !== undefined) {
         expect(nickname).to.be.equal('MaxMEllon');
         clearInterval(wait);
       }
       nickname = CommentStore.getNickname(sampleComment.getIn(['attr', 'user_id']));
-    }, 100)
-  })
+    }, 100);
+  });
 
   after(() => {
     sandbox.restore();

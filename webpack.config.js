@@ -1,18 +1,18 @@
 'use strict';
 
-var webpack = require('webpack');
-var path = require('path');
-var JsonpTemplatePlugin = webpack.JsonpTemplatePlugin;
-var FunctionModulePlugin = require('webpack/lib/FunctionModulePlugin');
-var NodeTargetPlugin = require('webpack/lib/node/NodeTargetPlugin');
+const webpack = require('webpack');
+const path = require('path');
+const JsonpTemplatePlugin = webpack.JsonpTemplatePlugin;
+const FunctionModulePlugin = require('webpack/lib/FunctionModulePlugin');
+const NodeTargetPlugin = require('webpack/lib/node/NodeTargetPlugin');
 
-var opt = {
+const opt = {
   path: path.resolve('./bundle/js'),
   filename: 'main.js',
   libraryTarget: 'commonjs2'
 };
 
-var webpackConfig = {
+let webpackConfig = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']

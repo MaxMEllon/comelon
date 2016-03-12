@@ -14,6 +14,6 @@ let Settings = React.createClass({
 
 });
 
-module.exports = Settings
+module.exports = Settings;
 
 // vim:ft=javascript.jsx

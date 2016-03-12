@@ -23,7 +23,7 @@ let CommentAction = {
 
   /**
    * getComment() 名前変更予定
-   * @param {Socket} - viewer ニコ生へのSocket
+   * @param {Object} - viewer ニコ生へのSocket
    * NicoAction.connect()を呼び出したあと，NicoStore.getViewerから
    * ソケットを取得する必要があります．
    * このメソッドはイベントの登録になっているので，

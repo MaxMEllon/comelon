@@ -11,7 +11,7 @@ let Notify = React.createClass({
     return {
       open: false,
       message: ''
-    }
+    };
   },
 
   componentWillMount() {

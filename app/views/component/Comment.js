@@ -19,7 +19,7 @@ let Comment = React.createClass({
   renderAvater(userIcon) {
     return (
       <ImageLoader style={{width: '36px', height: '36px'}}
-                   preloader={() => { return <Snipper size={0.5}/> }}
+                   preloader={<Snipper size={0.5}/>}
                    imgProps={{width: '36px', height: '36px'}}
                    src={userIcon}>
         <img width='36px' height='36px' src='./assets/img/blank.jpg' />

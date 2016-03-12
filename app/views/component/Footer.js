@@ -15,7 +15,7 @@ let Footer = React.createClass({
     return {
       comment: '',
       mail: ''
-    }
+    };
   },
 
   changeComment(e) {

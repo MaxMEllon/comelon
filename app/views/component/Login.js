@@ -52,7 +52,7 @@ let Login = React.createClass({
       <FlatButton label='ログイン'
                   primary={true}
                   onMouseDown={this.handleClose} />
-    ]
+    ];
 
     return (
       <div className='LoginComponent'>
