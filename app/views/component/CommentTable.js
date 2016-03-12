@@ -20,8 +20,7 @@ let CommentTable = React.createClass({
     _(this.props.comments).each(comment => {
       if (SettingStore.getOption().systemComment === false) {
         const pattarn = /\/(.*)/;
-        comment.get('text').match(pattarn);
-        return;
+        if (comment.get('text').match(pattarn)) return;
       }
       let no = comment.getIn(['attr', 'no']);
       let id = comment.getIn(['attr', 'user_id']);
