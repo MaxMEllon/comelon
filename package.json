@@ -25,7 +25,7 @@
     "compile": "gulp js",
     "cover": "nyc --reporter=lcov --reporter=text npm run test",
     "dev": "gulp serve",
-    "e2e": "NODE_ENV=e2e mocha -t 150000 --compilers js:espower-babel/guess --harmony e2e/nightmare.js",
+    "e2e": " mocha -t 150000 --compilers js:espower-babel/guess --harmony e2e/nightmare.js",
     "eslint": "eslint $(git ls-files | grep -e '.js$')",
     "fix": "eslint --fix $(git ls-files | grep -e '.js$')",
     "lint": "npm run stylint & npm run eslint ",
@@ -33,7 +33,7 @@
     "predev": "npm run style & npm run compile",
     "style": "gulp css & npm run stylint",
     "stylint": "stylint ./assets/styl/*.styl",
-    "test": "NODE_ENV=test mocha --timeout 150000 --compilers js:espower-babel/guess test/**/*.js",
+    "test": "mocha --timeout 150000 --compilers js:espower-babel/guess test/**/*.js",
     "release": "electron-packager ./release --platform=linux,darwin,win32 --arch=x64 --version=0.36.8"
   },
   "dependencies": {
