@@ -28,6 +28,8 @@
   ```sh
   $ npm install -g electron-prebuild
   $ npm install -g comelon
+
+  $ comelon # running comelon
   ```
 
 ## For development
