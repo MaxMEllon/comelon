@@ -34,15 +34,17 @@ describe('NicoAction', () => {
   it('try login', done => {
     let isWindows = (process.platform === 'win32');
     if (isWindows) { done(); }
-    let wait = setInterval(() => {
-      loginAction();
-      let isLogin = NicoStore.isLogin();
-      if (isLogin) {
-        assert(isLogin, true);
-        clearInterval(wait);
-        done();
-      }
-    }, 500);
+    else {
+      let wait = setInterval(() => {
+        loginAction();
+        let isLogin = NicoStore.isLogin();
+        if (isLogin) {
+          assert(isLogin, true);
+          clearInterval(wait);
+          done();
+        }
+      }, 500);
+    }
   });
 
   xit('try logout', done => {

@@ -33,25 +33,27 @@ describe('CommentAction', () => {
   it('try connect', done => {
     let isWindows = (process.platform === 'win32');
     if (isWindows) { done(); }
-    let waitLogin = setInterval(() => { NicoAction.fetchLoginStatus(); }, 700);
-    let isConnected = false;
-    let loginCallback = () => {
-      if (NicoStore.isLogin() && ! isConnected) {
-        expect(NicoStore.isLogin()).to.be.equal(true);
-        NicoAction.connect('nsen/hotaru');
-        isConnected = true;
-        clearInterval(waitLogin);
-      }
-    };
-    NicoStore.addChangeListener(loginCallback);
-    let waitConnect = setInterval(() => {
-      let viewer = NicoStore.getViewer();
-      if (viewer !== null && viewer !== undefined) {
-        CommentAction.getComment(viewer);
-        clearInterval(waitConnect);
-        done();
-      }
-    }, 500);
+    else {
+      let waitLogin = setInterval(() => { NicoAction.fetchLoginStatus(); }, 700);
+      let isConnected = false;
+      let loginCallback = () => {
+        if (NicoStore.isLogin() && ! isConnected) {
+          expect(NicoStore.isLogin()).to.be.equal(true);
+          NicoAction.connect('nsen/hotaru');
+          isConnected = true;
+          clearInterval(waitLogin);
+        }
+      };
+      NicoStore.addChangeListener(loginCallback);
+      let waitConnect = setInterval(() => {
+        let viewer = NicoStore.getViewer();
+        if (viewer !== null && viewer !== undefined) {
+          CommentAction.getComment(viewer);
+          clearInterval(waitConnect);
+          done();
+        }
+      }, 500);
+    }
   });
 
   it('reset all comment', done => {

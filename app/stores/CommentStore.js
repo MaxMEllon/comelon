@@ -8,15 +8,15 @@ const CommentActionType = require('../actions/types/CommentActionTypes');
 
 const CHANGE_EVENT = 'change';
 
-let _comments = [];
-let _nicknames = {};
+let comments = [];
+let nicknames = {};
 
 let resetAllComment = () => {
-  _comments = [];
+  comments = [];
 };
 
 let setNickName = (userId, nickname) => {
-  _nicknames[`${userId}`] = nickname;
+  nicknames[`${userId}`] = nickname;
 };
 
 /**
@@ -30,7 +30,7 @@ let CommentStore = assign({}, EventEmitter.prototype, {
    * @returns {Array} _comments
    */
   getAllComments() {
-    return _comments;
+    return comments;
   },
 
   /**
@@ -40,7 +40,7 @@ let CommentStore = assign({}, EventEmitter.prototype, {
    * @returns {strings} nickname
    */
   getNickname(userId) {
-    return _nicknames[`${userId}`];
+    return nicknames[`${userId}`];
   },
 
   /**
@@ -79,7 +79,7 @@ AppDispatcher.register(action => {
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
     if (! R.isNil(comment)) {
-      _comments.push(comment);
+      comments.push(comment);
       CommentStore.emitChange();
     }
     break;

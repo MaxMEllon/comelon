@@ -32,6 +32,15 @@ describe('SettingAction', () => {
     SettingAction.setSystemCommentViewOption(true);
   });
 
+  it('if system comment view option set null should be exception', done => {
+    setTimeout(() => {
+      expect(() => {
+        SettingAction.setSystemCommentViewOption(null);
+      }).to.throw('type error in SettingAction');
+      done();
+    }, 500);
+  });
+
   it('try open and close', done => {
     let openCallback = () => {
       let isOpen = SettingStore.isOpen();
