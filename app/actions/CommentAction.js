@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
 const Nico = require('nicolive');
 const NotificationAction = require('../actions/NotificationAction');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -30,15 +29,16 @@ let CommentAction = {
    * 一度呼び出すだけで良いです．
    */
   getComment(viewer) {
+    const dispatchComment = (comment) => {
+      let come = Immutable.fromJS(comment);
+      this.fetchNickname(come);
+      AppDispatcher.dispatch({
+        actionType: CommentActionType.GET_COMMENT,
+        comment: come
+      });
+    };
     viewer.on('comment', comment => {
-      _.defer(() => {
-        let come = Immutable.fromJS(comment);
-        this.fetchNickname(come);
-        AppDispatcher.dispatch({
-          actionType: CommentActionType.GET_COMMENT,
-          comment: come
-        });
-      }, 300);
+      setTimeout(() => { dispatchComment(comment); }, 300);
     });
   },
 

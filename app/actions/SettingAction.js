@@ -1,9 +1,10 @@
 'use strict';
 
+const R = require('ramda');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const SettingActionTypes = require('./types/SettingActionTypes');
 
-let dispatchSettingWindowOpenFlag = (flag) => {
+const dispatchSettingWindowOpenFlag = (flag) => {
   AppDispatcher.dispatch({
     actionType: SettingActionTypes.OPEN,
     open: flag
@@ -20,7 +21,7 @@ let SettingAction = {
    * @param {boolean} - / から始まるシステムコメントの表示，非表示
    */
   setSystemCommentViewOption(option) {
-    if (typeof option !== 'boolean') throw 'type error in SettingAction';
+    if (! R.is(Boolean, option)) throw 'type error in SettingAction';
     AppDispatcher.dispatch({
       actionType: SettingActionTypes.SET_SYSTEM_COMMENT_VIEW_OPTION,
       systemCommentViewOption: option

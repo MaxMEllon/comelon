@@ -11,7 +11,7 @@ describe('CommentTable', () => {
   let React;
   let sampleComments;
 
-  before(done => {
+  before(() => {
     sandbox.create();
     Immutable = require('immutable');
     React = require('react');
@@ -25,19 +25,18 @@ describe('CommentTable', () => {
         text: 'sample comment2'
       })
     ];
-    done();
   });
 
   after(() => {
     sandbox.restore();
   });
 
-  it('should display Comment in CommentTable ', done => {
+  it('should display Comment in CommentTable ', () => {
+    require('../setup')();
     const CommentTable = require('../../app/views/component/CommentTable');
     const Comment = require('../../app/views/component/Comment');
     const wrapper = shallow(<CommentTable comments={sampleComments} />);
     expect(wrapper.find(Comment).length).to.equal(2);
-    done();
   });
 
 });

@@ -7,7 +7,7 @@ const NotificationActionType = require('../actions/types/NotificationActionTypes
 
 const CHANGE_EVENT = 'change';
 
-let _message = '';
+let message = '';
 
 /**
  * @classdesc NotificationStore
@@ -20,7 +20,7 @@ let NotificationStore = assign({}, EventEmitter.prototype, {
    * 現在メッセージを返却します
    */
   getMessage() {
-    return _message;
+    return message;
   },
 
   /**
@@ -56,11 +56,8 @@ AppDispatcher.register(action => {
    * 通知メッセージを空じゃなければ登録します
    */
   case NotificationActionType.NOTIFY:
-    let message = action.message;
-    if (message !== '') {
-      _message = message;
-      NotificationStore.emitChange();
-    }
+    message = action.message;
+    NotificationStore.emitChange();
     break;
   }
 });

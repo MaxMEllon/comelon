@@ -7,8 +7,8 @@ const SettingActionType = require('../actions/types/SettingActionTypes');
 
 const CHANGE_EVENT = 'change';
 
-let _open = false;
-let _option = {
+let open = false;
+let option = {
   systemComment: false
 };
 
@@ -22,7 +22,7 @@ let SettingStore = assign({}, EventEmitter.prototype, {
    * @returns {boolean} _open
    */
   isOpen() {
-    return _open;
+    return open;
   },
 
   /**
@@ -30,7 +30,7 @@ let SettingStore = assign({}, EventEmitter.prototype, {
    * @returns {Object} _option
    */
   getOption() {
-    return _option;
+    return option;
   },
 
   /**
@@ -67,8 +67,8 @@ AppDispatcher.register(action => {
    */
   case SettingActionType.SET_SYSTEM_COMMENT_VIEW_OPTION:
     let systemCommentViewOption = action.systemCommentViewOption;
-    if (systemCommentViewOption !== _option.systemComment) {
-      _option.systemComment = systemCommentViewOption;
+    if (systemCommentViewOption !== option.systemComment) {
+      option.systemComment = systemCommentViewOption;
       SettingStore.emitChange();
     }
     break;
@@ -77,11 +77,8 @@ AppDispatcher.register(action => {
    *
    */
   case SettingActionType.OPEN:
-    let open = action.open;
-    if (_open !== open) {
-      _open = open;
-      SettingStore.emitChange();
-    }
+    open = action.open;
+    SettingStore.emitChange();
     break;
   }
 
