@@ -31,6 +31,8 @@ describe('CommentAction', () => {
   });
 
   it('try connect', done => {
+    let isWindows = (process.platform === 'win32');
+    if (isWindows) { done(); }
     let waitLogin = setInterval(() => { NicoAction.fetchLoginStatus(); }, 700);
     let isConnected = false;
     let loginCallback = () => {

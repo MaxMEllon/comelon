@@ -32,6 +32,8 @@ describe('NicoAction', () => {
   });
 
   it('try login', done => {
+    let isWindows = (process.platform === 'win32');
+    if (isWindows) { done(); }
     let wait = setInterval(() => {
       loginAction();
       let isLogin = NicoStore.isLogin();
