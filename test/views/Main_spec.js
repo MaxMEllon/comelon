@@ -1,27 +1,20 @@
 'use strict';
 
-const {assert} = require('chai');
+const {expect} = require('chai');
+const {shallow} = require('enzyme');
 
 describe('MainView', () => {
   let React;
-  let ReactDOM;
-  let ReactTestUtils;
 
-  before(done => {
-    require('../setup')();
+  before(() => {
     React = require('react');
-    ReactDOM = require('react-dom');
-    ReactTestUtils = require('react-addons-test-utils');
-    done();
   });
 
-  it('should display MainView', done => {
+  it('should display MainView', () => {
     const Main = require('../../app/views/Main');
-    let renderedComponent = ReactTestUtils.renderIntoDocument(<Main />);
-    let component  = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'MainView');
-    let node = ReactDOM.findDOMNode(component);
-    assert(node.getAttribute('class'), 'MainView');
-    done();
+    const wrapper = shallow(<Main />);
+    expect(wrapper.find('MainView')).to.have.length(0);
+    expect(wrapper.find('MainView').root.length).to.equal(1);
   });
 
 });

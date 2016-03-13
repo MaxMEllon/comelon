@@ -4,13 +4,12 @@
   "main": "main.js",
   "license": "MIT",
   "author": "MaxMEllon <maxmellon1994@gmail.com>",
-  "repository": "maxmellon/comelon",
-  "description": "nicolive comment viewer on electron",
-  "homepage": "https://github.com/MaxMEllon/comelon",
   "repository": {
     "type": "git",
     "url": "https://github.com/MaxMEllon/comelon.git"
   },
+  "description": "nicolive comment viewer on electron",
+  "homepage": "https://github.com/MaxMEllon/comelon",
   "bugs": {
     "url": "https://github.com/MaxMEllon/comelon/issues"
   },
@@ -52,6 +51,7 @@
     "electron-connect": "^0.3.7",
     "electron-mocha": "^0.8.0",
     "electron-prebuilt": "^0.36.8",
+    "enzyme": "^2.1.0",
     "eslint": "^2.0.0",
     "eslint-plugin-react": "^4.0.0",
     "espower-babel": "^4.0.1",
