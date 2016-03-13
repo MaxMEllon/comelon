@@ -1,5 +1,6 @@
 'use strict';
 
+const R = require('ramda');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NotificationActionType = require('./types/NotificationActionTypes');
 
@@ -16,7 +17,10 @@ let NotificationAction = {
    * messageをNotificationStoreに格納します
    */
   notify(message) {
-    if (typeof message !== 'string') throw 'message is not strings';
+    const notString = (message) => ! R.is(String, message);
+    const empty = (message) => R.isEmpty(message);
+    const fail = R.either(notString, empty);
+    if (fail(message)) throw 'message is not strings';
     AppDispatcher.dispatch({
       actionType: NotificationActionType.NOTIFY,
       message: message

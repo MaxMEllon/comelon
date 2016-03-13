@@ -1,6 +1,6 @@
 'use strict';
 
-const _ = require('lodash');
+const R = require('ramda');
 const React = require('react');
 const SettingStore = require('../../stores/SettingStore');
 const Comment = require('./Comment');
@@ -34,26 +34,25 @@ let CommentTable = React.createClass({
 
   renderComments() {
     let components = [];
+    const pattarn = /^(\/(.*)){1}/;
+    const isShowSystemComment = this.state.systemComment;
     let index = 0;
-    _(this.props.comments).each(comment => {
-      if (this.state.systemComment) {
-        const pattarn = /^(\/(.*)){1}/;
-        if (comment.get('text').match(pattarn)) return;
-      }
+    const renderComment = comment => {
+      const isSkip = R.and(isShowSystemComment, comment.get('text').match(pattarn));
+      if (isSkip) return;
       let no = comment.getIn(['attr', 'no']);
       let id = comment.getIn(['attr', 'user_id']);
       components.push(<Comment key={`${no}${id}`} index={index} comment={comment} />);
-      index++;
-    });
+      R.inc(index);
+    };
+    R.forEach(renderComment, this.props.comments);
     return components;
   },
 
   render() {
     return (
-      <List
-        className='CommentTableComponent'
-        style={{marginTop: '64px', marginBottom: '64px'}}
-      >
+      <List className='CommentTableComponent'
+        style={{marginTop: '64px', marginBottom: '64px'}} >
         <Paper className='CommentTableBody'>
           {this.renderComments()}
         </Paper>

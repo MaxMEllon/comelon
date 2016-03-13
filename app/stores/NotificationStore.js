@@ -57,10 +57,8 @@ AppDispatcher.register(action => {
    */
   case NotificationActionType.NOTIFY:
     let message = action.message;
-    if (message !== '') {
-      _message = message;
-      NotificationStore.emitChange();
-    }
+    _message = message;
+    NotificationStore.emitChange();
     break;
   }
 });

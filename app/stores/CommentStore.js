@@ -1,5 +1,6 @@
 'use strict';
 
+const R = require('ramda');
 const assign = require('object-assign');
 const EventEmitter = require('eventemitter3');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
@@ -77,7 +78,7 @@ AppDispatcher.register(action => {
    */
   case CommentActionType.GET_COMMENT:
     let comment = action.comment;
-    if (comment) {
+    if (! R.isNil(comment)) {
       _comments.push(comment);
       CommentStore.emitChange();
     }
