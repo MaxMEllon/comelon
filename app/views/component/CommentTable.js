@@ -14,12 +14,30 @@ let CommentTable = React.createClass({
     comments: React.PropTypes.array.isRequired
   },
 
+  getInitialState() {
+    return {
+      systemComment: false
+    };
+  },
+
+  componentDidMount() {
+    SettingStore.addChangeListener(this.onChangeSystemComment);
+  },
+
+  componentDidUnMount() {
+    SettingStore.addChangeListener(this.onChangeSystemComment);
+  },
+
+  onChangeSystemComment() {
+    this.setState({systemComment: SettingStore.getOption().systemComment});
+  },
+
   renderComments() {
     let components = [];
     let index = 0;
     _(this.props.comments).each(comment => {
-      if (SettingStore.getOption().systemComment === false) {
-        const pattarn = /\/(.*)/;
+      if (this.state.systemComment) {
+        const pattarn = /^(\/(.*)){1}/;
         if (comment.get('text').match(pattarn)) return;
       }
       let no = comment.getIn(['attr', 'no']);
