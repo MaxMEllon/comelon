@@ -6,7 +6,7 @@ const {shallow, mount} = require('enzyme');
 const {sandbox} = require('sinon');
 chai.use(require('sinon-chai'));
 
-describe('CommentTable', () => {
+describe('Header', () => {
   let React;
 
   before(done => {
@@ -38,6 +38,15 @@ describe('CommentTable', () => {
     expect(ConnectButton.props().tooltip).to.equal('接続');
     const SettingsButton = AppbarWraper.find(IconButton).last();
     expect(SettingsButton.props().tooltip).to.equal('設定');
+  });
+
+  xit('if clicked SettingButton should be set isOpen of SettingStore ', () => {
+    require('../setup')();
+    const Header = require('../../app/views/component/Header');
+    const SettingStore = require('../../app/stores/SettingStore');
+    const wrapper = mount(<Header />);
+    wrapper.component.getInstance().handleConfig();
+    setTimeout(() => {expect(SettingStore.isOpen()).to.be.true;}, 100);
   });
 
 });
