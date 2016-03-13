@@ -13,15 +13,15 @@
   - [x] post comment
   - [x] get comment
     - [ ] is premium
-    - [ ] user icon
+    - [x] user icon
     - [x] is 184
     - [x] comment no
     - [x] user name
     - [ ] kotehan (hold handle name)
     - [ ] sheet type
-  - [ ] option
-    - [ ] systam comment (ex. /disconnect)
-    - [ ] 184 post
+  - [x] option
+    - [x] systam comment (ex. /disconnect)
+    - [x] 184 post
     - [ ] font size
 
 - architecture
@@ -40,5 +40,6 @@
     - [x] CommentStore
       - [x] comment
 
-- [ ] design
+- [x] design
+  - [x] material-ui
 
