@@ -7,9 +7,9 @@ const NicoActionType = require('../actions/types/NicoActionTypes');
 
 const CHANGE_EVENT = 'change';
 
-let _cookie = null;
-let _viewer = null;
-let _isLogin = true;
+let cookie = null;
+let viewer = null;
+let isLogin = true;
 
 /**
  * @classdesc NicoStore
@@ -23,7 +23,7 @@ let NicoStore = assign({}, EventEmitter.prototype, {
    * 現在のログイン状態を返します
    */
   isLogin() {
-    return _isLogin;
+    return isLogin;
   },
 
   /**
@@ -32,7 +32,7 @@ let NicoStore = assign({}, EventEmitter.prototype, {
    * 現在のcookieを返します
    */
   getCookie() {
-    return _cookie;
+    return cookie;
   },
 
   /**
@@ -41,7 +41,7 @@ let NicoStore = assign({}, EventEmitter.prototype, {
    * 現在のviewer(ニコ生放送へのソケット)を返します
    */
   getViewer() {
-    return _viewer;
+    return viewer;
   },
 
   /**
@@ -79,11 +79,8 @@ AppDispatcher.register(action => {
    * クッキーを更新します
    */
   case NicoActionType.LOGIN:
-    let cookie = action.cookie;
-    if (cookie) {
-      _cookie = cookie;
-      NicoStore.emitChange();
-    }
+    cookie = action.cookie;
+    NicoStore.emitChange();
     break;
 
   /**
@@ -92,11 +89,8 @@ AppDispatcher.register(action => {
    * viewerを更新します
    */
   case NicoActionType.CONNECT:
-    let viewer = action.viewer;
-    if (viewer) {
-      _viewer = viewer;
-      NicoStore.emitChange();
-    }
+    viewer = action.viewer;
+    NicoStore.emitChange();
     break;
 
   /**
@@ -105,8 +99,7 @@ AppDispatcher.register(action => {
    * 現在のログイン状態を更新します
    */
   case NicoActionType.FETCH_LOGIN_STATUS:
-    let isLogin = action.isLogin;
-    _isLogin = isLogin;
+    isLogin = action.isLogin;
     NicoStore.emitChange();
     break;
   }
