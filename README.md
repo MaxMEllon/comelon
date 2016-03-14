@@ -40,6 +40,10 @@
   $ npm run dev
   ```
 
+## Download Binary
+
+  - [comelon/releases](https://github.com/MaxMEllon/comelon/releases)
+
 ## Todo
 
 [TODO](./TODO.md)
