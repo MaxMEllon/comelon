@@ -12,8 +12,8 @@ let Comment = React.createClass({
   displayName: 'Comment',
 
   propTypes: {
-    comment: React.PropTypes.any,
-    index: React.PropTypes.number
+    comment: React.PropTypes.any.isRequired,
+    index: React.PropTypes.number.isRequired
   },
 
   renderAvater(userIcon) {

@@ -16,7 +16,9 @@ let resetAllComment = () => {
 };
 
 let setNickName = (userId, nickname) => {
-  nicknames[`${userId}`] = nickname;
+  let newData = {};
+  newData[R.toString(userId)] = nickname;
+  nicknames = R.merge(nicknames, newData);
 };
 
 /**
@@ -40,7 +42,7 @@ let CommentStore = assign({}, EventEmitter.prototype, {
    * @returns {strings} nickname
    */
   getNickname(userId) {
-    return nicknames[`${userId}`];
+    return R.prop(R.toString(userId), nicknames);
   },
 
   /**
