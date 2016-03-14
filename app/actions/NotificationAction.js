@@ -17,8 +17,8 @@ let NotificationAction = {
    * messageをNotificationStoreに格納します
    */
   notify(message) {
-    const notString = (message) => ! R.is(String, message);
-    const empty = (message) => R.isEmpty(message);
+    const notString = R.complement(R.is(String));
+    const empty = R.isEmpty;
     const fail = R.either(notString, empty);
     if (fail(message)) throw 'message is not strings';
     AppDispatcher.dispatch({

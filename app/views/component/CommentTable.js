@@ -34,16 +34,16 @@ let CommentTable = React.createClass({
 
   renderComments() {
     let components = [];
-    const pattarn = /^(\/(.*)){1}/;
+    const match = R.test(/^(\/(.*)){1}/);
     const isShowSystemComment = this.state.systemComment;
     let index = 0;
     const renderComment = comment => {
-      const isSkip = R.and(isShowSystemComment, comment.get('text').match(pattarn));
+      const isSkip = R.and(isShowSystemComment, match(comment.get('text')));
       if (isSkip) return;
       let no = comment.getIn(['attr', 'no']);
       let id = comment.getIn(['attr', 'user_id']);
       components.push(<Comment key={`${no}${id}`} index={index} comment={comment} />);
-      R.inc(index);
+      index++;
     };
     R.forEach(renderComment, this.props.comments);
     return components;

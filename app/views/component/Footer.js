@@ -1,5 +1,6 @@
 'use strict';
 
+const R = require('ramda');
 const React = require('react');
 const CommentAction = require('../../actions/CommentAction');
 const Toolbar = require('material-ui/lib/toolbar/toolbar');
@@ -23,16 +24,14 @@ let Footer = React.createClass({
   },
 
   handleToggle() {
-    if (this.state.mail === '') {
-      this.setState({mail: 184});
-    } else {
-      this.setState({mail: ''});
-    }
+    const setMailState = (mail) => this.setState({mail: mail});
+    R.isEmpty(this.state.mail) ? setMailState('184') : setMailState('');
   },
 
   handlePostComment() {
-    let comment = this.state.comment.trim();
-    if (comment !== '') {
+    const comment = this.state.comment.trim();
+    const notEmpty = R.complement(R.isEmpty);
+    if (notEmpty(comment)) {
       CommentAction.postComment(comment, {mail: this.state.mail});
       this.setState({comment: ''});
     }

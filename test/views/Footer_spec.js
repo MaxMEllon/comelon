@@ -30,7 +30,7 @@ describe('Footer', () => {
     const Footer = require('../../app/views/component/Footer');
     const wrapper = mount(<Footer />);
     wrapper.component.getInstance().handleToggle();
-    expect(wrapper.state().mail).to.equal(184);
+    expect(wrapper.state().mail).to.equal('184');
   });
 
   it('if input text should be change text of state', () => {

@@ -1,7 +1,8 @@
 'use strict';
 
-const Immutable = require('immutable');
+const R = require('ramda');
 const React = require('react');
+const Immutable = require('immutable');
 const SettingAction = require('../actions/SettingAction');
 const SettingStore = require('../stores/SettingStore');
 const Divider = require('material-ui/lib/divider');
@@ -30,8 +31,10 @@ let Settings = React.createClass({
   },
 
   onChangeState() {
-    this.setState({open: SettingStore.isOpen()});
-    this.setState({option: Immutable.fromJS(SettingStore.getOption())});
+    this.setState({
+      open: SettingStore.isOpen(),
+      option: Immutable.fromJS(SettingStore.getOption())
+    });
   },
 
   handleClose() {
@@ -40,7 +43,7 @@ let Settings = React.createClass({
   },
 
   handleToggle() {
-    let toggled = this.state.option.get('systemComment') ? false : true;
+    const toggled = R.not(this.state.option.get('systemComment'));
     SettingAction.setSystemCommentViewOption(toggled);
   },
 
