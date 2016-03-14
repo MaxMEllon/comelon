@@ -37,7 +37,8 @@
     "release": "electron-packager ./release --platform=linux,darwin,win32 --arch=x64 --version=0.36.8"
   },
   "dependencies": {
-    "nicolive": "^0.0.4"
+    "nicolive": "^0.0.4",
+    "openjtalk": "^0.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
