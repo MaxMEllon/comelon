@@ -40,6 +40,11 @@
   $ npm run dev
   ```
 
+## Contribute
+
+Everything okay.
+がんがんいこうぜ（小さなプルリクエストからなんでも待ってます）
+
 ## Download Binary
 
   - [comelon/releases](https://github.com/MaxMEllon/comelon/releases)
