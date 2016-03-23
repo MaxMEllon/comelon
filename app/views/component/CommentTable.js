@@ -16,26 +16,30 @@ let CommentTable = React.createClass({
 
   getInitialState() {
     return {
-      systemComment: false
+      systemComment: false,
+      doTalking: false
     };
   },
 
   componentDidMount() {
-    SettingStore.addChangeListener(this.onChangeSystemComment);
+    SettingStore.addChangeListener(this.onChangeOption);
   },
 
   componentDidUnMount() {
-    SettingStore.addChangeListener(this.onChangeSystemComment);
+    SettingStore.addChangeListener(this.onChangeOption);
   },
 
   onChangeSystemComment() {
-    this.setState({systemComment: SettingStore.getOption().systemComment});
+    this.setState({
+      systemComment: SettingStore.getOption().systemComment,
+      doTalking: SettingStore.getOption().doTalking
+    });
   },
 
   renderComments() {
     let components = [];
     const match = R.test(/^(\/(.*)){1}/);
-    const isShowSystemComment = this.state.systemComment;
+    const isShowSystemComment = ! this.state.systemComment;
     let index = 0;
     const renderComment = comment => {
       const isSkip = R.and(isShowSystemComment, match(comment.get('text')));

@@ -17,7 +17,8 @@ let Settings = React.createClass({
     return {
       open: false,
       option: Immutable.fromJS({
-        systemComment: false
+        systemComment: false,
+        doTalking: false
       })
     };
   },
@@ -42,9 +43,14 @@ let Settings = React.createClass({
     SettingAction.close();
   },
 
-  handleToggle() {
+  handleChangeSystemCommentOption() {
     const toggled = R.not(this.state.option.get('systemComment'));
     SettingAction.setSystemCommentViewOption(toggled);
+  },
+
+  handleChangeDoTalkingOption() {
+    const toggled = R.not(this.state.option.get('doTalking'));
+    SettingAction.setDoTalkingOption(toggled);
   },
 
   render() {
@@ -73,8 +79,13 @@ let Settings = React.createClass({
             <br />
             <Toggle
               defaultToggled={this.state.option.get('systemComment')}
-              onToggle={this.handleToggle}
-              label='運営コメントの表示／非表示'
+              onToggle={this.handleChangeSystemCommentOption}
+              label='運営コメントの非表示／表示'
+            />
+            <Toggle
+              defaultToggled={this.state.option.get('doTalking')}
+              onToggle={this.handleChangeDoTalkingOption}
+              label='棒読みのオフ／オン'
             />
           </div>
         </Dialog>

@@ -9,7 +9,8 @@ const CHANGE_EVENT = 'change';
 
 let open = false;
 let option = {
-  systemComment: false
+  systemComment: false,
+  doTalking: false,
 };
 
 /**
@@ -73,6 +74,13 @@ AppDispatcher.register(action => {
     }
     break;
 
+  case SettingActionType.SET_DO_TALKING_OPTION:
+    let doTalking = action.doTalking;
+    if (doTalking !== option.doTalking) {
+      option.doTalking = doTalking;
+      SettingStore.emitChange();
+    }
+    break;
   /**
    *
    */

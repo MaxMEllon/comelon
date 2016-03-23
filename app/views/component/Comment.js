@@ -2,6 +2,7 @@
 
 const React = require('react');
 const CommentStore = require('../../stores/CommentStore');
+const SettingStore = require('../../stores/SettingStore');
 const TalkAction = require('../../actions/TalkAction');
 const TalkStore = require('../../stores/TalkStore');
 const ImageLoader = require('react-imageloader');
@@ -20,7 +21,7 @@ let Comment = React.createClass({
 
   getInitialState() {
     return {
-      nowTalking: false
+      nowTalking: false,
     };
   },
 
@@ -28,8 +29,11 @@ let Comment = React.createClass({
     TalkStore.addChangeListener(this.onNowTalking);
   },
 
+
   componentDidMount() {
-    TalkAction.talk(this.props.comment.get('text'));
+    if (SettingStore.getOption().doTalking) {
+      TalkAction.talk(this.props.comment.get('text'));
+    }
   },
 
   componentWillUnMount() {
