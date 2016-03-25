@@ -63,26 +63,26 @@ AppDispatcher.register(action => {
   let type = action.actionType;
 
   switch (type) {
+
   /**
-   *
+   * SET_SYSTEM_COMMENT_VIEW_OPTION evnet
    */
   case SettingActionType.SET_SYSTEM_COMMENT_VIEW_OPTION:
-    let systemCommentViewOption = action.systemCommentViewOption;
-    if (systemCommentViewOption !== option.systemComment) {
-      option.systemComment = systemCommentViewOption;
-      SettingStore.emitChange();
-    }
+    option.systemComment = action.systemCommentViewOption;
+    SettingStore.emitChange();
     break;
 
-  case SettingActionType.SET_DO_TALKING_OPTION:
-    let doTalking = action.doTalking;
-    if (doTalking !== option.doTalking) {
-      option.doTalking = doTalking;
-      SettingStore.emitChange();
-    }
-    break;
   /**
-   *
+   * SET_DO_TALKING_OPTION evnet
+   */
+  case SettingActionType.SET_DO_TALKING_OPTION:
+    option.doTalking = action.doTalking;
+    SettingStore.emitChange();
+    break;
+
+  /**
+   * OPEN event
+   * Settings View を開きます
    */
   case SettingActionType.OPEN:
     open = action.open;
