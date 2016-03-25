@@ -36,7 +36,7 @@ describe('SettingAction', () => {
     setTimeout(() => {
       expect(() => {
         SettingAction.setSystemCommentViewOption(null);
-      }).to.throw('type error in SettingAction');
+      }).to.throw('Uncought TypeError in SettingAction');
       done();
     }, 500);
   });
