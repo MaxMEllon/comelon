@@ -2,6 +2,9 @@
 
 const React = require('react');
 const CommentStore = require('../../stores/CommentStore');
+const SettingStore = require('../../stores/SettingStore');
+const TalkAction = require('../../actions/TalkAction');
+const TalkStore = require('../../stores/TalkStore');
 const ImageLoader = require('react-imageloader');
 const Divider = require('material-ui/lib/divider');
 const ListItem = require('material-ui/lib/lists/list-item');
@@ -14,6 +17,31 @@ let Comment = React.createClass({
   propTypes: {
     comment: React.PropTypes.any.isRequired,
     index: React.PropTypes.number.isRequired
+  },
+
+  getInitialState() {
+    return {
+      nowTalking: false,
+    };
+  },
+
+  componentWillMount() {
+    TalkStore.addChangeListener(this.onNowTalking);
+  },
+
+
+  componentDidMount() {
+    if (SettingStore.getOption().doTalking) {
+      TalkAction.talk(this.props.comment.get('text'));
+    }
+  },
+
+  componentWillUnMount() {
+    TalkStore.removeChangeListener(this.onNowTalking);
+  },
+
+  onNowTalking() {
+    this.setState({nowTalking: TalkStore.isTalkingNow()});
   },
 
   renderAvater(userIcon) {

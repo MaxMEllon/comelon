@@ -7,6 +7,12 @@ const Comment = require('./Comment');
 const List = require('material-ui/lib/lists/list');
 const Paper = require('material-ui/lib/paper');
 
+const ifSystemComment = (comment) => R.test(/^(\/(.*)){1}/, comment.get('text'));
+const No = (comment) => comment.getIn(['attr', 'no']);
+const Id = (comment) => comment.getIn(['attr', 'id']);
+const Key = (comment) => `${No(comment)}${Id(comment)}`;
+const Size = (components) => R.length(components);
+
 let CommentTable = React.createClass({
   displayName: 'CommentTable',
 
@@ -16,34 +22,32 @@ let CommentTable = React.createClass({
 
   getInitialState() {
     return {
-      systemComment: false
+      systemComment: false,
+      doTalking: false
     };
   },
 
   componentDidMount() {
-    SettingStore.addChangeListener(this.onChangeSystemComment);
+    SettingStore.addChangeListener(this.onChangeOption);
   },
 
   componentDidUnMount() {
-    SettingStore.addChangeListener(this.onChangeSystemComment);
+    SettingStore.addChangeListener(this.onChangeOption);
   },
 
   onChangeSystemComment() {
-    this.setState({systemComment: SettingStore.getOption().systemComment});
+    this.setState({
+      systemComment: SettingStore.getOption().systemComment,
+      doTalking: SettingStore.getOption().doTalking
+    });
   },
 
   renderComments() {
+    const ToSkip = R.and(! this.state.systemComment);
     let components = [];
-    const match = R.test(/^(\/(.*)){1}/);
-    const isShowSystemComment = this.state.systemComment;
-    let index = 0;
-    const renderComment = comment => {
-      const isSkip = R.and(isShowSystemComment, match(comment.get('text')));
-      if (isSkip) return;
-      let no = comment.getIn(['attr', 'no']);
-      let id = comment.getIn(['attr', 'user_id']);
-      components.push(<Comment key={`${no}${id}`} index={index} comment={comment} />);
-      index++;
+    const renderComment = c => {
+      if (ToSkip(ifSystemComment(c))) return;
+      components.push(<Comment key={Key(c)} index={Size(components)} comment={c} />);
     };
     R.forEach(renderComment, this.props.comments);
     return components;

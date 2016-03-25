@@ -19,7 +19,7 @@ let webpackConfig = {
   },
   entry: ['./scripts/main.js'],
   output: opt,
-  externals: ['electron', 'remote', 'nicolive'],
+  externals: ['electron', 'openjtalk', 'nicolive'],
   plugins: [
     new webpack.NoErrorsPlugin(),
     new NodeTargetPlugin()

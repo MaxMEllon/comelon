@@ -17,14 +17,28 @@ const dispatchSettingWindowOpenFlag = (flag) => {
 let SettingAction = {
 
   /**
-   * getComment() 名前変更予定
-   * @param {boolean} - / から始まるシステムコメントの表示，非表示
+   * setSystemCommentViewOption()
+   * @param {boolean} - 運営コメントを表示するかどうか
+   * 運営コメントを表示するかどうかのオプションを設定します
    */
   setSystemCommentViewOption(option) {
     if (! R.is(Boolean, option)) throw 'type error in SettingAction';
     AppDispatcher.dispatch({
       actionType: SettingActionTypes.SET_SYSTEM_COMMENT_VIEW_OPTION,
       systemCommentViewOption: option
+    });
+  },
+
+  /**
+   * setDoTalkingOption()
+   * @param {boolean} - 棒読みをオンオフにするかどうか
+   * 棒読みのオンオフを設定します
+   */
+  setDoTalkingOption(option) {
+    if (! R.is(Boolean, option)) throw 'type error in SettingAction';
+    AppDispatcher.dispatch({
+      actionType: SettingActionTypes.SET_DO_TALKING_OPTION,
+      doTalking: option
     });
   },
 
