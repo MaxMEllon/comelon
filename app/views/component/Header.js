@@ -12,6 +12,10 @@ const PlayIcon = require('material-ui/lib/svg-icons/av/airplay');
 const SettingsIcon = require('material-ui/lib/svg-icons/action/settings');
 const TextField = require('material-ui/lib/text-field');
 
+const defaultIconButtonProps = { tooltipPosition: 'bottom-left' };
+const play = <PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/>;
+const setting = <SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/>;
+
 let Header = React.createClass({
   displayName: 'Header',
 
@@ -40,40 +44,51 @@ let Header = React.createClass({
     SettingAction.open();
   },
 
+  renderConnectButton() {
+    return (
+      <IconButton {...defaultIconButtonProps}
+        className='NicoLiveConnectButton'
+        tooltip='接続'
+        onMouseDown={this.handleConnect}
+      >{play}</IconButton>
+    );
+  },
+
+  renderSettingButton() {
+    return (
+      <IconButton {...defaultIconButtonProps}
+        className='AppSettingsButton'
+        tooltip='設定'
+        onMouseDown={this.handleConfig}
+      >{setting}</IconButton>
+    );
+  },
+
   render() {
+    const textFieldProps = {
+      className: 'LiveIdForm',
+      value: this.state.lv,
+      onChange: this.changeLiveid,
+      style: { margin: '0 2em' },
+      inputStyle: { color: 'white' },
+      hintStyle: { color: 'rgba(255,255,255,.5)' },
+      hintText: '放送番号(lvXXXXXX)'
+    };
+
     return (
       <div className='Header'>
-        <Appbar
-          style={{position: 'fixed', top: '0', left: '0', right: '0'}}
+        <Appbar style={{position: 'fixed', top: '0', left: '0', right: '0'}}
           iconElementLeft={<div />}
           title={
             <div>
               <span>comelon</span>
-              <TextField
-                className='LiveIdForm'
-                value={this.state.lv}
-                onChange={this.changeLiveid}
-                style={{margin: '0 2em'}}
-                hintStyle={{color: 'rgba(255,255,255,.5)'}}
-                hintText='放送番号(lv00000)'
-                inputStyle={{color: 'white'}}
-              />
+              <TextField {...textFieldProps} />
             </div>
           }
           iconElementRight={
             <div>
-              <IconButton
-                className='NicoLiveConnectButton'
-                tooltip='接続'
-                tooltipPosition='bottom-left'
-                onMouseDown={this.handleConnect}
-              ><PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/></IconButton>
-              <IconButton
-                className='AppSettingsButton'
-                tooltip='設定'
-                tooltipPosition='bottom-left'
-                onMouseDown={this.handleConfig}
-              ><SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/></IconButton>
+              {this.renderConnectButton()}
+              {this.renderSettingButton()}
             </div>
           }
         />
