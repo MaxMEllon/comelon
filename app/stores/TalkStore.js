@@ -14,22 +14,6 @@ let nowTalking = false;
 
 const unShiftMessage = R.insert(0, R.__, messages);
 const popMessage = () => messages.pop();
-const emitTalking = (args) => {
-  nowTalking = args;
-  TalkStore.emitChange();
-};
-
-const talkSync = () => {
-  let wait = setInterval(() => {
-    if (R.not(nowTalking)) {
-      emitTalking(true);
-      OpenJTalk.talk(popMessage(), () => {
-        emitTalking(false);
-      });
-      clearInterval(wait);
-    }
-  }, 1000);
-};
 
 /**
  * @classdesc TalkStore
@@ -75,7 +59,8 @@ AppDispatcher.register(action => {
 
   switch (type) {
   /**
-   *
+   * コメントを読み上げリストに追加し
+   * 順番が回ってきたらコメントを読み上げます
    */
   case TalkActionType.TALK:
     messages = unShiftMessage(action.message);
@@ -84,5 +69,30 @@ AppDispatcher.register(action => {
   }
 
 });
+
+const emitTalking = (args) => {
+  nowTalking = args;
+  TalkStore.emitChange();
+};
+
+/**
+ * talkSync()
+ * 現在別スレッドでされていなかったらコメントを読み上げます．
+ * コメント読み上げ中は，storeのnowTalkingがtrueになります
+ */
+const talkSync = () => {
+  let wait = setInterval(() => {
+    if (R.not(nowTalking)) {
+      const message = popMessage();
+      if (message !== undefined && message !== null) {
+        emitTalking(true);
+        OpenJTalk.talk(message, () => {
+          emitTalking(false);
+        });
+      }
+      clearInterval(wait);
+    }
+  }, 1000);
+};
 
 module.exports = TalkStore;

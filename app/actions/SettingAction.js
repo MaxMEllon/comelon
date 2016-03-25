@@ -17,7 +17,9 @@ const dispatchSettingWindowOpenFlag = (flag) => {
 let SettingAction = {
 
   /**
-   *
+   * setSystemCommentViewOption()
+   * @param {boolean} - 運営コメントを表示するかどうか
+   * 運営コメントを表示するかどうかのオプションを設定します
    */
   setSystemCommentViewOption(option) {
     if (! R.is(Boolean, option)) throw 'type error in SettingAction';
@@ -28,7 +30,9 @@ let SettingAction = {
   },
 
   /**
-   *
+   * setDoTalkingOption()
+   * @param {boolean} - 棒読みをオンオフにするかどうか
+   * 棒読みのオンオフを設定します
    */
   setDoTalkingOption(option) {
     if (! R.is(Boolean, option)) throw 'type error in SettingAction';
