@@ -4,6 +4,8 @@ const R = require('ramda');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const SettingActionTypes = require('./types/SettingActionTypes');
 
+const missingType = 'Uncought TypeError in SettingAction';
+
 const dispatchSettingWindowOpenFlag = (flag) => {
   AppDispatcher.dispatch({
     actionType: SettingActionTypes.OPEN,
@@ -22,7 +24,7 @@ let SettingAction = {
    * 運営コメントを表示するかどうかのオプションを設定します
    */
   setSystemCommentViewOption(option) {
-    if (! R.is(Boolean, option)) throw 'type error in SettingAction';
+    if (! R.is(Boolean, option)) throw missingType;
     AppDispatcher.dispatch({
       actionType: SettingActionTypes.SET_SYSTEM_COMMENT_VIEW_OPTION,
       systemCommentViewOption: option
@@ -34,11 +36,11 @@ let SettingAction = {
    * @param {boolean} - 棒読みをオンオフにするかどうか
    * 棒読みのオンオフを設定します
    */
-  setDoTalkingOption(option) {
-    if (! R.is(Boolean, option)) throw 'type error in SettingAction';
+  setDoTalkingOption(doTalking) {
+    if (! R.is(Boolean, doTalking)) throw missingType;
     AppDispatcher.dispatch({
       actionType: SettingActionTypes.SET_DO_TALKING_OPTION,
-      doTalking: option
+      doTalking: doTalking
     });
   },
 

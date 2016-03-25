@@ -12,7 +12,7 @@ describe('TalkStore', () => {
 
   let actionTalk = {
     actionType: TalkActionType.TALK,
-    message: 'sample'
+    message: 'execute to talk if SettingStore has taking option'
   };
 
   before(() => {
@@ -34,7 +34,7 @@ describe('TalkStore', () => {
     callback(actionTalk);
     setTimeout(() => {
       expect(TalkStore.isTalkingNow()).to.be.equal(true);
-    }, 100);
+    }, 300);
   });
 
 });

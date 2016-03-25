@@ -31,6 +31,10 @@ let Settings = React.createClass({
     SettingStore.removeChangeListener(this.onChangeState);
   },
 
+  systemComment() { return this.state.option.get('systemComment'); },
+
+  doTalking() { return this.state.option.get('doTalking'); },
+
   onChangeState() {
     this.setState({
       open: SettingStore.isOpen(),
@@ -44,12 +48,12 @@ let Settings = React.createClass({
   },
 
   handleChangeSystemCommentOption() {
-    const toggled = R.not(this.state.option.get('systemComment'));
+    const toggled = R.not(this.systemComment());
     SettingAction.setSystemCommentViewOption(toggled);
   },
 
   handleChangeDoTalkingOption() {
-    const toggled = R.not(this.state.option.get('doTalking'));
+    const toggled = R.not(this.doTalking());
     SettingAction.setDoTalkingOption(toggled);
   },
 
@@ -62,28 +66,29 @@ let Settings = React.createClass({
       />
     ];
 
+    const dialogOptions = {
+      className: 'LoginModal',
+      title: '設定',
+      modal: false,
+      actions: actions,
+      open: this.state.open,
+      onRequestClose: this.handleClose
+    };
+
     return (
       <div className='SettingsView'>
-        <Dialog
-          className='LoginModal'
-          title='設定'
-          open={this.state.open}
-          actions={actions}
-          modal={false}
-          onRequestClose={this.handleClose} >
+        <Dialog {...dialogOptions} >
           <div className='SettingsContainer'>
             <Divider />
             <p style={{fontSize: '14px', color: '#030303'}}>
               設定は変更した時点で反映されます
             </p>
             <br />
-            <Toggle
-              defaultToggled={this.state.option.get('systemComment')}
+            <Toggle defaultToggled={this.systemComment()}
               onToggle={this.handleChangeSystemCommentOption}
               label='運営コメントの非表示／表示'
             />
-            <Toggle
-              defaultToggled={this.state.option.get('doTalking')}
+            <Toggle defaultToggled={this.doTalking()}
               onToggle={this.handleChangeDoTalkingOption}
               label='棒読みのオフ／オン'
             />
