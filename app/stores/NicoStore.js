@@ -1,11 +1,8 @@
 'use strict';
 
-const assign = require('object-assign');
-const EventEmitter = require('eventemitter3');
+const createStore = require('../utils/AppStore');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NicoActionType = require('../actions/types/NicoActionTypes');
-
-const CHANGE_EVENT = 'change';
 
 let cookie = null;
 let viewer = null;
@@ -16,7 +13,7 @@ let isLogin = true;
  * ログイン状態やクッキー，ニコ生のソケットなど
  * ニコニコに関する状態を管理します
  */
-let NicoStore = assign({}, EventEmitter.prototype, {
+let NicoStore = createStore({
   /**
    * isLogin()
    * @returns {boolean} _islogin
@@ -42,30 +39,6 @@ let NicoStore = assign({}, EventEmitter.prototype, {
    */
   getViewer() {
     return viewer;
-  },
-
-  /**
-   * emitChange()
-   * Storeの変更を通知します
-   */
-  emitChange() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  /**
-   * addChangeListener()
-   * Storeが変更された時のコールバックを追加します
-   */
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * removeChangeListener()
-   * Storeが変更された時のコールバックを削除します
-   */
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
   }
 });
 

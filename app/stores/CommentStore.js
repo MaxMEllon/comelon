@@ -1,12 +1,9 @@
 'use strict';
 
 const R = require('ramda');
-const assign = require('object-assign');
-const EventEmitter = require('eventemitter3');
+const createStore = require('../utils/AppStore');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const CommentActionType = require('../actions/types/CommentActionTypes');
-
-const CHANGE_EVENT = 'change';
 
 let comments = [];
 let nicknames = {};
@@ -25,7 +22,7 @@ let setNickName = (userId, nickname) => {
  * @classdesc CommentStore
  * コメントに関する状態(ハンドルネーム，コメント)を管理します
  */
-let CommentStore = assign({}, EventEmitter.prototype, {
+let CommentStore = createStore({
   /**
    * getAllComments()
    * 受信したコメントを全て返却します
@@ -43,30 +40,6 @@ let CommentStore = assign({}, EventEmitter.prototype, {
    */
   getNickname(userId) {
     return R.prop(R.toString(userId), nicknames);
-  },
-
-  /**
-   * emitChange()
-   * Storeの変更を通知します
-   */
-  emitChange() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  /**
-   * addChangeListener()
-   * Storeが変更された時のコールバックを追加します
-   */
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * removeChangeListener()
-   * Storeが変更された時のコールバックを削除します
-   */
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
   }
 });
 
