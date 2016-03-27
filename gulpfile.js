@@ -86,3 +86,5 @@ gulp.task('watch:css', function() {
 gulp.task('watch', ['watch:js', 'watch:css']);
 
 gulp.task('default', ['serve']);
+
+// vim:foldmarker={{{,}}}

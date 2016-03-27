@@ -15,6 +15,14 @@ const TextField = require('material-ui/lib/text-field');
 const defaultIconButtonProps = { tooltipPosition: 'bottom-left' };
 const play = <PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/>;
 const setting = <SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/>;
+const connect = (liveId) => {
+  if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
+  if (liveId === '' || liveId === 'lv') {
+    return NotificationAction.notify('生放送IDの書式ではありません');
+  }
+  CommentAction.resetAllComment();
+  NicoAction.connect(liveId);
+};
 
 let Header = React.createClass({
   displayName: 'Header',
@@ -29,19 +37,15 @@ let Header = React.createClass({
     this.setState({lv: e.target.value});
   },
 
-  handleConnect() {
-    let liveId = this.state.lv.trim();
-    if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
-    if (liveId === '' || liveId === 'lv') {
-      NotificationAction.notify('生放送IDの書式ではありません');
-      return;
+  handleClick(type) {
+    switch (type) {
+    case 'connect':
+      connect(this.state.lv.trim());
+      break;
+    case 'setting':
+      SettingAction.open();
+      break;
     }
-    CommentAction.resetAllComment();
-    NicoAction.connect(liveId);
-  },
-
-  handleConfig() {
-    SettingAction.open();
   },
 
   renderConnectButton() {
@@ -49,7 +53,7 @@ let Header = React.createClass({
       <IconButton {...defaultIconButtonProps}
         className='NicoLiveConnectButton'
         tooltip='接続'
-        onMouseDown={this.handleConnect}
+        onMouseDown={() => this.handleClick('connect')}
       >{play}</IconButton>
     );
   },
@@ -59,7 +63,7 @@ let Header = React.createClass({
       <IconButton {...defaultIconButtonProps}
         className='AppSettingsButton'
         tooltip='設定'
-        onMouseDown={this.handleConfig}
+        onMouseDown={() => this.handleClick('setting')}
       >{setting}</IconButton>
     );
   },
