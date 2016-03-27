@@ -1,11 +1,8 @@
 'use strict';
 
-const assign = require('object-assign');
-const EventEmitter = require('eventemitter3');
+const createStore = require('../utils/AppStore');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const NotificationActionType = require('../actions/types/NotificationActionTypes');
-
-const CHANGE_EVENT = 'change';
 
 let message = '';
 
@@ -13,7 +10,7 @@ let message = '';
  * @classdesc NotificationStore
  * こめろんの通知情報を管理します
  */
-let NotificationStore = assign({}, EventEmitter.prototype, {
+let NotificationStore = createStore({
   /**
    * getMessage()
    * @returns {strings} _message
@@ -22,30 +19,6 @@ let NotificationStore = assign({}, EventEmitter.prototype, {
   getMessage() {
     return message;
   },
-
-  /**
-   * emitChange()
-   * Storeの変更を通知します
-   */
-  emitChange() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  /**
-   * addChangeListener()
-   * Storeが変更された時のコールバックを追加します
-   */
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * removeChangeListener()
-   * Storeが変更された時のコールバックを削除します
-   */
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  }
 });
 
 AppDispatcher.register(action => {

@@ -1,13 +1,10 @@
 'use strict';
 
 const R = require('ramda');
-const assign = require('object-assign');
-const EventEmitter = require('eventemitter3');
+const createStore = require('../utils/AppStore');
 const OpenJTalk = require('../utils/OpenJTalk');
 const AppDispatcher = require('../dispatcher/AppDispatcher');
 const TalkActionType = require('../actions/types/TalkActionTypes');
-
-const CHANGE_EVENT = 'change';
 
 let messages = [];
 let nowTalking = false;
@@ -19,38 +16,9 @@ const popMessage = () => messages.pop();
  * @classdesc TalkStore
  * コメントに関する状態(ハンドルネーム，コメント)を管理します
  */
-let TalkStore = assign({}, EventEmitter.prototype, {
-
-  /**
-   * emitChange()
-   * Storeの変更を通知します
-   */
+let TalkStore = createStore({
   isTalkingNow() {
     return nowTalking;
-  },
-
-  /**
-   * emitChange()
-   * Storeの変更を通知します
-   */
-  emitChange() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  /**
-   * addChangeListener()
-   * Storeが変更された時のコールバックを追加します
-   */
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  /**
-   * removeChangeListener()
-   * Storeが変更された時のコールバックを削除します
-   */
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
   }
 });
 
