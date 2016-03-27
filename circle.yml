@@ -1,7 +1,9 @@
 machine:
   environment:
     CXX: "g++-4.8"
-
+general:
+  artifacts:
+    - 'coverage/lcov-report'
 dependencies:
   override:
     # - "sudo apt-get install -y g++-4.8"
