@@ -31,10 +31,6 @@ let Settings = React.createClass({
     SettingStore.removeChangeListener(this.onChangeState);
   },
 
-  systemComment() { return this.state.option.get('systemComment'); },
-
-  doTalking() { return this.state.option.get('doTalking'); },
-
   onChangeState() {
     this.setState({
       open: SettingStore.isOpen(),
@@ -47,14 +43,11 @@ let Settings = React.createClass({
     SettingAction.close();
   },
 
-  handleChangeSystemCommentOption() {
-    const toggled = R.not(this.systemComment());
-    SettingAction.setSystemCommentViewOption(toggled);
-  },
-
-  handleChangeDoTalkingOption() {
-    const toggled = R.not(this.doTalking());
-    SettingAction.setDoTalkingOption(toggled);
+  handleToggle(method, type) {
+    const nextState = {};
+    nextState[type] = R.not(this.state.option.get(type));
+    this.setState(nextState);
+    SettingAction[method](nextState[type]);
   },
 
   render() {
@@ -84,12 +77,12 @@ let Settings = React.createClass({
               設定は変更した時点で反映されます
             </p>
             <br />
-            <Toggle defaultToggled={this.systemComment()}
-              onToggle={this.handleChangeSystemCommentOption}
+            <Toggle defaultToggled={this.state.option.get('systemComment')}
+              onToggle={() => this.handleToggle('setSystemCommentViewOption', 'systemComment')}
               label='運営コメントの非表示／表示'
             />
-            <Toggle defaultToggled={this.doTalking()}
-              onToggle={this.handleChangeDoTalkingOption}
+            <Toggle defaultToggled={this.state.option.get('doTalking')}
+              onToggle={() => this.handleToggle('setDoTalkingOption', 'doTalking')}
               label='棒読みのオフ／オン'
             />
           </div>
