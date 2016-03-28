@@ -41,6 +41,26 @@ describe('SettingAction', () => {
     }, 500);
   });
 
+  it('should set to SettingStore of doTalking if call setDoTalkingOption of Action', done => {
+    let callback = () => {
+      let talkingOption = SettingStore.getOption().doTalking;
+      expect(talkingOption).to.be.equal(true);
+      SettingStore.removeChangeListener(callback);
+      done();
+    };
+    SettingStore.addChangeListener(callback);
+    SettingAction.setDoTalkingOption(true);
+  });
+
+  it('if option set null should be exception', done => {
+    setTimeout(() => {
+      expect(() => {
+        SettingAction.setDoTalkingOption(null);
+      }).to.throw('Uncought TypeError in SettingAction');
+      done();
+    }, 500);
+  });
+
   it('try open and close', done => {
     let openCallback = () => {
       let isOpen = SettingStore.isOpen();
