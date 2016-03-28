@@ -13,9 +13,11 @@ const SettingsIcon = require('material-ui/lib/svg-icons/action/settings');
 const TextField = require('material-ui/lib/text-field');
 
 const defaultIconButtonProps = { tooltipPosition: 'bottom-left' };
-const play = <PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/>;
+const connect = <PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/>;
 const setting = <SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/>;
-const connect = (liveId) => {
+const icons = {connect, setting};
+
+const tryConnect = (liveId) => {
   if (! isNaN(liveId)) { liveId = `lv${liveId}`; }
   if (liveId === '' || liveId === 'lv') {
     return NotificationAction.notify('生放送IDの書式ではありません');
@@ -40,7 +42,7 @@ let Header = React.createClass({
   handleClick(type) {
     switch (type) {
     case 'connect':
-      connect(this.state.lv.trim());
+      tryConnect(this.state.lv.trim());
       break;
     case 'setting':
       SettingAction.open();
@@ -48,23 +50,13 @@ let Header = React.createClass({
     }
   },
 
-  renderConnectButton() {
+  renderButton(label, type) {
     return (
       <IconButton {...defaultIconButtonProps}
-        className='NicoLiveConnectButton'
-        tooltip='接続'
-        onMouseDown={() => this.handleClick('connect')}
-      >{play}</IconButton>
-    );
-  },
-
-  renderSettingButton() {
-    return (
-      <IconButton {...defaultIconButtonProps}
-        className='AppSettingsButton'
-        tooltip='設定'
-        onMouseDown={() => this.handleClick('setting')}
-      >{setting}</IconButton>
+        className={`${type}Button`}
+        tooltip={label}
+        onMouseDown={() => this.handleClick(type)}
+      >{icons[type]}</IconButton>
     );
   },
 
@@ -91,8 +83,8 @@ let Header = React.createClass({
           }
           iconElementRight={
             <div>
-              {this.renderConnectButton()}
-              {this.renderSettingButton()}
+              {this.renderButton('接続', 'connect')}
+              {this.renderButton('設定', 'setting')}
             </div>
           }
         />
