@@ -5,6 +5,7 @@
 - - -
 
 [![npm](https://img.shields.io/npm/v/comelon.svg)](https://www.npmjs.com/package/comelon)
+[![npm](https://img.shields.io/npm/dt/comelon.svg)]()
 [![unit](https://img.shields.io/circleci/project/MaxMEllon/comelon.svg)](https://circleci.com/gh/MaxMEllon/comelon)
 [![e2e](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](https://travis-ci.org/MaxMEllon/comelon)
 [![Test Coverage](https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg)](https://codeclimate.com/github/MaxMEllon/comelon/coverage)
