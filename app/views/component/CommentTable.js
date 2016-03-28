@@ -35,7 +35,7 @@ let CommentTable = React.createClass({
     SettingStore.addChangeListener(this.onChangeOption);
   },
 
-  onChangeSystemComment() {
+  onChangeOption() {
     this.setState({
       systemComment: SettingStore.getOption().systemComment,
       doTalking: SettingStore.getOption().doTalking
