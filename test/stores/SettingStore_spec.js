@@ -15,6 +15,11 @@ describe('SettingStore', () => {
     systemCommentViewOption: true
   };
 
+  let actionSetDoTalkingOption = {
+    actionType: SettingActionType.SET_DO_TALKING_OPTION,
+    doTalking: true
+  };
+
   let actionOpen = {
     actionType: SettingActionType.OPEN,
     open: true
@@ -39,6 +44,12 @@ describe('SettingStore', () => {
     callback(actionSetSystemCommentViewOption);
     let option = SettingStore.getOption().systemComment;
     assert(option, true);
+  });
+
+  it('should be set doTalking option in SettingStore if call setDoTalkingOption method', () => {
+    callback(actionSetDoTalkingOption);
+    let option = SettingStore.getOption().doTalking;
+    assert(option === true);
   });
 
   it('try open', () => {
