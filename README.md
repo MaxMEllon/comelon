@@ -40,8 +40,11 @@
   ```sh
   $ git clone https://github.com/MaxMEllon/comelon.git && cd comelon
   $ npm i
-  $ npm run dev
+  $ npm run compile
+  $ node_modules/.bin/electron .
   ```
+
+you shouled execturte `npm run start` if watching source code
 
 ## Contribute
 
