@@ -23,10 +23,17 @@ describe('TalkAction', () => {
   });
 
   it('should be set nowtalking in store if called talk action', () => {
-    TalkAction.talk('sample');
+    TalkAction.talk('samplesamplesamplesample');
     setTimeout(() => {
       expect(TalkStore.isTalkingNow()).to.be.equal(true);
-    }, 100);
+    }, 400);
+  });
+
+  it('should dont to set nowtalking in store if called talk action', () => {
+    TalkAction.talk('/disconnect');
+    setTimeout(() => {
+      expect(TalkStore.isTalkingNow()).to.be.equal(false);
+    }, 400);
   });
 
 });

@@ -40,13 +40,16 @@ describe('Header', () => {
     expect(SettingsButton.props().tooltip).to.equal('設定');
   });
 
-  xit('if clicked SettingButton should be set isOpen of SettingStore ', () => {
+  xit('if clicked SettingButton should be set isOpen of SettingStore ', done => {
     require('../setup')();
     const Header = require('../../app/views/component/Header');
     const SettingStore = require('../../app/stores/SettingStore');
     const wrapper = mount(<Header />);
-    wrapper.component.getInstance().handleConfig();
-    setTimeout(() => {expect(SettingStore.isOpen()).to.be.true;}, 100);
+    wrapper.component.getInstance().handleClick('setting');
+    setTimeout(() => {
+      expect(SettingStore.isOpen()).to.be.true;
+      done();
+    }, 500);
   });
 
 });
