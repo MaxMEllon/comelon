@@ -41,11 +41,11 @@ let Footer = React.createClass({
     return (
       <div className='Footer'>
         <Toolbar style={{position: 'fixed', bottom: '0', left: '0', right: '0'}} >
-          <ToolbarGroup firstChild={true} float='left' style={{width: '60%'}}>
+          <ToolbarGroup firstChild={true} float='left' style={{width: '50%'}}>
             <TextField
               className='CommentForm'
               value={this.state.comment}
-              style={{marginLeft: '20px', width: '100%'}}
+              style={{marginLeft: '20px', width: '100%', minWidth: '100px'}}
               hintText='コメント'
               onChange={this.changeComment}
             />
@@ -59,11 +59,11 @@ let Footer = React.createClass({
               style={{maxWidth: 250, float: 'right'}}
             />
           </ToolbarGroup>
-          <ToolbarGroup float='right' style={{width: '20%'}}>
+          <ToolbarGroup float='right' style={{width: '15%'}}>
             <RaisedButton
               className='LiveConnectButton'
               primary={true}
-              style={{width: '40%', minWidth: '80px', float: 'right'}}
+              style={{width: '30%', minWidth: '60px', float: 'right'}}
               label='送信'
               onMouseDown={this.handlePostComment}
             />
