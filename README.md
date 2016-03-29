@@ -44,7 +44,7 @@
   $ node_modules/.bin/electron .
   ```
 
-you shouled execturte `npm run start` if watching source code
+If you would like to watching the source code, then You should execute `npm run start`.
 
 ## Contribute
 
