@@ -31,7 +31,7 @@ let CommentTable = React.createClass({
     SettingStore.addChangeListener(this.onChangeOption);
   },
 
-  componentDidUnMount() {
+  componentWillUnMount() {
     SettingStore.addChangeListener(this.onChangeOption);
   },
 
