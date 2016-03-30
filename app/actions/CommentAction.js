@@ -1,10 +1,10 @@
 'use strict';
 
-const Nico = require('nicolive');
-const NotificationAction = require('../actions/NotificationAction');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const CommentActionType = require('./types/CommentActionTypes');
-const Immutable = require('immutable');
+import Nico from 'nicolive';
+import NotificationAction from '../actions/NotificationAction';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import CommentActionType from './types/CommentActionTypes';
+import Immutable from 'immutable';
 
 let dispatchNickname = (userId, nickname) => {
   AppDispatcher.dispatch({
@@ -87,4 +87,4 @@ let CommentAction = {
 
 };
 
-module.exports = CommentAction;
+export default CommentAction;

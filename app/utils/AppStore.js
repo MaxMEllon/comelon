@@ -1,7 +1,7 @@
 'use strict';
 
-const assign = require('object-assign');
-const EventEmitter = require('eventemitter3');
+import assign from'object-assign';
+import EventEmitter from'eventemitter3';
 
 const CHANGE_EVENT = 'change';
 
@@ -33,5 +33,4 @@ let BaseStore = assign({}, EventEmitter.prototype, {
 
 const createStore = (store) => assign({}, BaseStore, store);
 
-module.exports = createStore;
-
+export default createStore;

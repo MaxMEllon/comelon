@@ -1,8 +1,8 @@
 'use strict';
 
-const R = require('ramda');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const NotificationActionType = require('./types/NotificationActionTypes');
+import R from 'ramda';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import NotificationActionType from './types/NotificationActionTypes';
 
 /**
  * @classdesc NotificationAction
@@ -28,4 +28,4 @@ let NotificationAction = {
   }
 };
 
-module.exports = NotificationAction;
+export default NotificationAction;

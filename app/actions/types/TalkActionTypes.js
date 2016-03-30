@@ -1,5 +1,7 @@
 'use strict';
 
-module.exports = {
+const TalkActionType = {
   TALK: 'talk'
 };
+
+export default TalkActionType;

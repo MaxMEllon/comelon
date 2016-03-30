@@ -1,11 +1,11 @@
 'use strict';
 
-const R = require('ramda');
-const React = require('react');
-const SettingStore = require('../../stores/SettingStore');
-const Comment = require('./Comment');
-const List = require('material-ui/lib/lists/list');
-const Paper = require('material-ui/lib/paper');
+import R from 'ramda';
+import React from 'react';
+import SettingStore from '../../stores/SettingStore';
+import Comment from './Comment';
+import List from 'material-ui/lib/lists/list';
+import Paper from 'material-ui/lib/paper';
 
 const ifSystemComment = (comment) => R.test(/^(\/(.*)){1}/, comment.get('text'));
 const No = (comment) => comment.getIn(['attr', 'no']);
@@ -65,6 +65,6 @@ let CommentTable = React.createClass({
   }
 });
 
-module.exports = CommentTable;
+export default CommentTable;
 
 // vim:ft=javascript.jsx

@@ -1,5 +1,7 @@
 'use strict';
 
-module.exports = {
+const NotificationActionType = {
   NOTIFY: 'notify'
 };
+
+export default NotificationActionType;

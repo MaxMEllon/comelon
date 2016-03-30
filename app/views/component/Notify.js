@@ -1,8 +1,8 @@
 'use strict';
 
-const React = require('react');
-const NotificationStore = require('../../stores/NotificationStore');
-const Snackbar = require('material-ui/lib/snackbar');
+import React from 'react';
+import NotificationStore from '../../stores/NotificationStore';
+import Snackbar from 'material-ui/lib/snackbar';
 
 let Notify = React.createClass({
   displayName: 'Notify',
@@ -52,6 +52,6 @@ let Notify = React.createClass({
 
 });
 
-module.exports = Notify;
+export default Notify;
 
 // vim:ft=javascript.jsx

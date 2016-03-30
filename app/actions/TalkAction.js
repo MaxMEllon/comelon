@@ -1,8 +1,8 @@
 'use strict';
 
-const R = require('ramda');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const TalkActionType = require('./types/TalkActionTypes');
+import R from 'ramda';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import TalkActionType from './types/TalkActionTypes';
 
 /**
  * @classdesc TalkAction
@@ -27,4 +27,4 @@ let TalkAction = {
   }
 };
 
-module.exports = TalkAction;
+export default TalkAction;

@@ -1,10 +1,10 @@
 'use strict';
 
-const R = require('ramda');
-const createStore = require('../utils/AppStore');
-const OpenJTalk = require('../utils/OpenJTalk');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const TalkActionType = require('../actions/types/TalkActionTypes');
+import R from 'ramda';
+import createStore from '../utils/AppStore';
+import OpenJTalk from '../utils/OpenJTalk';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import TalkActionType from '../actions/types/TalkActionTypes';
 
 let messages = [];
 let nowTalking = false;
@@ -63,4 +63,4 @@ const talkSync = () => {
   }, 1000);
 };
 
-module.exports = TalkStore;
+export default TalkStore;

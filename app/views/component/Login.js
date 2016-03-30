@@ -1,11 +1,11 @@
 'use strict';
 
-const React  = require('react');
-const NicoAction = require('../../actions/NicoAction');
-const Dialog = require('material-ui/lib/dialog');
-const FlatButton = require('material-ui/lib/flat-button');
-const TextField = require('material-ui/lib/text-field');
-const FontIcon = require('material-ui/lib/font-icon');
+import React from 'react';
+import NicoAction from '../../actions/NicoAction';
+import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
+import TextField from 'material-ui/lib/text-field';
+import FontIcon from 'material-ui/lib/font-icon';
 
 const iconStyles = {
   marginRight: 24,
@@ -84,6 +84,6 @@ let Login = React.createClass({
   }
 });
 
-module.exports = Login;
+export default Login;
 
 // vim:ft=javascript.jsx

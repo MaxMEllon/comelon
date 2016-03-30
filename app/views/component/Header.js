@@ -1,16 +1,16 @@
 'use strict';
 
-const React = require('react');
-const NicoAction = require('../../actions/NicoAction');
-const NotificationAction = require('../../actions/NotificationAction');
-const CommentAction = require('../../actions/CommentAction');
-const SettingAction = require('../../actions/SettingAction');
-const Appbar = require('material-ui/lib/app-bar');
-const Colors = require('material-ui/lib/styles/colors');
-const IconButton = require('material-ui/lib/icon-button');
-const PlayIcon = require('material-ui/lib/svg-icons/av/airplay');
-const SettingsIcon = require('material-ui/lib/svg-icons/action/settings');
-const TextField = require('material-ui/lib/text-field');
+import React from 'react';
+import NicoAction from '../../actions/NicoAction';
+import NotificationAction from '../../actions/NotificationAction';
+import CommentAction from '../../actions/CommentAction';
+import SettingAction from '../../actions/SettingAction';
+import Appbar from 'material-ui/lib/app-bar';
+import Colors from 'material-ui/lib/styles/colors';
+import IconButton from 'material-ui/lib/icon-button';
+import PlayIcon from 'material-ui/lib/svg-icons/av/airplay';
+import SettingsIcon from 'material-ui/lib/svg-icons/action/settings';
+import TextField from 'material-ui/lib/text-field';
 
 const defaultIconButtonProps = { tooltipPosition: 'bottom-left' };
 const connect = <PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/>;
@@ -94,6 +94,6 @@ let Header = React.createClass({
 
 });
 
-module.exports = Header;
+export default Header;
 
 // vim:ft=javascript.jsx

@@ -1,8 +1,8 @@
 'use strict';
 
-const createStore = require('../utils/AppStore');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const SettingActionType = require('../actions/types/SettingActionTypes');
+import createStore from'../utils/AppStore';
+import AppDispatcher from'../dispatcher/AppDispatcher';
+import SettingActionType from'../actions/types/SettingActionTypes';
 
 let open = false;
 let option = {
@@ -65,4 +65,4 @@ AppDispatcher.register(action => {
 
 });
 
-module.exports = SettingStore;
+export default SettingStore;

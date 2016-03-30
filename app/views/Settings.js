@@ -1,14 +1,14 @@
 'use strict';
 
-const R = require('ramda');
-const React = require('react');
-const Immutable = require('immutable');
-const SettingAction = require('../actions/SettingAction');
-const SettingStore = require('../stores/SettingStore');
-const Divider = require('material-ui/lib/divider');
-const Dialog = require('material-ui/lib/dialog');
-const FlatButton = require('material-ui/lib/flat-button');
-const Toggle = require('material-ui/lib/toggle');
+import R from 'ramda';
+import React from 'react';
+import Immutable from 'immutable';
+import SettingAction from '../actions/SettingAction';
+import SettingStore from '../stores/SettingStore';
+import Divider from 'material-ui/lib/divider';
+import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
+import Toggle from 'material-ui/lib/toggle';
 
 let Settings = React.createClass({
   displayName: 'Settings',
@@ -93,6 +93,6 @@ let Settings = React.createClass({
 
 });
 
-module.exports = Settings;
+export default Settings;
 
 // vim:ft=javascript.jsx

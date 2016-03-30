@@ -1,9 +1,9 @@
 'use strict';
 
-const Nico = require('nicolive');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const NicoActionType = require('./types/NicoActionTypes');
-const {notify} = require('./NotificationAction');
+import Nico from 'nicolive';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import NicoActionType from './types/NicoActionTypes';
+import {notify} from './NotificationAction';
 
 const dispatchCookie = (cookie) => {
   AppDispatcher.dispatch({
@@ -100,6 +100,6 @@ let NicoAction = {
 
 };
 
-module.exports = NicoAction;
+export default NicoAction;
 
 // vim:ft=javascript
