@@ -1,15 +1,16 @@
 'use strict';
 
-const React = require('react');
-const CommentStore = require('../../stores/CommentStore');
-const SettingStore = require('../../stores/SettingStore');
-const TalkAction = require('../../actions/TalkAction');
-const TalkStore = require('../../stores/TalkStore');
-const ImageLoader = require('react-imageloader');
-const Divider = require('material-ui/lib/divider');
-const ListItem = require('material-ui/lib/lists/list-item');
-const Snipper = require('material-ui/lib/circular-progress');
-const usericonURL = require('nicolive/lib/api.json').url.usericonURL;
+import React from 'react';
+import CommentStore from '../../stores/CommentStore';
+import SettingStore from '../../stores/SettingStore';
+import TalkAction from '../../actions/TalkAction';
+import TalkStore from '../../stores/TalkStore';
+import ImageLoader from 'react-imageloader';
+import Divider from 'material-ui/lib/divider';
+import ListItem from 'material-ui/lib/lists/list-item';
+import Snipper from 'material-ui/lib/circular-progress';
+import {url} from 'nicolive/lib/api.json';
+const {usericonURL} = url;
 
 let Comment = React.createClass({
   displayName: 'Comment',
@@ -78,6 +79,6 @@ let Comment = React.createClass({
 
 });
 
-module.exports = Comment;
+export default Comment;
 
 // vim:ft=javascript.jsx

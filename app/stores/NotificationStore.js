@@ -1,8 +1,8 @@
 'use strict';
 
-const createStore = require('../utils/AppStore');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const NotificationActionType = require('../actions/types/NotificationActionTypes');
+import createStore from '../utils/AppStore';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import NotificationActionType from '../actions/types/NotificationActionTypes';
 
 let message = '';
 
@@ -35,4 +35,4 @@ AppDispatcher.register(action => {
   }
 });
 
-module.exports = NotificationStore;
+export default NotificationStore;

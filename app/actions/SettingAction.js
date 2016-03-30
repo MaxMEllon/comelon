@@ -1,8 +1,8 @@
 'use strict';
 
-const R = require('ramda');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const SettingActionType = require('./types/SettingActionTypes');
+import R from 'ramda';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import SettingActionType from './types/SettingActionTypes';
 
 const missingType = 'Uncought TypeError in SettingAction';
 
@@ -59,4 +59,4 @@ let SettingAction = {
   }
 };
 
-module.exports = SettingAction;
+export default SettingAction;

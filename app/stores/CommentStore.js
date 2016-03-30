@@ -1,9 +1,9 @@
 'use strict';
 
-const R = require('ramda');
-const createStore = require('../utils/AppStore');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const CommentActionType = require('../actions/types/CommentActionTypes');
+import R from 'ramda';
+import createStore from '../utils/AppStore';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import CommentActionType from '../actions/types/CommentActionTypes';
 
 let comments = [];
 let nicknames = {};
@@ -83,4 +83,4 @@ AppDispatcher.register(action => {
 
 });
 
-module.exports = CommentStore;
+export default CommentStore;

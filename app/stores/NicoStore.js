@@ -1,8 +1,8 @@
 'use strict';
 
-const createStore = require('../utils/AppStore');
-const AppDispatcher = require('../dispatcher/AppDispatcher');
-const NicoActionType = require('../actions/types/NicoActionTypes');
+import createStore from '../utils/AppStore';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import NicoActionType from '../actions/types/NicoActionTypes';
 
 let cookie = null;
 let viewer = null;
@@ -79,4 +79,4 @@ AppDispatcher.register(action => {
 
 });
 
-module.exports = NicoStore;
+export default NicoStore;

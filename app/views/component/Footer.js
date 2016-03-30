@@ -1,13 +1,13 @@
 'use strict';
 
-const R = require('ramda');
-const React = require('react');
-const CommentAction = require('../../actions/CommentAction');
-const Toolbar = require('material-ui/lib/toolbar/toolbar');
-const ToolbarGroup = require('material-ui/lib/toolbar/toolbar-group');
-const RaisedButton = require('material-ui/lib/raised-button');
-const TextField = require('material-ui/lib/text-field');
-const Toggle = require('material-ui/lib/toggle');
+import R from 'ramda';
+import React from 'react';
+import CommentAction from '../../actions/CommentAction';
+import Toolbar from 'material-ui/lib/toolbar/toolbar';
+import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
+import RaisedButton from 'material-ui/lib/raised-button';
+import TextField from 'material-ui/lib/text-field';
+import Toggle from 'material-ui/lib/toggle';
 
 let Footer = React.createClass({
   displayName: 'Footer',
@@ -75,6 +75,6 @@ let Footer = React.createClass({
 
 });
 
-module.exports = Footer;
+export default Footer;
 
 // vim:ft=javascript.jsx

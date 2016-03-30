@@ -1,16 +1,16 @@
 'use strict';
 
-const React = require('react');
-const NicoAction = require('../actions/NicoAction');
-const NicoStore = require('../stores/NicoStore');
-const CommentAction = require('../actions/CommentAction');
-const CommentStore = require('../stores/CommentStore');
-const Header = require('./component/Header');
-const CommentTable = require('./component/CommentTable');
-const Footer = require('./component/Footer');
-const Login = require('./component/Login');
-const Notify = require('./component/Notify');
-const Setting = require('./Settings');
+import React from 'react';
+import NicoAction from '../actions/NicoAction';
+import NicoStore from '../stores/NicoStore';
+import CommentAction from '../actions/CommentAction';
+import CommentStore from '../stores/CommentStore';
+import Header from './component/Header';
+import CommentTable from './component/CommentTable';
+import Footer from './component/Footer';
+import Login from './component/Login';
+import Notify from './component/Notify';
+import Setting from './Settings';
 
 let Main = React.createClass({
   displayName: 'Main',
@@ -68,6 +68,6 @@ let Main = React.createClass({
 
 });
 
-module.exports = Main;
+export default Main;
 
 // vim:ft=javascript.jsx
