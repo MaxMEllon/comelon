@@ -14,6 +14,7 @@
 [![Dependency Status](https://david-dm.org/maxmellon/comelon.svg)](https://david-dm.org/maxmellon/comelon)
 [![devDependency Status](https://david-dm.org/maxmellon/comelon/dev-status.svg)](https://david-dm.org/maxmellon/comelon#info=devDependencies)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/MaxMEllon/comelon/blob/master/LICENSE.txt)
+[![Stories in Ready](https://badge.waffle.io/MaxMEllon/comelon.svg?label=ready&title=Ready)](http://waffle.io/MaxMEllon/comelon)
 [![Gitter](https://badges.gitter.im/MaxMEllon/comelon.svg)](https://gitter.im/MaxMEllon/comelon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 <!-- [![Dependency Status](https://gemnasium.com/MaxMEllon/comelon.svg)](https://gemnasium.com/MaxMEllon/comelon) -->
 <!-- [![windows](https://ci.appveyor.com/api/projects/status/5i4gddsvsd1i2ba3?svg=true)](https://ci.appveyor.com/project/MaxMEllon/comelon) -->
