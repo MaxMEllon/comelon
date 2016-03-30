@@ -5,7 +5,7 @@ import EventEmitter from'eventemitter3';
 
 const CHANGE_EVENT = 'change';
 
-let BaseStore = assign({}, EventEmitter.prototype, {
+export class AppStore extends EventEmitter {
   /**
    * emitChange()
    * Storeの変更を通知します
@@ -29,8 +29,8 @@ let BaseStore = assign({}, EventEmitter.prototype, {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
-});
+}
 
-const createStore = (store) => assign({}, BaseStore, store);
-
-export default createStore;
+export function createStore(store) {
+  assign({}, AppStore, store);
+};
