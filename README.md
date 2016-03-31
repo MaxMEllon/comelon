@@ -47,9 +47,21 @@
 
 If you would like to watching the source code, then You should execute `npm run start`.
 
+When you run unit test, you need to set enviorment value.
+For example as follows.
+
+  ```
+  $ export EMAIL=sample@hoge.com
+  $ export PASSWORD=XXXXXXXXXXXX
+  $ npm run test
+  ```
+
+e2e test like when unit test to run, you need to set value.
+
 ## Contribute
 
 Everything okay.
+
 がんがんいこうぜ（小さなプルリクエストからなんでも待ってます）
 
 ## Download Binary
