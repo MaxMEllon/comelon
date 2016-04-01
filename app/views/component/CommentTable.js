@@ -4,8 +4,7 @@ import R from 'ramda';
 import React from 'react';
 import SettingStore from '../../stores/SettingStore';
 import Comment from './Comment';
-import List from 'material-ui/lib/lists/list';
-import Paper from 'material-ui/lib/paper';
+import {List, Paper} from 'material-ui';
 
 const ifSystemComment = (comment) => R.test(/^(\/(.*)){1}/, comment.get('text'));
 const No = (comment) => comment.getIn(['attr', 'no']);
@@ -13,34 +12,35 @@ const Id = (comment) => comment.getIn(['attr', 'id']);
 const Key = (comment) => `${No(comment)}${Id(comment)}`;
 const Size = (components) => R.length(components);
 
-let CommentTable = React.createClass({
-  displayName: 'CommentTable',
-
-  propTypes: {
+export default class CommentTable extends React.Component {
+  static propTypes = {
     comments: React.PropTypes.array.isRequired
-  },
+  }
 
-  getInitialState() {
-    return {
+  displayName: 'CommentTable'
+
+  constructor(props) {
+    super(props);
+    this.state = {
       systemComment: false,
       doTalking: false
     };
-  },
+  }
 
   componentDidMount() {
     SettingStore.addChangeListener(this.onChangeOption);
-  },
+  }
 
   componentWillUnMount() {
     SettingStore.addChangeListener(this.onChangeOption);
-  },
+  }
 
-  onChangeOption() {
+  onChangeOption = () => {
     this.setState({
       systemComment: SettingStore.getOption().systemComment,
       doTalking: SettingStore.getOption().doTalking
     });
-  },
+  }
 
   renderComments() {
     const ToSkip = R.and(! this.state.systemComment);
@@ -51,7 +51,7 @@ let CommentTable = React.createClass({
     };
     R.forEach(renderComment, this.props.comments);
     return components;
-  },
+  }
 
   render() {
     return (
@@ -63,8 +63,6 @@ let CommentTable = React.createClass({
       </List>
     );
   }
-});
-
-export default CommentTable;
+}
 
 // vim:ft=javascript.jsx
