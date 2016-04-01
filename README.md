@@ -51,7 +51,7 @@ When you run unit test, you need to set enviorment value.
 For example as follows.
 
   ```
-  $ export EMAIL=sample@hoge.com
+  $ export USER_EMAIL=sample@hoge.com
   $ export PASSWORD=XXXXXXXXXXXX
   $ npm run test
   ```
