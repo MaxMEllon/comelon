@@ -1,57 +1,59 @@
 'use strict';
 
 import React from 'react';
-import NicoAction from '../actions/NicoAction';
-import NicoStore from '../stores/NicoStore';
+import AppComponent from '../utils/AppComponent';
 import CommentAction from '../actions/CommentAction';
 import CommentStore from '../stores/CommentStore';
-import Header from './component/Header';
 import CommentTable from './component/CommentTable';
 import Footer from './component/Footer';
+import Header from './component/Header';
 import Login from './component/Login';
+import NicoAction from '../actions/NicoAction';
+import NicoStore from '../stores/NicoStore';
 import Notify from './component/Notify';
 import Setting from './Settings';
 
-let Main = React.createClass({
-  displayName: 'Main',
+export default class Main extends React.Component {
+  displayName: 'Main'
 
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       comments: [],
       isLogin: null,
       viewer: null
     };
-  },
+  }
 
   componentWillMount() {
     NicoAction.fetchLoginStatus();
-  },
+  }
 
-  componentDidMount() {
+  componentWillMount() {
     NicoStore.addChangeListener(this.onConnectViewer);
     CommentStore.addChangeListener(this.onUpdateComments);
-  },
+  }
 
   componentWillUnMount() {
     NicoStore.removeChangeListener(this.onConnectViewer);
     CommentStore.removeChangeListener(this.onUpdateComments);
-  },
+  }
 
   handleLogout() {
     NicoAction.logout();
-  },
+  }
 
-  onConnectViewer() {
+  onConnectViewer = () => {
     this.setState({isLogin: NicoStore.isLogin()});
     this.setState({viewer: NicoStore.getViewer()});
     if (this.state.viewer !== null) {
       CommentAction.getComment(this.state.viewer);
     }
-  },
+  }
 
-  onUpdateComments() {
+  onUpdateComments = () => {
     this.setState({comments: CommentStore.getAllComments()});
-  },
+  }
 
   render() {
     return (
@@ -66,8 +68,6 @@ let Main = React.createClass({
     );
   }
 
-});
-
-export default Main;
+}
 
 // vim:ft=javascript.jsx

@@ -38,7 +38,7 @@ let CommentAction = {
       });
     };
     viewer.on('comment', comment => {
-      setTimeout(() => { dispatchComment(comment); }, 300);
+      dispatchComment(comment);
     });
   },
 
