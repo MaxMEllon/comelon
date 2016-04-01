@@ -5,50 +5,54 @@ import React from 'react';
 import Immutable from 'immutable';
 import SettingAction from '../actions/SettingAction';
 import SettingStore from '../stores/SettingStore';
-import Divider from 'material-ui/lib/divider';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import Toggle from 'material-ui/lib/toggle';
 
-let Settings = React.createClass({
-  displayName: 'Settings',
+import {
+  Divider,
+  Dialog,
+  FlatButton,
+  Toggle
+} from 'material-ui';
 
-  getInitialState() {
-    return {
+export default class Settings extends React.Component {
+  displayName: 'Settings'
+
+  constructor(props) {
+    super(props);
+    this.state = {
       open: false,
       option: Immutable.fromJS({
         systemComment: false,
         doTalking: false
       })
     };
-  },
+  }
 
   componentWillMount() {
     SettingStore.addChangeListener(this.onChangeState);
-  },
+  }
 
   componentWillUnMount() {
     SettingStore.removeChangeListener(this.onChangeState);
-  },
+  }
 
-  onChangeState() {
+  onChangeState = () => {
     this.setState({
       open: SettingStore.isOpen(),
       option: Immutable.fromJS(SettingStore.getOption())
     });
-  },
+  }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({open: false});
     SettingAction.close();
-  },
+  }
 
-  handleToggle(method, type) {
+  handleToggle = (method, type) => {
     const nextState = {};
     nextState[type] = R.not(this.state.option.get(type));
     this.setState(nextState);
     SettingAction[method](nextState[type]);
-  },
+  }
 
   render() {
     const actions = [
@@ -91,8 +95,6 @@ let Settings = React.createClass({
     );
   }
 
-});
-
-export default Settings;
+}
 
 // vim:ft=javascript.jsx
