@@ -3,30 +3,34 @@
 import R from 'ramda';
 import React from 'react';
 import CommentAction from '../../actions/CommentAction';
-import Toolbar from 'material-ui/lib/toolbar/toolbar';
-import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
-import Toggle from 'material-ui/lib/toggle';
 
-let Footer = React.createClass({
-  displayName: 'Footer',
+import {
+  Toolbar,
+  ToolbarGroup,
+  RaisedButton,
+  TextField,
+  Toggle
+} from 'material-ui';
 
-  getInitialState() {
-    return {
+export default class Footer extends React.Component {
+  displayName: 'Footer'
+
+  constructor(props) {
+    super(props);
+    this.state = {
       comment: '',
       mail: ''
     };
-  },
+  }
 
   changeComment(e) {
     this.setState({comment: e.target.value});
-  },
+  }
 
   handleToggle() {
     const setMailState = (mail) => this.setState({mail: mail});
     R.isEmpty(this.state.mail) ? setMailState('184') : setMailState('');
-  },
+  }
 
   handlePostComment() {
     const comment = this.state.comment.trim();
@@ -35,7 +39,7 @@ let Footer = React.createClass({
       CommentAction.postComment(comment, {mail: this.state.mail});
       this.setState({comment: ''});
     }
-  },
+  }
 
   render() {
     return (
@@ -73,8 +77,6 @@ let Footer = React.createClass({
     );
   }
 
-});
-
-export default Footer;
+}
 
 // vim:ft=javascript.jsx

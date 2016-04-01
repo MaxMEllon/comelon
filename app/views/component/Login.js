@@ -2,50 +2,54 @@
 
 import React from 'react';
 import NicoAction from '../../actions/NicoAction';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import TextField from 'material-ui/lib/text-field';
-import FontIcon from 'material-ui/lib/font-icon';
+
+import {
+  Dialog,
+  FlatButton,
+  TextField,
+  FontIcon
+} from 'material-ui';
 
 const iconStyles = {
   marginRight: 24,
 };
 
-let Login = React.createClass({
-  displayName: 'Login',
-
-  propTypes: {
+export default class Login extends React.Component {
+  static propTypes = {
     open: React.PropTypes.bool.isRequired
-  },
+  }
 
-  getInitialState() {
-    return {
+  displayName: 'Login'
+
+  constructor(props) {
+    super(props);
+    this.state = {
       email: '',
       password: '',
       open: false
     };
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({open: nextProps.open});
-  },
+  }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({open: false});
     let user = {
       email: this.state.email,
       password: this.state.password
     };
     NicoAction.login(user);
-  },
+  }
 
-  changeEmail(e) {
+  changeEmail = (e) => {
     this.setState({email: e.target.value});
-  },
+  }
 
-  changePassword(e) {
+  changePassword = (e) => {
     this.setState({password: e.target.value});
-  },
+  }
 
   render() {
     const actions = [
@@ -82,8 +86,6 @@ let Login = React.createClass({
       </div>
     );
   }
-});
-
-export default Login;
+}
 
 // vim:ft=javascript.jsx
