@@ -12,38 +12,38 @@ import Snipper from 'material-ui/lib/circular-progress';
 import {url} from 'nicolive/lib/api.json';
 const {usericonURL} = url;
 
-let Comment = React.createClass({
-  displayName: 'Comment',
-
-  propTypes: {
+export default class Comment extends React.Component {
+  static propTypes = {
     comment: React.PropTypes.any.isRequired,
     index: React.PropTypes.number.isRequired
-  },
+  }
 
-  getInitialState() {
-    return {
+  displayName: 'Comment'
+
+  constructor(props) {
+    super(props);
+    this.state = {
       nowTalking: false,
     };
-  },
+  }
 
   componentWillMount() {
     TalkStore.addChangeListener(this.onNowTalking);
-  },
-
+  }
 
   componentDidMount() {
     if (SettingStore.getOption().doTalking) {
       TalkAction.talk(this.props.comment.get('text'));
     }
-  },
+  }
 
   componentWillUnMount() {
     TalkStore.removeChangeListener(this.onNowTalking);
-  },
+  }
 
-  onNowTalking() {
+  onNowTalking = () => {
     this.setState({nowTalking: TalkStore.isTalkingNow()});
-  },
+  }
 
   renderAvater(userIcon) {
     return (
@@ -55,7 +55,7 @@ let Comment = React.createClass({
       ><img width='36px' height='36px' src='./assets/img/blank.jpg' />
       </ImageLoader>
     );
-  },
+  }
 
   render() {
     let userId = this.props.comment.getIn(['attr', 'user_id']);
@@ -77,8 +77,6 @@ let Comment = React.createClass({
     );
   }
 
-});
-
-export default Comment;
+}
 
 // vim:ft=javascript.jsx
