@@ -5,14 +5,17 @@ import NicoAction from '../../actions/NicoAction';
 import NotificationAction from '../../actions/NotificationAction';
 import CommentAction from '../../actions/CommentAction';
 import SettingAction from '../../actions/SettingAction';
-import Appbar from 'material-ui/lib/app-bar';
+
 import Colors from 'material-ui/lib/styles/colors';
-import IconButton from 'material-ui/lib/icon-button';
 import PlayIcon from 'material-ui/lib/svg-icons/av/airplay';
 import SettingsIcon from 'material-ui/lib/svg-icons/action/settings';
-import TextField from 'material-ui/lib/text-field';
+import {
+  Appbar,
+  IconButton,
+  TextField
+} from 'material-ui';
 
-const defaultIconButtonProps = { tooltipPosition: 'bottom-left' };
+const defaultIconButtonProps = {tooltipPosition: 'bottom-left'};
 const connect = <PlayIcon color={Colors.white} hoverColor={Colors.cyanA100}/>;
 const setting = <SettingsIcon  color={Colors.white} hoverColor={Colors.cyanA100}/>;
 const icons = {connect, setting};
@@ -26,20 +29,21 @@ const tryConnect = (liveId) => {
   NicoAction.connect(liveId);
 };
 
-let Header = React.createClass({
-  displayName: 'Header',
+export default class Header extends React.Component {
+  displayName: 'Header'
 
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       lv: ''
     };
-  },
+  }
 
-  changeLiveid(e) {
+  changeLiveid = (e) => {
     this.setState({lv: e.target.value});
-  },
+  }
 
-  handleClick(type) {
+  handleClick = (type) => {
     switch (type) {
     case 'connect':
       tryConnect(this.state.lv.trim());
@@ -48,7 +52,7 @@ let Header = React.createClass({
       SettingAction.open();
       break;
     }
-  },
+  }
 
   renderButton(label, type) {
     return (
@@ -58,7 +62,7 @@ let Header = React.createClass({
         onMouseDown={() => this.handleClick(type)}
       >{icons[type]}</IconButton>
     );
-  },
+  }
 
   render() {
     const textFieldProps = {
@@ -92,8 +96,6 @@ let Header = React.createClass({
     );
   }
 
-});
-
-export default Header;
+}
 
 // vim:ft=javascript.jsx
