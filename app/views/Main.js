@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import AppComponent from '../utils/AppComponent';
 import CommentAction from '../actions/CommentAction';
 import CommentStore from '../stores/CommentStore';
 import CommentTable from './component/CommentTable';
