@@ -8,6 +8,7 @@ describe('MainView', () => {
 
   before(() => {
     React = require('react');
+    require('../setup')();
   });
 
   it('should display MainView', () => {
@@ -18,7 +19,6 @@ describe('MainView', () => {
   });
 
   it('if MainView mounted should have child component', () => {
-    require('../setup')();
     const Main = require('../../app/views/Main');
     const Header = require('../../app/views/component/Header');
     const wrapper = mount(<Main />);
