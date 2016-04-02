@@ -23,16 +23,16 @@ export default class Footer extends React.Component {
     };
   }
 
-  changeComment(e) {
+  changeComment = (e) => {
     this.setState({comment: e.target.value});
   }
 
-  handleToggle() {
+  handleToggle = () => {
     const setMailState = (mail) => this.setState({mail: mail});
     R.isEmpty(this.state.mail) ? setMailState('184') : setMailState('');
   }
 
-  handlePostComment() {
+  handlePostComment = () => {
     const comment = this.state.comment.trim();
     const notEmpty = R.complement(R.isEmpty);
     if (notEmpty(comment)) {
