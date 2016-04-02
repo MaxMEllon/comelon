@@ -2,6 +2,7 @@
 
 import R from 'ramda';
 import React from 'react';
+import KeyboardJS from 'keyboardjs';
 import CommentAction from '../../actions/CommentAction';
 
 import {
@@ -21,6 +22,14 @@ export default class Footer extends React.Component {
       comment: '',
       mail: ''
     };
+  }
+
+  componentDidMount() {
+    KeyboardJS.bind('enter', this.handlePostComment);
+  }
+
+  componentWillUnmount() {
+    KeyboardJS.unbind('enter', this.handlePostComment);
   }
 
   changeComment = (e) => {

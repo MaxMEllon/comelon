@@ -2,6 +2,7 @@
 
 import React from 'react';
 import NicoAction from '../../actions/NicoAction';
+import KeyboradJS from 'keyboardjs';
 
 import {
   Dialog,
@@ -32,6 +33,11 @@ export default class Login extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({open: nextProps.open});
+    if (this.state.open === true) {
+      KeyboradJS.bind('enter', this.handleClose);
+    } else {
+      KeyboradJS.unbind('enter', this.handleClose);
+    }
   }
 
   handleClose = () => {
