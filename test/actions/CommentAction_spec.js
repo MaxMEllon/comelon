@@ -30,7 +30,7 @@ describe('CommentAction', () => {
     CommentStore = require('../../app/stores/CommentStore');
   });
 
-  it('try connect', done => {
+  xit('try connect', done => {
     let isWindows = (process.platform === 'win32');
     if (isWindows) { done(); }
     else {
