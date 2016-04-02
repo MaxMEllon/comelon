@@ -31,7 +31,7 @@ describe('NicoAction', () => {
     NicoStore = require('../../app/stores/NicoStore');
   });
 
-  it('try login', done => {
+  xit('try login', done => {
     let isWindows = (process.platform === 'win32');
     if (isWindows) { done(); }
     else {
