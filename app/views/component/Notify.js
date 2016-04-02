@@ -4,37 +4,38 @@ import React from 'react';
 import NotificationStore from '../../stores/NotificationStore';
 import Snackbar from 'material-ui/lib/snackbar';
 
-let Notify = React.createClass({
-  displayName: 'Notify',
+export default class Notify extends React.Component {
+  displayName: 'Notify'
 
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       open: false,
       message: ''
     };
-  },
+  }
 
   componentWillMount() {
     NotificationStore.addChangeListener(this.onNotify);
-  },
+  }
 
   componentDidMount() {
-  },
+  }
 
   componentWillUnMount() {
     NotificationStore.removeChangeListener(this.onNotify);
-  },
+  }
 
-  onNotify() {
+  onNotify = () => {
     this.setState({
       message: NotificationStore.getMessage(),
       open: true
     });
-  },
+  }
 
-  handleRequestClose() {
+  handleRequestClose = () => {
     this.setState({open: false});
-  },
+  }
 
   render() {
     return (
@@ -50,7 +51,7 @@ let Notify = React.createClass({
     );
   }
 
-});
+}
 
 export default Notify;
 
