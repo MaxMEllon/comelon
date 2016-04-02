@@ -12,6 +12,7 @@ describe('Footer', () => {
   before(done => {
     sandbox.create();
     React = require('react');
+    require('../setup')();
     done();
   });
 
@@ -26,7 +27,6 @@ describe('Footer', () => {
   });
 
   it('if toggled should be set mail option of state', () => {
-    require('../setup')();
     const Footer = require('../../app/views/component/Footer');
     const wrapper = mount(<Footer />);
     wrapper.component.getInstance().handleToggle();
@@ -34,7 +34,6 @@ describe('Footer', () => {
   });
 
   it('if input text should be change text of state', () => {
-    require('../setup')();
     const Footer = require('../../app/views/component/Footer');
     const wrapper = mount(<Footer />);
     let event = {target: { value: 'sample comment' }};
