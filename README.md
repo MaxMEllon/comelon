@@ -24,10 +24,12 @@
 ## Screenshots
 
 <p align="center">
-  <img src="./logs/screenshots/demo.png">
+  <img src="./logs/screenshots/demo.gif">
 </p>
 
 ## Installation
+
+Quick start for developers.
 
   ```sh
   $ npm install -g electron-prebuild
@@ -35,6 +37,10 @@
 
   $ comelon # running comelon
   ```
+
+If you cannot run `npm` command.
+Then, you are able to download `github release`
+[v0.2.3 binary](https://github.com/MaxMEllon/comelon/releases/tag/v0.2.3)
 
 ## For development
 
