@@ -10,7 +10,7 @@ import Colors from 'material-ui/lib/styles/colors';
 import PlayIcon from 'material-ui/lib/svg-icons/av/airplay';
 import SettingsIcon from 'material-ui/lib/svg-icons/action/settings';
 import {
-  Appbar,
+  AppBar,
   IconButton,
   TextField
 } from 'material-ui';
@@ -77,7 +77,7 @@ export default class Header extends React.Component {
 
     return (
       <div className='Header'>
-        <Appbar style={{position: 'fixed', top: '0', left: '0', right: '0'}}
+        <AppBar style={{position: 'fixed', top: '0', left: '0', right: '0'}}
           iconElementLeft={<div />}
           title={
             <div>
