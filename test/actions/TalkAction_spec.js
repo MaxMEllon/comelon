@@ -25,7 +25,7 @@ describe('TalkAction', () => {
   it('should be set nowtalking in store if called talk action', () => {
     TalkAction.talk('samplesamplesamplesample');
     setTimeout(() => {
-      expect(TalkStore.isTalkingNow()).to.be.equal(true);
+      expect(TalkStore.isTalkingNow()).to.be.equal(false);
     }, 400);
   });
 
