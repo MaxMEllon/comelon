@@ -1,16 +1,11 @@
 'use strict';
 
-import R from 'ramda';
+import Itako from '../utils/Talker';
 import createStore from '../utils/AppStore';
-import OpenJTalk from '../utils/OpenJTalk';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import TalkActionType from '../actions/types/TalkActionTypes';
 
-let messages = [];
 let nowTalking = false;
-
-const unShiftMessage = R.insert(0, R.__, messages);
-const popMessage = () => messages.pop();
 
 /**
  * @classdesc TalkStore
@@ -31,36 +26,10 @@ AppDispatcher.register(action => {
    * 順番が回ってきたらコメントを読み上げます
    */
   case TalkActionType.TALK:
-    messages = unShiftMessage(action.message);
-    talkSync();
+    Itako.read(action.message);
     break;
   }
 
 });
-
-const emitTalking = (args) => {
-  nowTalking = args;
-  TalkStore.emitChange();
-};
-
-/**
- * talkSync()
- * 現在別スレッドでされていなかったらコメントを読み上げます．
- * コメント読み上げ中は，storeのnowTalkingがtrueになります
- */
-const talkSync = () => {
-  let wait = setInterval(() => {
-    if (R.not(nowTalking)) {
-      const message = popMessage();
-      if (message !== undefined && message !== null) {
-        emitTalking(true);
-        OpenJTalk.talk(message, () => {
-          emitTalking(false);
-        });
-      }
-      clearInterval(wait);
-    }
-  }, 1000);
-};
 
 export default TalkStore;
