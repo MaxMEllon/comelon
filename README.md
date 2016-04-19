@@ -6,8 +6,6 @@
 
 [![npm](https://img.shields.io/npm/v/comelon.svg)](https://www.npmjs.com/package/comelon)
 [![npm](https://img.shields.io/npm/dt/comelon.svg)]()
-[![unit](https://img.shields.io/circleci/project/MaxMEllon/comelon.svg)](https://circleci.com/gh/MaxMEllon/comelon)
-[![e2e](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](https://travis-ci.org/MaxMEllon/comelon)
 [![Test Coverage](https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg)](https://codeclimate.com/github/MaxMEllon/comelon/coverage)
 [![Code Climate](https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
 [![Issue Count](https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
@@ -20,6 +18,12 @@
 <!-- [![windows](https://ci.appveyor.com/api/projects/status/5i4gddsvsd1i2ba3?svg=true)](https://ci.appveyor.com/project/MaxMEllon/comelon) -->
 
 - - -
+
+| type | status  |
+|---|---|
+|TravisCI| [![](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](https://travis-ci.org/MaxMEllon/comelon) |
+|CircleCI| [![](https://img.shields.io/circleci/project/MaxMEllon/comelon.svg)](https://circleci.com/gh/MaxMEllon/comelon) |
+|Appveyor| [![](https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true)](https://ci.appveyor.com/project/MaxMEllon/comelon) |
 
 ## Screenshots
 
