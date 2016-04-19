@@ -2,28 +2,97 @@
   <img src="./assets/img/banner.png">
 </p>
 
-- - -
-
-[![npm](https://img.shields.io/npm/v/comelon.svg)](https://www.npmjs.com/package/comelon)
-[![npm](https://img.shields.io/npm/dt/comelon.svg)]()
-[![Test Coverage](https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg)](https://codeclimate.com/github/MaxMEllon/comelon/coverage)
-[![Code Climate](https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
-[![Issue Count](https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg)](https://codeclimate.com/github/MaxMEllon/comelon)
-[![Dependency Status](https://david-dm.org/maxmellon/comelon.svg)](https://david-dm.org/maxmellon/comelon)
-[![devDependency Status](https://david-dm.org/maxmellon/comelon/dev-status.svg)](https://david-dm.org/maxmellon/comelon#info=devDependencies)
-[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/MaxMEllon/comelon/blob/master/LICENSE.txt)
-[![Stories in Ready](https://badge.waffle.io/MaxMEllon/comelon.svg?label=ready&title=Ready)](http://waffle.io/MaxMEllon/comelon)
-[![Gitter](https://badges.gitter.im/MaxMEllon/comelon.svg)](https://gitter.im/MaxMEllon/comelon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-<!-- [![Dependency Status](https://gemnasium.com/MaxMEllon/comelon.svg)](https://gemnasium.com/MaxMEllon/comelon) -->
-<!-- [![windows](https://ci.appveyor.com/api/projects/status/5i4gddsvsd1i2ba3?svg=true)](https://ci.appveyor.com/project/MaxMEllon/comelon) -->
-
-- - -
-
-| type | status  |
-|---|---|
-|TravisCI| [![](https://travis-ci.org/MaxMEllon/comelon.svg?branch=master)](https://travis-ci.org/MaxMEllon/comelon) |
-|CircleCI| [![](https://img.shields.io/circleci/project/MaxMEllon/comelon.svg)](https://circleci.com/gh/MaxMEllon/comelon) |
-|Appveyor| [![](https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true)](https://ci.appveyor.com/project/MaxMEllon/comelon) |
+<center>
+<table>
+  <tr>
+    <th colspan="3">Badges</th>
+  </tr>
+  <tr>
+    <td>
+      <div align="center">
+        <img src='https://img.shields.io/npm/v/comelon.svg'>
+          <a href='https://www.npmjs.com/package/comelon' />
+        </img>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img src='https://img.shields.io/npm/dt/comelon.svg'>
+        </img>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img src='https://badges.gitter.im/MaxMEllon/comelon.svg'>
+          <a href='https://gitter.im/MaxMEllon/comelon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge' />
+        </img>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div align="center">
+        <img src='https://travis-ci.org/MaxMEllon/comelon.svg?branch=master'>
+          <a href='https://travis-ci.org/MaxMEllon/comelon' />
+        </img>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img src='https://img.shields.io/circleci/project/MaxMEllon/comelon.svg'>
+          <a href='https://circleci.com/gh/MaxMEllon/comelon' />
+        </img>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img src='https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true'>
+          <a href='https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true' />
+        </img>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div align="center">
+        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg'>
+          <a href='https://codeclimate.com/github/MaxMEllon/comelon/coverage' />
+        </img>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg'>
+          <a href='https://codeclimate.com/github/MaxMEllon/comelon' />
+        </img>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg'>
+          <a href='https://codeclimate.com/github/MaxMEllon/comelon' />
+        </img>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div align="center">
+        <img src='https://david-dm.org/maxmellon/comelon.svg'>
+          <a href='https://david-dm.org/maxmellon/comelon' />
+        </img>
+      </div>
+    </td>
+    <td colspan="2">
+      <div align="center">
+        <img src='https://david-dm.org/maxmellon/comelon/dev-status.svg'>
+          <a href='https://david-dm.org/maxmellon/comelon#info=devDependencies' />
+        </img>
+      </div>
+    </td>
+  </tr>
+</table>
+</center>
 
 ## Screenshots
 
