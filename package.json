@@ -36,8 +36,7 @@
     }
   },
   "dependencies": {
-    "nicolive": "^0.0.4",
-    "openjtalk": "^0.1.4"
+    "nicolive": "^0.0.4"
   },
   "devDependencies": {
     "abigail": "^1.3.5",
@@ -61,6 +60,8 @@
     "eventemitter3": "^1.2.0",
     "flux": "^2.1.1",
     "immutable": "^3.7.6",
+    "itako": "^0.1.2",
+    "itako-text-reader-speech-synthesis": "0.0.0",
     "jsdom": "^8.3.0",
     "json-loader": "^0.5.4",
     "keyboardjs": "^2.2.0",
