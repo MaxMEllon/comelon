@@ -13,17 +13,21 @@ import {url} from 'nicolive/lib/api.json';
 const {usericonURL} = url;
 
 export default class Comment extends React.Component {
-  static propTypes = {
-    comment: React.PropTypes.any.isRequired,
-    index: React.PropTypes.number.isRequired
+  static get propTypes() {
+    return {
+      comment: React.PropTypes.any.isRequired,
+      index: React.PropTypes.number.isRequired
+    };
   }
 
-  displayName: 'Comment'
+  static get displayName() {
+    return 'Comment';
+  }
 
   constructor(props) {
     super(props);
     this.state = {
-      nowTalking: false,
+      nowTalking: false
     };
   }
 
@@ -66,7 +70,6 @@ export default class Comment extends React.Component {
     return (
       <div className='CommentComponent'>
         <ListItem
-          key={`${this.props.comment.getIn(['attr', 'no'])}${userId}`}
           value={this.props.index}
           leftAvatar={this.renderAvater(userIcon)}
           secondaryText={<p>{userName}</p>}

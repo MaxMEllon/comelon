@@ -26,7 +26,7 @@ AppDispatcher.register(action => {
    * 順番が回ってきたらコメントを読み上げます
    */
   case TalkActionType.TALK:
-    Itako.read(action.message);
+    Itako.readSerial(action.message);
     break;
   }
 
