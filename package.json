@@ -22,8 +22,9 @@
     "electron"
   ],
   "scripts": {
-    "start": "npm run compile & abby lint",
-    "compile": "webpack --watch",
+    "start": "npm run compile:watch & abby lint",
+    "compile": "webpack",
+    "compile:watch": "webpack --watch",
     "lint": "eslint $(git ls-files | grep -e '.js$')",
     "fix": "eslint --fix $(git ls-files | grep -e '.js$')",
     "test": "mocha --timeout 150000 --compilers js:babel-core/register test/**/*.js",
