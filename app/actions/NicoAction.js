@@ -31,10 +31,8 @@ let NicoAction = {
    */
   fetchLoginStatus() {
     Nico.ping(error => {
-      let isLogin = null;
-      if (error) isLogin = false;
-      else isLogin = true;
-      dispatchIsLogin(isLogin);
+      if (error) dispatchIsLogin(false);
+      else dispatchIsLogin(true);
     });
   },
 

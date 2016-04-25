@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import AppComponent from '../utils/AppComponent';
 import CommentAction from '../actions/CommentAction';
 import CommentStore from '../stores/CommentStore';
 import CommentTable from './component/CommentTable';
@@ -12,8 +13,10 @@ import NicoStore from '../stores/NicoStore';
 import Notify from './component/Notify';
 import Setting from './Settings';
 
-export default class Main extends React.Component {
-  displayName: 'Main'
+export default class Main extends AppComponent {
+  static get displayName() {
+    return 'Main';
+  }
 
   constructor(props) {
     super(props);
@@ -26,9 +29,6 @@ export default class Main extends React.Component {
 
   componentWillMount() {
     NicoAction.fetchLoginStatus();
-  }
-
-  componentWillMount() {
     NicoStore.addChangeListener(this.onConnectViewer);
     CommentStore.addChangeListener(this.onUpdateComments);
   }
@@ -51,7 +51,9 @@ export default class Main extends React.Component {
   }
 
   onUpdateComments = () => {
-    this.setState({comments: CommentStore.getAllComments()});
+    // render回数を絞るために setState は使わない
+    this.state.comments = CommentStore.getAllComments();
+    this.forceUpdate();
   }
 
   render() {

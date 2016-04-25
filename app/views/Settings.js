@@ -3,6 +3,7 @@
 import R from 'ramda';
 import React from 'react';
 import Immutable from 'immutable';
+import AppComponent from '../utils/AppComponent';
 import SettingAction from '../actions/SettingAction';
 import SettingStore from '../stores/SettingStore';
 
@@ -13,8 +14,10 @@ import {
   Toggle
 } from 'material-ui';
 
-export default class Settings extends React.Component {
-  displayName: 'Settings'
+export default class Settings extends AppComponent {
+  static get displayName() {
+    return 'Settings';
+  }
 
   constructor(props) {
     super(props);
@@ -50,7 +53,6 @@ export default class Settings extends React.Component {
   handleToggle = (method, type) => {
     const nextState = {};
     nextState[type] = R.not(this.state.option.get(type));
-    this.setState(nextState);
     SettingAction[method](nextState[type]);
   }
 

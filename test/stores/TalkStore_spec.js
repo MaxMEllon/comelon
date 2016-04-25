@@ -1,14 +1,13 @@
 'use strict';
 
 const chai = require('chai');
-const {expect} = chai;
 const {sandbox} = require('sinon');
 chai.use(require('sinon-chai'));
 
 describe('TalkStore', () => {
 
   const TalkActionType = require('../../app/actions/types/TalkActionTypes');
-  let AppDispatcher, TalkStore, callback = null;
+  let AppDispatcher, callback = null;
 
   let actionTalk = {
     actionType: TalkActionType.TALK,
@@ -22,7 +21,6 @@ describe('TalkStore', () => {
 
   beforeEach(() => {
     delete require.cache[require.resolve('../../app/stores/TalkStore')];
-    TalkStore = require('../../app/stores/TalkStore');
     callback = AppDispatcher.lastCall.args[0];
   });
 

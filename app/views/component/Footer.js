@@ -14,7 +14,9 @@ import {
 } from 'material-ui';
 
 export default class Footer extends React.Component {
-  displayName: 'Footer'
+  static get displayName() {
+    return 'Footer';
+  }
 
   constructor(props) {
     super(props);
@@ -45,8 +47,10 @@ export default class Footer extends React.Component {
     const comment = this.state.comment.trim();
     const notEmpty = R.complement(R.isEmpty);
     if (notEmpty(comment)) {
-      CommentAction.postComment(comment, {mail: this.state.mail});
-      this.setState({comment: ''});
+      setTimeout(() => {
+        this.setState({comment: ''});
+        CommentAction.postComment(comment, {mail: this.state.mail});
+      }, 100);
     }
   }
 
