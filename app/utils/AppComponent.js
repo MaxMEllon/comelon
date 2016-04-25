@@ -1,12 +1,12 @@
 'use strict';
 
 import React from 'react';
-import isEqual from 'lodash.isequal';
+import R from 'ramda';
 
 export default class AppComponent extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
-    const isEqualProps = isEqual(this.props, nextProps);
-    const isEqualState = isEqual(this.state, nextState);
-    return !(isEqualProps && isEqualState);
+    const propsEqual = R.equals(nextProps, this.props);
+    const stateEqual = R.equals(nextState, this.state);
+    return R.not(propsEqual && stateEqual);
   }
 }

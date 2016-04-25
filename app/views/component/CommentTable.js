@@ -21,11 +21,15 @@ const Key = (comment) => generateKey(No(comment), Id(comment));
 const Size = (components) => R.length(components);
 
 export default class CommentTable extends React.Component {
-  static propTypes = {
-    comments: React.PropTypes.array.isRequired
+  static get propTypes() {
+    return {
+      comments: React.PropTypes.array.isRequired
+    };
   }
 
-  displayName: 'CommentTable'
+  static get displayName() {
+    return 'CommentTable';
+  }
 
   constructor(props) {
     super(props);
@@ -63,9 +67,16 @@ export default class CommentTable extends React.Component {
 
   render() {
     return (
-      <List className='CommentTableComponent'
-        style={{marginTop: '64px', marginBottom: '64px'}} >
-        <Paper className='CommentTableBody'>
+      <List
+        className='CommentTableComponent'
+        style={{
+          marginTop: '64px',
+          marginBottom: '64px',
+          width: '100%',
+          posision: 'relative',
+          overflow: 'scroll'
+        }}
+      > <Paper className='CommentTableBody'>
           {this.renderComments()}
         </Paper>
       </List>

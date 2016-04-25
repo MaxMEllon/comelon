@@ -32,10 +32,7 @@ let webpackConfig = {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
-    }, {
-      test: /\.js$/,
-      loader: 'webpack-strip?strip[]=console.log'
-    } ]
+    }, ]
   }
 };
 

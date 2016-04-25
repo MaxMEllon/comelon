@@ -16,11 +16,15 @@ const iconStyles = {
 };
 
 export default class Login extends React.Component {
-  static propTypes = {
-    open: React.PropTypes.bool.isRequired
+  static get propTypes() {
+    return {
+      open: React.PropTypes.bool.isRequired
+    };
   }
 
-  displayName: 'Login'
+  static get displayName() {
+    return 'Login';
+  }
 
   constructor(props) {
     super(props);
