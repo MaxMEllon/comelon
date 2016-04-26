@@ -51,9 +51,8 @@ export default class Settings extends AppComponent {
   }
 
   handleToggle = (method, type) => {
-    const nextState = {};
-    nextState[type] = R.not(this.state.option.get(type));
-    SettingAction[method](nextState[type]);
+    this.state.option[type] = R.not(this.state.option.get(type));
+    SettingAction[method](this.state.option[type]);
   }
 
   render() {

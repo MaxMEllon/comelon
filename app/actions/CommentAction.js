@@ -1,18 +1,22 @@
 'use strict';
 
 import Nico from 'nicolive';
-import NotificationAction from '../actions/NotificationAction';
+import TalkAction from './TalkAction';
+import TalkStore from '../stores/TalkStore';
+import NotificationAction from './NotificationAction';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import CommentActionType from './types/CommentActionTypes';
 import Immutable from 'immutable';
 
-let dispatchNickname = (userId, nickname) => {
+const dispatchNickname = (userId, nickname) => {
   AppDispatcher.dispatch({
     actionType: CommentActionType.FETCH_NICKNAME,
     nickname: nickname,
     userId: userId
   });
 };
+
+const isNil = obj => obj == null;
 
 /**
  * @classdesc CommentAction
@@ -39,6 +43,7 @@ let CommentAction = {
     };
     viewer.on('comment', comment => {
       dispatchComment(comment);
+      if (!isNil(TalkStore.registed)) TalkAction.talk(comment.text);
     });
   },
 
