@@ -1,10 +1,8 @@
 'use strict';
 
 import React from 'react';
+import AppComponent from '../../utils/AppComponent';
 import CommentStore from '../../stores/CommentStore';
-import SettingStore from '../../stores/SettingStore';
-import TalkAction from '../../actions/TalkAction';
-import TalkStore from '../../stores/TalkStore';
 import ImageLoader from 'react-imageloader';
 import Divider from 'material-ui/lib/divider';
 import ListItem from 'material-ui/lib/lists/list-item';
@@ -12,7 +10,7 @@ import Snipper from 'material-ui/lib/circular-progress';
 import {url} from 'nicolive/lib/api.json';
 const {usericonURL} = url;
 
-export default class Comment extends React.Component {
+export default class Comment extends AppComponent {
   static get propTypes() {
     return {
       comment: React.PropTypes.any.isRequired,
@@ -27,26 +25,8 @@ export default class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nowTalking: false
+      nowTalking: false,
     };
-  }
-
-  componentWillMount() {
-    TalkStore.addChangeListener(this.onNowTalking);
-  }
-
-  componentDidMount() {
-    if (SettingStore.getOption().doTalking) {
-      TalkAction.talk(this.props.comment.get('text'));
-    }
-  }
-
-  componentWillUnMount() {
-    TalkStore.removeChangeListener(this.onNowTalking);
-  }
-
-  onNowTalking = () => {
-    this.setState({nowTalking: TalkStore.isTalkingNow()});
   }
 
   renderAvater(userIcon) {

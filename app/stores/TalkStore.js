@@ -2,6 +2,7 @@
 
 import Itako from '../utils/Talker';
 import createStore from '../utils/AppStore';
+import SettingStore from '../stores/SettingStore';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import TalkActionType from '../actions/types/TalkActionTypes';
 
@@ -17,16 +18,16 @@ let TalkStore = createStore({
   }
 });
 
-AppDispatcher.register(action => {
+TalkStore.registed = AppDispatcher.register(action => {
   let type = action.actionType;
 
   switch (type) {
-  /**
-   * コメントを読み上げリストに追加し
-   * 順番が回ってきたらコメントを読み上げます
-   */
   case TalkActionType.TALK:
-    Itako.readSerial(action.message);
+    if (!SettingStore.getOption().doTalking) break;
+    nowTalking = true;
+    Itako.read(action.message).then(() => {
+      nowTalking = false;
+    });
     break;
   }
 
