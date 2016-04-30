@@ -19,10 +19,11 @@ let webpackConfig = {
   },
   entry: ['./scripts/main.js'],
   output: opt,
-  externals: ['electron', 'nicolive'],
+  externals: ['nicolive'],
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new NodeTargetPlugin()
+    new NodeTargetPlugin(),
+    new webpack.ExternalsPlugin('commonjs', ['electron'])
   ],
   module: {
     loaders: [ {
