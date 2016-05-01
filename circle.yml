@@ -6,13 +6,9 @@ general:
     - 'coverage/lcov-report'
 dependencies:
   override:
-    # - "sudo apt-get install -y g++-4.8"
-    # - "$CXX --version"
+    - "rm -rf node_modules"
     - "nvm i && npm install"
     - "npm install -g codeclimate-test-reporter"
-  cache_directories:
-    - "node_modules"
-
 test:
   override:
     - "nvm use && npm run lint && npm run cover"

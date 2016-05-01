@@ -3,6 +3,7 @@ environment:
 
 install:
   - ps: Install-Product node $env:nodejs_version
+  - rm -rf node_modules
   - npm install -g npm
   - npm --version
   - npm install
@@ -14,9 +15,6 @@ init:
 test_script:
   - node --version
   - npm run test
-
-cache:
-  - node_modules
 
 build: off
 deploy: off
