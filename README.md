@@ -1,98 +1,73 @@
 <p align="center">
   <img src="./assets/img/banner.png">
-</p>
 
-<center>
 <table>
   <tr>
     <th colspan="3">Badges</th>
   </tr>
   <tr>
     <td>
-      <div align="center">
+      <a href='https://www.npmjs.com/package/comelon'>
         <img src='https://img.shields.io/npm/v/comelon.svg'>
-          <a href='https://www.npmjs.com/package/comelon' />
-        </img>
-      </div>
+      </a>
     </td>
     <td>
-      <div align="center">
-        <img src='https://img.shields.io/npm/dt/comelon.svg'>
-        </img>
-      </div>
+      <img src='https://img.shields.io/npm/dt/comelon.svg'>
+      </img>
     </td>
     <td>
-      <div align="center">
-        <img src='https://badges.gitter.im/MaxMEllon/comelon.svg'>
-          <a href='https://gitter.im/MaxMEllon/comelon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge' />
-        </img>
-      </div>
+      <a href='https://gitter.im/MaxMEllon/comelon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge'>
+        <img src='https://badges.gitter.im/MaxMEllon/comelon.svg'> </img>
+      </a>
     </td>
   </tr>
   <tr>
     <td>
-      <div align="center">
-        <img src='https://travis-ci.org/MaxMEllon/comelon.svg?branch=master'>
-          <a href='https://travis-ci.org/MaxMEllon/comelon' />
-        </img>
-      </div>
+      <a href='https://travis-ci.org/MaxMEllon/comelon' />
+        <img src='https://travis-ci.org/MaxMEllon/comelon.svg?branch=master' />
+      </a>
     </td>
     <td>
-      <div align="center">
-        <img src='https://img.shields.io/circleci/project/MaxMEllon/comelon.svg'>
-          <a href='https://circleci.com/gh/MaxMEllon/comelon' />
-        </img>
-      </div>
+      <a href='https://circleci.com/gh/MaxMEllon/comelon' />
+        <img src='https://img.shields.io/circleci/project/MaxMEllon/comelon.svg' />
+      </a>
     </td>
     <td>
-      <div align="center">
-        <img src='https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true'>
-          <a href='https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true' />
-        </img>
-      </div>
+      <a href='https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true' />
+        <img src='https://ci.appveyor.com/api/projects/status/sojo2v2cxwx15f7v?svg=true' />
+      </a>
     </td>
   </tr>
   <tr>
     <td>
-      <div align="center">
-        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg'>
-          <a href='https://codeclimate.com/github/MaxMEllon/comelon/coverage' />
-        </img>
-      </div>
+      <a href='https://codeclimate.com/github/MaxMEllon/comelon/coverage' />
+        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/coverage.svg' />
+      </a>
     </td>
     <td>
-      <div align="center">
-        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg'>
-          <a href='https://codeclimate.com/github/MaxMEllon/comelon' />
-        </img>
-      </div>
+      <a href='https://codeclimate.com/github/MaxMEllon/comelon' />
+        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg' />
+      </a>
     </td>
     <td>
-      <div align="center">
-        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/gpa.svg'>
-          <a href='https://codeclimate.com/github/MaxMEllon/comelon' />
-        </img>
-      </div>
+      <a href='https://codeclimate.com/github/MaxMEllon/comelon' />
+        <img src='https://codeclimate.com/github/MaxMEllon/comelon/badges/issue_count.svg' />
+      </a>
     </td>
   </tr>
   <tr>
     <td colspan="2">
-      <div align="center">
-        <img src='https://david-dm.org/maxmellon/comelon.svg'>
-          <a href='https://david-dm.org/maxmellon/comelon' />
-        </img>
-      </div>
+      <a href='https://david-dm.org/maxmellon/comelon' />
+        <img src='https://david-dm.org/maxmellon/comelon.svg' />
+      </a>
     </td>
     <td colspan="2">
-      <div align="center">
-        <img src='https://david-dm.org/maxmellon/comelon/dev-status.svg'>
-          <a href='https://david-dm.org/maxmellon/comelon#info=devDependencies' />
-        </img>
-      </div>
+      <a href='https://david-dm.org/maxmellon/comelon#info=devDependencies' />
+        <img src='https://david-dm.org/maxmellon/comelon/dev-status.svg' />
+      </a>
     </td>
   </tr>
 </table>
-</center>
 
 ## Screenshots
 
