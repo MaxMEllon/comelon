@@ -79,7 +79,7 @@
     "react-dom": "^0.14.8",
     "react-imageloader": "^2.1.0",
     "react-tap-event-plugin": "^0.2.2",
-    "sinon": "^1.17.3",
+    "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.0",
     "webpack-strip": "^0.1.0"
