@@ -60,7 +60,7 @@
     "eventemitter3": "^1.2.0",
     "flux": "^2.1.1",
     "immutable": "^3.8.1",
-    "itako": "^0.1.2",
+    "itako": "^0.3.0",
     "itako-text-reader-speech-synthesis": "0.0.0",
     "jsdom": "^9.1.0",
     "json-loader": "^0.5.4",
