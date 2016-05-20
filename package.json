@@ -75,7 +75,7 @@
     "power-assert": "^1.4.0",
     "ramda": "^0.21.0",
     "react": "^0.14.8",
-    "react-addons-test-utils": "^0.14.8",
+    "react-addons-test-utils": "^15.0.2",
     "react-dom": "^0.14.8",
     "react-imageloader": "^2.1.0",
     "react-tap-event-plugin": "^0.2.2",
