@@ -67,7 +67,7 @@
     "keyboardjs": "^2.2.0",
     "lodash.isequal": "^4.2.0",
     "material-ui": "^0.14.4",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.2",
     "mocha-generators": "^1.2.0",
     "nightmare": "^2.3.4",
     "nyc": "^6.4.4",
