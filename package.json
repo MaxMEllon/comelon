@@ -70,7 +70,7 @@
     "mocha": "^2.5.3",
     "mocha-generators": "^1.2.0",
     "nightmare": "^2.5.0",
-    "nyc": "^6.4.4",
+    "nyc": "^6.6.0",
     "object-assign": "^4.0.1",
     "power-assert": "^1.4.0",
     "ramda": "^0.21.0",
