@@ -64,7 +64,7 @@
     "itako-text-reader-speech-synthesis": "0.0.0",
     "jsdom": "^9.2.1",
     "json-loader": "^0.5.4",
-    "keyboardjs": "^2.2.0",
+    "keyboardjs": "^2.2.1",
     "lodash.isequal": "^4.2.0",
     "material-ui": "^0.14.4",
     "mocha": "^2.5.3",
