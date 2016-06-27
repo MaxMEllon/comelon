@@ -40,7 +40,7 @@
     "nicolive": "^0.0.4"
   },
   "devDependencies": {
-    "abigail": "^1.6.1",
+    "abigail": "^1.7.1",
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.1.0",
     "babel-loader": "^6.2.4",
