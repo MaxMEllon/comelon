@@ -74,7 +74,7 @@
     "object-assign": "^4.0.1",
     "power-assert": "^1.4.0",
     "ramda": "^0.21.0",
-    "react": "^0.14.8",
+    "react": "^15.2.0",
     "react-addons-test-utils": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-imageloader": "^2.1.0",
