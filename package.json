@@ -76,7 +76,7 @@
     "ramda": "^0.21.0",
     "react": "^0.14.8",
     "react-addons-test-utils": "^0.14.8",
-    "react-dom": "^0.14.8",
+    "react-dom": "^15.2.0",
     "react-imageloader": "^2.1.0",
     "react-tap-event-plugin": "^0.2.2",
     "sinon": "^1.17.4",
