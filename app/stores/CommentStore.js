@@ -1,7 +1,7 @@
 'use strict';
 
 import R from 'ramda';
-import createStore from '../utils/AppStore';
+import {AppStore} from '../utils/AppStore';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import CommentActionType from '../actions/types/CommentActionTypes';
 
@@ -22,15 +22,15 @@ let setNickName = (userId, nickname) => {
  * @classdesc CommentStore
  * コメントに関する状態(ハンドルネーム，コメント)を管理します
  */
-let CommentStore = createStore({
+class CommentStore extends AppStore {
   /**
    * getAllComments()
    * 受信したコメントを全て返却します
    * @returns {Array} _comments
    */
-  getAllComments() {
+  get getAllComments() {
     return comments;
-  },
+  }
 
   /**
    * getNickname() (getNicknameById() に変更するかも)
@@ -41,7 +41,9 @@ let CommentStore = createStore({
   getNickname(userId) {
     return R.prop(R.toString(userId), nicknames);
   }
-});
+}
+
+const commentStore = new CommentStore();
 
 AppDispatcher.register(action => {
   let type = action.actionType;
@@ -55,7 +57,7 @@ AppDispatcher.register(action => {
     let comment = action.comment;
     if (! R.isNil(comment)) {
       comments.push(comment);
-      CommentStore.emitChange();
+      commentStore.emitChange();
     }
     break;
 
@@ -68,7 +70,7 @@ AppDispatcher.register(action => {
     let userId = action.userId;
     let nickname = action.nickname;
     setNickName(userId, nickname);
-    CommentStore.emitChange();
+    commentStore.emitChange();
     break;
 
   /**
@@ -77,10 +79,10 @@ AppDispatcher.register(action => {
    */
   case CommentActionType.RESET_ALL_COMMENT:
     resetAllComment();
-    CommentStore.emitChange();
+    commentStore.emitChange();
     break;
   }
 
 });
 
-export default CommentStore;
+export default commentStore;
